@@ -4,12 +4,13 @@ import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ComponentProps } from 'react';
+import { MobileNav } from './mobile-nav';
 
 const Nav = () => {
   const pathname = usePathname();
   return (
     <nav
-      className={`flex justify-center bg-gray-800 ${pathname === '/' ? 'hidden' : 'block'}`}
+      className={`flex items-center justify-between bg-gray-800 px-4 sm:justify-center sm:px-0 ${pathname === '/' ? 'hidden' : 'block'}`}
     >
       <div className="flex max-w-[1440px] flex-col gap-10 py-5 sm:py-20">
         <h1 className="text-center text-2xl font-semibold uppercase text-white">
@@ -27,6 +28,9 @@ const Nav = () => {
           </li>
         </ul>
       </div>
+      <div className="sm:hidden">
+        <MobileNav />
+      </div>
     </nav>
   );
 };
@@ -42,7 +46,7 @@ export const NavLink = (
     <Link
       {...props}
       className={cn(
-        'text-5xl transition-all',
+        'text-2xl transition-all sm:text-5xl',
         pathname === props.href ? 'text-gray-200' : 'text-gray-400',
       )}
     />
