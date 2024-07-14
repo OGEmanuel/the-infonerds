@@ -1,4 +1,4 @@
-import Image, { StaticImageData } from "next/image";
+import Image, { StaticImageData } from 'next/image';
 
 const AlbumLinks = ({
   src,
@@ -11,7 +11,9 @@ const AlbumLinks = ({
 }) => {
   return (
     <div className="flex flex-col gap-5">
-      <Image src={src} alt="Album Cover" />
+      <div className="relative">
+        <Image src={src} alt="Album Cover" className="rounded-lg" />
+      </div>
       <div>
         <p className="text-xl font-medium text-[#1F2937]">{title}</p>
         <p className="text-[#6B7280]">{desc}</p>
