@@ -4,7 +4,7 @@ import LogoIcon from "@/public/icons/LogoIcon";
 
 const Footer = () => {
   return (
-    <footer className="ml-[10rem] border border-[#F3F4F6] py-16">
+    <footer className="border border-[#F3F4F6] py-16 md:ml-[10rem]">
       <div className="flex w-11/12 justify-between">
         <div className="flex items-center gap-4">
           <LogoIcon />
