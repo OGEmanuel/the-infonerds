@@ -42,8 +42,8 @@ export function TestimonialCarousel() {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
+      <CarouselPrevious className='sm:block hidden' />
+      <CarouselNext className='sm:block hidden' />
     </Carousel>
   );
 }
