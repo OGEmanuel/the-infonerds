@@ -27,17 +27,17 @@ export function MobileNav() {
         </SheetTrigger>
         <SheetContent
           side={'right'}
-          className="flex items-center justify-center bg-gray-800"
+          className="flex w-full items-center justify-center bg-gray-800"
         >
           <ul className={`flex flex-col items-center justify-between gap-10`}>
             <li>
               <button onClick={() => setOpen(!open)}>
-                <NavLink href={'/'}>Home</NavLink>
+                <NavLink href={'/home'}>Home</NavLink>
               </button>
             </li>
             <li>
               <button onClick={() => setOpen(!open)}>
-                <NavLink href={'/work'}>Work</NavLink>
+                <NavLink href={'/'}>Work</NavLink>
               </button>
             </li>
             <li>

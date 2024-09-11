@@ -10,25 +10,25 @@ const Nav = () => {
   const pathname = usePathname();
   return (
     <nav
-      className={`flex items-center justify-between bg-gray-800 px-4 sm:justify-center sm:px-0 ${pathname === '/' ? 'hidden' : 'block'}`}
+      className={`flex items-center bg-gray-800 px-4 lg:justify-center lg:px-0 ${pathname === '/home' ? 'hidden' : 'block'}`}
     >
-      <div className="flex max-w-[1440px] flex-col gap-10 py-5 sm:py-20">
+      <div className="flex max-w-[1440px] basis-full flex-col gap-10 py-5 sm:py-10 lg:basis-auto lg:py-20">
         <h1 className="text-center text-2xl font-semibold uppercase text-white">
           The InfoNerds
         </h1>
-        <ul className={`hidden items-center justify-between gap-20 sm:flex`}>
+        <ul className={`hidden items-center justify-between gap-20 lg:flex`}>
           <li>
-            <NavLink href={'/'}>Home</NavLink>
+            <NavLink href={'/home'}>Home</NavLink>
           </li>
           <li>
-            <NavLink href={'/work'}>Work</NavLink>
+            <NavLink href={'/'}>Gallery</NavLink>
           </li>
           <li>
-            <NavLink href={'/contact'}>Contact</NavLink>
+            <NavLink href={'/contact'}>Bookings</NavLink>
           </li>
         </ul>
       </div>
-      <div className="sm:hidden">
+      <div className="lg:hidden">
         <MobileNav />
       </div>
     </nav>
@@ -46,7 +46,7 @@ export const NavLink = (
     <Link
       {...props}
       className={cn(
-        'text-2xl transition-all sm:text-5xl',
+        'text-2xl transition-all lg:text-4xl',
         pathname === props.href ? 'text-gray-200' : 'text-gray-400',
       )}
     />

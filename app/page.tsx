@@ -1,51 +1,41 @@
-import { Toast } from '@/components/ui/toast';
-import Albums from './(albums)/albums';
-import { ContactForm } from './contact/form';
-import Header from './header';
-import Highlights from './highlights';
-import Nav from './nav';
-import Link from 'next/link';
-import IGIcon from '@/public/icons/IGIcon';
-import XIcon from '@/public/icons/XIcon';
-import FBIcon from '@/public/icons/FBIcon';
-import { ArrowRightFromLineIcon } from 'lucide-react';
-import LogoIcon from '@/public/icons/LogoIcon';
+import AlbumLinks from './(albums)/AlbumLinks';
+import wedding from '@/public/images/wedding-album.png';
+import wedding2 from '@/public/images/wedding-2.png';
+import homeComing from '@/public/images/home-coming.png';
+import concert from '@/public/images/concert.png';
+import Gallery from './gallery';
+import { TestimonialCarousel } from './carousel';
+import Clientelle from './clientelle';
 
-export default function Home() {
+const Work = () => {
   return (
-    <main className="flex h-screen items-center justify-center">
-      <div className="flex h-max flex-col items-center justify-center gap-5">
-        <div className="flex flex-col gap-3 text-center">
-          <h1 className="text-3xl font-semibold text-white sm:text-6xl">
-            The InfoNerds
-          </h1>
-          <p className="font-medium text-white">
-            Information and Entertainment Personified.
-          </p>
-        </div>
-        <div className="flex items-center gap-[11px]">
-          <div className="flex rounded-xl border !border-[#9CA3AF] bg-sm-gradient p-1">
-            <Link href={'/'}>
-              <IGIcon />
-            </Link>
-            <Link href={'/'}>
-              <XIcon />
-            </Link>
-            <Link href={'/'}>
-              <FBIcon />
-            </Link>
-          </div>
-        </div>
-        <div>
-          <Link
-            href={'/work'}
-            className="flex items-center gap-3 text-2xl text-white hover:underline"
-          >
-            Works
-            <ArrowRightFromLineIcon />
-          </Link>
+    <main className="flex flex-col items-center justify-center gap-16 p-4 text-white sm:p-8 lg:p-16">
+      <Gallery />
+      <div className="flex flex-col gap-8">
+        <h1 className="text-3xl font-medium text-white">Categories</h1>
+        <div className="grid w-full max-w-[1440px] justify-center gap-4 sm:grid-cols-[repeat(2,_1fr)] lg:grid-cols-[repeat(3,_1fr)]">
+          <AlbumLinks
+            src={wedding}
+            title="Oladipo & Wunmi Wedding Cermony"
+            desc="Content videos, Photography, and Videography"
+          />
+          <AlbumLinks
+            src={homeComing}
+            title="Home Coming Abuja ‘22"
+            desc="Content videos and Photography"
+          />
+          <AlbumLinks src={concert} title="30BG Concert" desc="Photography" />
+          <AlbumLinks
+            src={wedding2}
+            title="Mr&Mrs Adefola’s Wedding "
+            desc="Content videos and Photography"
+          />
         </div>
       </div>
+      <Clientelle />
+      <TestimonialCarousel />
     </main>
   );
-}
+};
+
+export default Work;
