@@ -27,7 +27,7 @@ export function MobileNav() {
         </SheetTrigger>
         <SheetContent
           side={'right'}
-          className="flex w-full max-w-sm items-center justify-center bg-gray-800"
+          className="flex items-center justify-center bg-gray-800"
         >
           <ul className={`flex flex-col items-center justify-between gap-10`}>
             <li>
