@@ -1,10 +1,8 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { GeistSans } from 'geist/font/sans';
 import './globals.css';
 import Footer from '@/components/footer';
 import Nav from './nav';
-
-const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'TheInfoNerds',
@@ -18,9 +16,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-black`}>
+      <body className={`${GeistSans.className} bg-black`}>
         <Nav />
-        {children}
+        <main className="relative z-10 min-h-screen bg-black shadow-2xl">
+          {children}
+          <div className="darkGradient h-6"></div>
+        </main>
+        <Footer />
       </body>
     </html>
   );

@@ -15,7 +15,7 @@ const AlbumLinks = ({
         <Image src={src} alt="Album Cover" className="rounded-lg" />
       </div>
       <div>
-        <p className="text-xl font-medium text-[#1F2937]">{title}</p>
+        <p className="text-xl font-medium text-white">{title}</p>
         <p className="text-[#6B7280]">{desc}</p>
       </div>
     </div>

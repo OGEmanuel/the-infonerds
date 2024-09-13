@@ -10,10 +10,11 @@ import XIcon from '@/public/icons/XIcon';
 import FBIcon from '@/public/icons/FBIcon';
 import { ArrowRightFromLineIcon } from 'lucide-react';
 import LogoIcon from '@/public/icons/LogoIcon';
+import SocialMedia from '../social-media';
 
 export default function Home() {
   return (
-    <main className="flex h-screen items-center justify-center">
+    <section className="flex h-screen items-center justify-center">
       <div className="flex h-max flex-col items-center justify-center gap-5">
         <div className="flex flex-col gap-3 text-center">
           <h1 className="text-3xl font-semibold text-white sm:text-6xl">
@@ -23,19 +24,7 @@ export default function Home() {
             Information and Entertainment Personified.
           </p>
         </div>
-        <div className="flex items-center gap-[11px]">
-          <div className="flex rounded-xl border !border-[#9CA3AF] bg-sm-gradient p-1">
-            <Link href={'/'}>
-              <IGIcon />
-            </Link>
-            <Link href={'/'}>
-              <XIcon />
-            </Link>
-            <Link href={'/'}>
-              <FBIcon />
-            </Link>
-          </div>
-        </div>
+        <SocialMedia/>
         <div>
           <Link
             href={'/'}
@@ -46,6 +35,6 @@ export default function Home() {
           </Link>
         </div>
       </div>
-    </main>
+    </section>
   );
 }

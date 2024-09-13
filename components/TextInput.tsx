@@ -43,7 +43,7 @@ export default function TextInput({
         <Input
           placeholder={placeholder}
           type={type}
-          className={`rounded-2xl border-none bg-gray-300 p-4 font-medium placeholder:text-[#9CA3AF]`}
+          className={`rounded-2xl border-none bg-[#1e1e1e] p-4 font-medium text-[#f8f8f8] placeholder:text-[#9CA3AF]`}
           {...field}
         />
       </FormControl>

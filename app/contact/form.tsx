@@ -120,7 +120,7 @@ export function ContactForm() {
           >
             <FormDescription className="text-4xl font-semibold text-white">
               Be one of our happy{' '}
-              <span className="bg-clip-text font-InriaFont font-bold italic text-white">
+              <span className="bg-clip-text font-InriaFont font-bold italic text-[#e0f2fe]">
                 people
               </span>{' '}
               <span className="mt-4 block text-base font-normal text-[#6B7280]">
@@ -207,7 +207,7 @@ export function ContactForm() {
                                   />
                                 </FormControl>
                                 <FormLabel
-                                  className={`block cursor-pointer rounded-[2rem] border !border-[#E5E7EB] p-4 font-medium ${field.value.includes(item.id) ? 'bg-[#2563EB] text-white' : 'text-[#4B5563]'}`}
+                                  className={`block cursor-pointer rounded-[2rem] border p-4 font-medium ${field.value.includes(item.id) ? 'border-transparent bg-[#2563EB] text-white' : ' border-[#E5E7EB] text-[#9CA3AF]'}`}
                                 >
                                   {item.label}
                                 </FormLabel>
@@ -236,7 +236,7 @@ export function ContactForm() {
                             <Button
                               variant={'outline'}
                               className={cn(
-                                'w-full rounded-2xl border-none bg-gray-300 p-4 text-left font-medium',
+                                'w-full rounded-2xl border-none bg-[#1e1e1e] p-4 text-left font-medium text-[#f8f8f8] hover:bg-[#1e1e1e] hover:text-[#f8f8f8]',
                                 !field.value && 'text-muted-foreground',
                               )}
                             >
@@ -291,8 +291,8 @@ export function ContactForm() {
                     </FormLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="tell us more about what you want.."
-                        className="resize-none rounded-2xl border-none bg-gray-300 p-4"
+                        placeholder="Tell us more about what you want.."
+                        className="resize-none rounded-2xl border-none bg-[#1e1e1e] p-4 placeholder:text-[#9CA3AF]"
                         rows={10}
                         {...field}
                       />

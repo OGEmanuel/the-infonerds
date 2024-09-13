@@ -10,7 +10,7 @@ const Nav = () => {
   const pathname = usePathname();
   return (
     <nav
-      className={`flex items-center bg-gray-800 px-4 lg:justify-center lg:px-0 ${pathname === '/home' ? 'hidden' : 'block'}`}
+      className={`flex items-center bg-[#1e1e1e] px-4 lg:justify-center lg:px-0 ${pathname === '/home' ? 'hidden' : 'block'}`}
     >
       <div className="flex max-w-[1440px] basis-full flex-col gap-10 py-5 sm:py-10 lg:basis-auto lg:py-20">
         <h1 className="text-center text-2xl font-semibold uppercase text-white">
@@ -47,7 +47,7 @@ export const NavLink = (
       {...props}
       className={cn(
         'text-2xl transition-all lg:text-4xl',
-        pathname === props.href ? 'text-gray-200' : 'text-gray-400',
+        pathname === props.href ? 'text-white' : 'text-white/40',
       )}
     />
   );
