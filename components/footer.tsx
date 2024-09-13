@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <footer>
       <div className="h-60"></div>
-      <div className="fixed bottom-0 left-0 right-0 flex h-60 flex-col items-center justify-center gap-6 bg-[#1e1e1e]">
+      <div className="fixed bottom-0 left-0 right-0 flex h-60 w-full flex-col items-center justify-center gap-6 bg-[#1e1e1e]">
         <div className="flex gap-6">
           <NavLink href={'/home'}>Home</NavLink>
           <NavLink href={'/'}>Gallery</NavLink>

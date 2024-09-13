@@ -33,7 +33,7 @@ const Work = () => {
         </div>
       </div>
       <Clientelle />
-      <Testimonial/>
+      <Testimonial />
     </section>
   );
 };

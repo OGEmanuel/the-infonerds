@@ -63,7 +63,7 @@ const Marquee = () => {
 
   return (
     <div
-      className={`flex max-w-[1440px] flex-col gap-8 px-4 text-center md:px-10 lg:px-20`}
+      className={`flex w-full max-w-[1440px] flex-col gap-8 overflow-hidden px-4 text-center md:px-10 lg:px-20`}
     >
       <div ref={scrollersDarkRef} className={`scroller mx-auto max-w-[1144px]`}>
         <div
