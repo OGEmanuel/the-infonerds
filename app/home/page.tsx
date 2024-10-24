@@ -1,16 +1,12 @@
-import { Toast } from '@/components/ui/toast';
-import Albums from '../(albums)/albums';
-import { ContactForm } from '../contact/form';
-import Header from '../header';
-import Highlights from '../highlights';
-import Nav from '../nav';
 import Link from 'next/link';
-import IGIcon from '@/public/icons/IGIcon';
-import XIcon from '@/public/icons/XIcon';
-import FBIcon from '@/public/icons/FBIcon';
 import { ArrowRightFromLineIcon } from 'lucide-react';
-import LogoIcon from '@/public/icons/LogoIcon';
 import SocialMedia from '../social-media';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'TheInfoNerds | Home',
+  description: 'Information and Entertainment Personified.',
+};
 
 export default function Home() {
   return (
@@ -24,7 +20,7 @@ export default function Home() {
             Information and Entertainment Personified.
           </p>
         </div>
-        <SocialMedia/>
+        <SocialMedia />
         <div>
           <Link
             href={'/'}

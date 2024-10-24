@@ -5,7 +5,15 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'flowbite.s3.amazonaws.com',
-        port: '',
+      },
+      {
+        protocol: 'https',
+        hostname: 'drive.google.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'utfs.io',
+        // pathname: "/a/<APP_ID>/*",
       },
     ],
   },

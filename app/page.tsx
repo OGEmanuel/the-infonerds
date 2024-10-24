@@ -6,11 +6,19 @@ import concert from '@/public/images/concert.png';
 import Gallery from './gallery';
 import Clientelle from './clientelle';
 import Testimonial from './testimonial';
+import { utapi } from './api/server/uploadthing';
 
-const Work = () => {
+const Work = async () => {
+  // const files = await utapi.listFiles();
+  // // console.log(files);
+
+  // const plainFiles = JSON.parse(JSON.stringify(files));
+
+  // files={plainFiles}
+
   return (
     <section className="flex flex-col items-center justify-center gap-16 p-4 text-white sm:p-8 lg:p-16">
-      <Gallery />
+      <Gallery  />
       <div className="flex flex-col gap-8">
         <h1 className="text-3xl font-medium text-white">Categories</h1>
         <div className="grid w-full max-w-[1440px] justify-center gap-4 sm:grid-cols-[repeat(2,_1fr)] lg:grid-cols-[repeat(3,_1fr)]">
