@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import Image from 'next/image';
 import { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Skeleton } from '@/components/ui/skeleton';
 
 const weddings = [
   {
@@ -375,6 +376,7 @@ const weddings = [
 
 const Categories = () => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
   let itemsPerPage = 16;
 
   const totalPages = Math.ceil(weddings.length / itemsPerPage);
@@ -397,16 +399,23 @@ const Categories = () => {
             key={wedding.id}
             className={`relative h-full w-full overflow-hidden rounded-lg border border-transparent before:absolute before:inset-0 before:z-0 before:h-full before:w-full before:rounded-lg before:bg-black before:opacity-0 before:blur-sm before:transition-opacity hover:border-gray-700 hover:before:opacity-50 ${wedding.large && 'sm:col-[1_/_span_2]'}`}
           >
-            <Image
-              src={wedding.src}
-              alt="category"
-              width={500}
-              height={500}
-              className="h-full w-full object-cover object-top transition-transform group-hover:scale-125"
-              onError={e => {
-                e.currentTarget.src = '/images/album-fallback-img.jpg';
-              }}
-            />
+            {isLoading ? (
+              <Skeleton className='h-full w-full animate-pulse' />
+            ) : (
+              <Image
+                src={wedding.src}
+                alt="category"
+                width={500}
+                height={500}
+                onLoad={() => {
+                  setIsLoading(false);
+                }}
+                className="h-full w-full object-cover object-top transition-transform group-hover:scale-125"
+                onError={e => {
+                  e.currentTarget.src = '/images/album-fallback-img.jpg';
+                }}
+              />
+            )}
           </div>
         ))}
       </div>

@@ -13,7 +13,7 @@ const Albums = () => {
         <h2 className="text-xl font-medium text-[#1F2937]">Albums</h2>
       </div>
       <div className="flex flex-wrap gap-x-6 gap-y-16">
-        <AlbumLinks
+        {/* <AlbumLinks
           src={wedding}
           title="Oladipo & Wunmi Wedding Cermony"
           desc="Content videos, Photography, and Videography"
@@ -28,7 +28,7 @@ const Albums = () => {
           src={wedding2}
           title="Mr&Mrs Adefola’s Wedding "
           desc="Content videos and Photography"
-        />
+        /> */}
       </div>
     </section>
   );
