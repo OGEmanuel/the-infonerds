@@ -93,13 +93,13 @@ const Gallery = () => {
           <GridCol>
             <ImageFallback
               className="h-[240.36px]"
-              src="https://drive.google.com/uc?export=view&id=1gd4JjJeXBnu7wbbZXJS4skUkInOVvzTD"
+              src="https://drive.google.com/uc?export=view&id=1IMdy-9FCVizdCr6qMIfet-fuOw7fQwoK"
             />
           </GridCol>
           <GridCol>
             <ImageFallback
               className="h-[272.11px]"
-              src="https://drive.google.com/uc?export=view&id=1EKyxGWG7AgrVXCiRqqUEqg5Lw7TIKxLm"
+              src="https://drive.google.com/uc?export=view&id=18FMnNXJ-57Lz1sLK5XAgiUJs1CBA-Um8"
             />
           </GridCol>
         </div>
@@ -107,7 +107,7 @@ const Gallery = () => {
           <GridCol>
             <ImageFallback
               className="h-[287.47px]"
-              src="https://drive.google.com/uc?export=view&id=1idrJ44urGW3MV95IlDCov__QVFpIiBXg"
+              src="https://drive.google.com/uc?export=view&id=1b6AfjE7bxskAZIUho8uxnRVLch-cMGIg"
             />
           </GridCol>
           <GridCol>
@@ -119,7 +119,7 @@ const Gallery = () => {
           <GridCol>
             <ImageFallback
               className="h-[183.64px]"
-              src="https://drive.google.com/uc?export=view&id=1rt39usHzdsEx_mq3ziGn4eMeKViD3Ds7"
+              src="https://drive.google.com/uc?export=view&id=1_vGMARp5x6KJbJQEa2OS-LHmVDJHsIyT"
             />
           </GridCol>
         </div>
@@ -133,13 +133,13 @@ const Gallery = () => {
           <GridCol>
             <ImageFallback
               className="h-[223.05px]"
-              src="https://drive.google.com/uc?export=view&id=17LUH9L6awPAJ7IfIm-W4C3aDkdhP670h"
+              src="https://drive.google.com/uc?export=view&id=1Bpu3GDrhWeu6PLuKj8Mvtoy9dEGoRRNq"
             />
           </GridCol>
           <GridCol>
             <ImageFallback
               className="h-[249.98px]"
-              src="https://drive.google.com/uc?export=view&id=1ZBRawzjXRZmqwvgBF2BrE5-48CKkDKUj"
+              src="https://drive.google.com/uc?export=view&id=1FWV4-WmMLaC8Y8GXZOGhWm3u0DogYug7"
             />
           </GridCol>
         </div>
@@ -147,7 +147,7 @@ const Gallery = () => {
           <GridCol>
             <ImageFallback
               className="h-[202.86px]"
-              src="https://drive.google.com/uc?export=view&id=1yHhFk_IgmlndDjGXOcanBxdtf_5jMSN9"
+              src="https://drive.google.com/uc?export=view&id=1hGUS_Bauy9D3R8GoO6TBGOYo-yVs11h6"
             />
           </GridCol>
           <GridCol>
