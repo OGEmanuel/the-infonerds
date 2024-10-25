@@ -3,6 +3,8 @@
 // import { UploadButton } from '@/lib/utils';
 import Image from 'next/image';
 import { ReactNode, useEffect, useState } from 'react';
+import fallbackImgUrl from '@/public/images/fallback-img.png';
+import ImageFallback from '@/components/image-fallback';
 // import { useQuery } from '@tanstack/react-query';
 
 // type GalleryImageType = { key: string; name: string; url: string }[];
@@ -81,138 +83,83 @@ const Gallery = () => {
               }}
             />
 */}
-
-            <Image
-              className="h-[369.2px] max-w-full rounded-lg object-cover object-top"
-              // src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg"
-              src="https://drive.google.com/uc?export=view&id=112b3oP3RIw_EuQQPRIEUFkYO4cS8kMpy"
-              // src={portrait1}
-              width={500}
-              height={500}
-              alt="portrait"
+            <ImageFallback
+              className="h-[369.2px]"
+              src={
+                'https://drive.google.com/uc?export=view&id=112b3oP3RIw_EuQQPRIEUFkYO4cS8kMpy'
+              }
             />
           </GridCol>
           <GridCol>
-            <Image
-              className="h-[240.36px] max-w-full rounded-lg object-cover object-top"
-              // src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg"
+            <ImageFallback
+              className="h-[240.36px]"
               src="https://drive.google.com/uc?export=view&id=1gd4JjJeXBnu7wbbZXJS4skUkInOVvzTD"
-              width={500}
-              height={500}
-              alt=""
             />
           </GridCol>
-
           <GridCol>
-            <Image
-              className="h-[272.11px] max-w-full rounded-lg object-cover object-top"
-              // src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg"
+            <ImageFallback
+              className="h-[272.11px]"
               src="https://drive.google.com/uc?export=view&id=1EKyxGWG7AgrVXCiRqqUEqg5Lw7TIKxLm"
-              width={500}
-              height={500}
-              alt=""
             />
           </GridCol>
         </div>
         <div className="grid gap-4">
           <GridCol>
-            <Image
-              className="h-[287.47px] max-w-full rounded-lg object-cover object-top"
-              // src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg"
-              src="https://drive.google.com/uc?export=view&id=1-iwn4h_yPFgVTrTbJdQ9XQ35vOEPdUG8"
-              width={500}
-              height={500}
-              alt=""
-            />
-          </GridCol>
-          <GridCol>
-            <Image
-              className="h-[410.55px] max-w-full rounded-lg object-cover object-top"
-              // src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg"
-              // src={preWed}
-              src="https://drive.google.com/uc?export=view&id=151Cg5RyEUQg1_3dyx3RlKkY5zc_I1j_k"
-              width={500}
-              height={500}
-              alt=""
-            />
-          </GridCol>
-          <GridCol>
-            <Image
-              className="h-[183.64px] max-w-full rounded-lg object-cover object-top"
-              // src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg"
-              src="https://drive.google.com/uc?export=view&id=1rt39usHzdsEx_mq3ziGn4eMeKViD3Ds7"
-              width={500}
-              height={500}
-              alt=""
-            />
-          </GridCol>
-        </div>
-        <div className="grid gap-4">
-          <GridCol>
-            <Image
-              className="h-[408.63px] max-w-full rounded-lg object-cover object-top"
-              // src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg"
-              // src={wedPort}
-              src="https://drive.google.com/uc?export=view&id=1OHIZxYa1khDtRWIbG83BixP9GoKCdx-x"
-              // https://drive.google.com/file/d/1OHIZxYa1khDtRWIbG83BixP9GoKCdx-x/view?usp=sharing
-              width={500}
-              height={500}
-              alt=""
-            />
-          </GridCol>
-          <GridCol>
-            <Image
-              className="h-[223.05px] max-w-full rounded-lg object-cover object-top"
-              // src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg"
-              src="https://drive.google.com/uc?export=view&id=17LUH9L6awPAJ7IfIm-W4C3aDkdhP670h"
-              width={500}
-              height={500}
-              alt=""
-            />
-          </GridCol>
-          <GridCol>
-            <Image
-              className="h-[249.98px] max-w-full rounded-lg object-cover object-top"
-              // src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg"
-              src="https://drive.google.com/uc?export=view&id=1ZBRawzjXRZmqwvgBF2BrE5-48CKkDKUj"
-              // https://drive.google.com/file/d/1ZBRawzjXRZmqwvgBF2BrE5-48CKkDKUj/view?usp=sharing
-              width={500}
-              height={500}
-              alt=""
-            />
-          </GridCol>
-        </div>
-        <div className="grid gap-4">
-          <GridCol>
-            <Image
-              className="h-[202.86px] max-w-full rounded-lg object-cover object-top"
-              // src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg"
-              // https://drive.google.com/file/d/1yHhFk_IgmlndDjGXOcanBxdtf_5jMSN9/view?usp=sharing
-              src="https://drive.google.com/uc?export=view&id=1yHhFk_IgmlndDjGXOcanBxdtf_5jMSN9"
-              width={500}
-              height={500}
-              alt=""
-            />
-          </GridCol>
-          <GridCol>
-            <Image
-              className="h-[492.27px] max-w-full rounded-lg object-cover object-top"
-              // src={secondPort}
-              src="https://drive.google.com/uc?export=view&id=1sFLZpf3pqpw39oV5urzIRsfENhJvstFJ"
-              // src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg"
-              width={500}
-              height={500}
-              alt=""
-            />
-          </GridCol>
-          <GridCol>
-            <Image
-              className="h-[186.53px] max-w-full rounded-lg"
-              // src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg"
+            <ImageFallback
+              className="h-[287.47px]"
               src="https://drive.google.com/uc?export=view&id=1idrJ44urGW3MV95IlDCov__QVFpIiBXg"
-              width={500}
-              height={500}
-              alt=""
+            />
+          </GridCol>
+          <GridCol>
+            <ImageFallback
+              className="h-[410.55px]"
+              src="https://drive.google.com/uc?export=view&id=151Cg5RyEUQg1_3dyx3RlKkY5zc_I1j_k"
+            />
+          </GridCol>
+          <GridCol>
+            <ImageFallback
+              className="h-[183.64px]"
+              src="https://drive.google.com/uc?export=view&id=1rt39usHzdsEx_mq3ziGn4eMeKViD3Ds7"
+            />
+          </GridCol>
+        </div>
+        <div className="grid gap-4">
+          <GridCol>
+            <ImageFallback
+              className="h-[408.63px]"
+              src="https://drive.google.com/uc?export=view&id=1OHIZxYa1khDtRWIbG83BixP9GoKCdx-x"
+            />
+          </GridCol>
+          <GridCol>
+            <ImageFallback
+              className="h-[223.05px]"
+              src="https://drive.google.com/uc?export=view&id=17LUH9L6awPAJ7IfIm-W4C3aDkdhP670h"
+            />
+          </GridCol>
+          <GridCol>
+            <ImageFallback
+              className="h-[249.98px]"
+              src="https://drive.google.com/uc?export=view&id=1ZBRawzjXRZmqwvgBF2BrE5-48CKkDKUj"
+            />
+          </GridCol>
+        </div>
+        <div className="grid gap-4">
+          <GridCol>
+            <ImageFallback
+              className="h-[202.86px]"
+              src="https://drive.google.com/uc?export=view&id=1yHhFk_IgmlndDjGXOcanBxdtf_5jMSN9"
+            />
+          </GridCol>
+          <GridCol>
+            <ImageFallback
+              className="h-[492.27px]"
+              src="https://drive.google.com/uc?export=view&id=1sFLZpf3pqpw39oV5urzIRsfENhJvstFJ"
+            />
+          </GridCol>
+          <GridCol>
+            <ImageFallback
+              className="h-[186.53px]"
+              src="https://drive.google.com/uc?export=view&id=1-iwn4h_yPFgVTrTbJdQ9XQ35vOEPdUG8"
             />
           </GridCol>
         </div>
