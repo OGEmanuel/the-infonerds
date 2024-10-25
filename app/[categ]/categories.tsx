@@ -399,23 +399,23 @@ const Categories = () => {
             key={wedding.id}
             className={`relative h-full w-full overflow-hidden rounded-lg border border-transparent before:absolute before:inset-0 before:z-0 before:h-full before:w-full before:rounded-lg before:bg-black before:opacity-0 before:blur-sm before:transition-opacity hover:border-gray-700 hover:before:opacity-50 ${wedding.large && 'sm:col-[1_/_span_2]'}`}
           >
-            {isLoading ? (
+            {/* {isLoading ? (
               <Skeleton className='h-full w-full animate-pulse' />
-            ) : (
+            ) : ( */}
               <Image
                 src={wedding.src}
                 alt="category"
                 width={500}
                 height={500}
-                onLoad={() => {
-                  setIsLoading(false);
-                }}
+                // onLoad={() => {
+                //   setIsLoading(false);
+                // }}
                 className="h-full w-full object-cover object-top transition-transform group-hover:scale-125"
                 onError={e => {
                   e.currentTarget.src = '/images/album-fallback-img.jpg';
                 }}
               />
-            )}
+            {/* )} */}
           </div>
         ))}
       </div>
