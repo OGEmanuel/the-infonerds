@@ -6,7 +6,7 @@ const Category = ({ params }: { params: { categ: string } }) => {
       <h1 className="text-4xl font-medium uppercase text-white">
         {params.categ}
       </h1>
-      <Categories />
+      <Categories page={params.categ} />
     </section>
   );
 };
