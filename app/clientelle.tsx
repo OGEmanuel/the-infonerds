@@ -1,12 +1,6 @@
 'use client';
 
-import Image from 'next/image';
 import { useEffect, useRef } from 'react';
-import truecallerDark from '@/public/truecaller-marquee-logo-dark.svg';
-import betkingDark from '@/public/betking-marquee-logo-dark.svg';
-import oppoDark from '@/public/oppo-marquee-logo-dark.svg';
-import duoDark from '@/public/duo-marquee-logo-dark.svg';
-import shuttlersDark from '@/public/shuttlers-marquee-logo-dark.svg';
 
 const Marquee = () => {
   const scrollersRef = useRef<HTMLDivElement>(null);
@@ -63,18 +57,20 @@ const Marquee = () => {
 
   return (
     <div
-      className={`flex w-full max-w-[1440px] flex-col gap-8 overflow-hidden px-4 text-center md:px-10 lg:px-20`}
+      className={`flex flex-col gap-8 overflow-hidden px-4 text-center sm:px-8 lg:px-16`}
     >
       <div ref={scrollersDarkRef} className={`scroller mx-auto max-w-[1144px]`}>
         <div
           ref={scrollerDarkInnerRef}
           className={`scroller__inner mx-auto flex flex-wrap gap-[7.5rem] py-4`}
         >
-          <Image src={truecallerDark} alt="logo" />
-          <Image src={betkingDark} alt="logo" />
-          <Image src={oppoDark} alt="logo" />
-          <Image src={duoDark} alt="logo" />
-          <Image src={shuttlersDark} alt="logo" />
+          <p className="text-2xl font-medium">Quora E.V.</p>
+          <p className="text-2xl font-medium">TFAA</p>
+          <p className="text-2xl font-medium">WHO</p>
+          <p className="text-2xl font-medium">Cadbury</p>
+          <p className="text-2xl font-medium">Verve</p>
+          <p className="text-2xl font-medium">Infinix Nigeria</p>
+          <p className="text-2xl font-medium">Dano Milk</p>
         </div>
       </div>
     </div>

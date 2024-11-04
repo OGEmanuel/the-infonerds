@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 const AlbumLinksWrapper = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="grid w-full max-w-[1440px] justify-center gap-4 sm:grid-cols-[repeat(2,_1fr)] lg:grid-cols-[repeat(3,_1fr)]">
+    <div className="grid justify-center gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {children}
     </div>
   );

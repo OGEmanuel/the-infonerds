@@ -4,6 +4,7 @@ import LogoIcon from '@/public/icons/LogoIcon';
 
 const Footer = () => {
   const year = new Date().getFullYear();
+
   return (
     <footer>
       <div className="h-60"></div>

@@ -1,11 +1,13 @@
 'use client';
 
-import { ReactNode } from 'react';
-import ImageFallback from '@/components/image-fallback';
+import { ReactNode, useState } from 'react';
+import Image from 'next/image';
+import { cn } from '@/lib/utils';
+import ImgFallback from '@/components/img-fallback';
 
 const Gallery = () => {
   return (
-    <div>
+    <div className="px-4 pt-4 sm:px-8 sm:pt-8 lg:px-16 lg:pt-16">
       <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
         <div className="grid gap-4">
           <GridCol>
@@ -100,6 +102,32 @@ const GridCol = ({ children }: { children: ReactNode }) => {
   return (
     <div className="group relative h-max max-w-full before:absolute before:inset-0 before:z-0 before:h-full before:w-full before:rounded-lg before:bg-black before:opacity-0 before:blur-sm before:transition-opacity hover:before:opacity-50">
       {children}
+    </div>
+  );
+};
+
+const ImageFallback = ({
+  className,
+  src,
+}: {
+  className: string;
+  src: string;
+}) => {
+  const [loading, setLoading] = useState(true);
+  return (
+    <div className="relative h-full w-full">
+      {loading && <ImgFallback />}
+      <Image
+        className={cn(
+          'h-full w-full max-w-full rounded-lg object-cover object-top',
+          className,
+        )}
+        src={src}
+        width={500}
+        height={500}
+        alt={'gallery'}
+        onLoadingComplete={() => setLoading(false)}
+      />
     </div>
   );
 };

@@ -3,7 +3,8 @@
 import Image from 'next/image';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useInfiniteDriveImages } from '@/lib/hooks';
-import { Loader2 } from 'lucide-react';
+import { ArrowUpIcon, Loader2 } from 'lucide-react';
+import ImgFallback from '@/components/img-fallback';
 interface DriveImage {
   id: string;
   name: string;
@@ -93,6 +94,13 @@ const Categories = ({ page }: { page: string }) => {
     };
   }, [handleObserver]);
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   if (isPending) {
     return (
       <div className="flex items-center justify-center p-8">
@@ -120,7 +128,7 @@ const Categories = ({ page }: { page: string }) => {
 
   return (
     <div className="flex flex-col gap-10">
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
         {data?.pages.map(page =>
           page.images.map(image => <ImageCard key={image.id} image={image} />),
         )}
@@ -132,8 +140,19 @@ const Categories = ({ page }: { page: string }) => {
           <span className="ml-2 text-white">Loading more...</span>
         </div>
       )}
-      <div className="mt-4 text-center text-gray-600">
-        Showing {displayedImages} of {totalAvailableImages} images
+      <div className="flex flex-col items-center justify-center gap-5 text-gray-600">
+        <div className="mt-4 text-center">
+          Showing {displayedImages} of {totalAvailableImages} images
+        </div>
+        <button
+          onClick={scrollToTop}
+          role="button"
+          className="flex items-center gap-2.5 text-gray-300"
+        >
+          <ArrowUpIcon />
+          <p className="text-sm leading-[16.94px]">Back to Top</p>
+          <span className="sr-only">Scroll to top</span>
+        </button>
       </div>
     </div>
   );
@@ -145,11 +164,7 @@ const ImageCard = ({ image }: { image: DriveImage }) => {
   const [loading, setLoading] = useState(true);
   return (
     <div className="group relative aspect-square overflow-hidden rounded-lg bg-gray-100 shadow-lg">
-      {loading && (
-        <div className="absolute inset-0 z-10 flex items-center justify-center bg-gray-100 transition-opacity duration-300">
-          <Loader2 className="h-8 w-8 animate-spin text-gray-400" />
-        </div>
-      )}
+      {loading && <ImgFallback />}
       <Image
         src={image.viewLink}
         alt={image.name}
