@@ -62,7 +62,7 @@ const Marquee = () => {
       <div ref={scrollersDarkRef} className={`scroller mx-auto max-w-[1144px]`}>
         <div
           ref={scrollerDarkInnerRef}
-          className={`scroller__inner mx-auto flex flex-wrap gap-[7.5rem] py-4`}
+          className={`scroller__inner mx-auto flex flex-wrap gap-[5rem] py-4`}
         >
           <p className="text-2xl font-medium">Quora E.V.</p>
           <p className="text-2xl font-medium">TFAA</p>
