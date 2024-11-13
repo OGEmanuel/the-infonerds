@@ -1,9 +1,9 @@
 'use client';
 
-import { ReactNode, useState } from 'react';
+import { ReactNode, SyntheticEvent, useState } from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
-import ImgFallback from '@/components/img-fallback';
+import ImgFallback, { ErrorMessage } from '@/components/img-fallback';
 
 const Gallery = () => {
   return (
@@ -60,7 +60,7 @@ const Gallery = () => {
           </GridCol>
           <GridCol>
             <ImageFallback
-              className="h-[223.05px]"
+              className="h-[223.05px] object-right sm:object-top"
               src="https://drive.google.com/uc?export=view&id=1Bpu3GDrhWeu6PLuKj8Mvtoy9dEGoRRNq"
             />
           </GridCol>
@@ -114,6 +114,7 @@ const ImageFallback = ({
   src: string;
 }) => {
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   return (
     <div className="relative h-full w-full">
       {loading && <ImgFallback />}
@@ -123,11 +124,21 @@ const ImageFallback = ({
           className,
         )}
         src={src}
+        alt={'gallery'}
         width={500}
         height={500}
-        alt={'gallery'}
-        onLoadingComplete={() => setLoading(false)}
+        onLoad={(event: SyntheticEvent<HTMLImageElement>) => {
+          const img = event.target as HTMLImageElement;
+          if (img.naturalWidth > 0) {
+            setLoading(false);
+          }
+        }}
+        onError={() => {
+          setError(true);
+          setLoading(false);
+        }}
       />
+      {error && <ErrorMessage />}
     </div>
   );
 };

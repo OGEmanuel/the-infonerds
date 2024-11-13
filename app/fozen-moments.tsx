@@ -21,21 +21,21 @@ const FrozenMoments = () => {
           src={
             'https://drive.google.com/uc?export=view&id=1zpSZN-tD-iNJyaxff0YljdsArchgJNfm'
           }
-          title="Concerts & Events"
+          title="Concerts and Events"
         />
         <AlbumLinks
           link="/corporate"
           src={
-            'https://drive.google.com/uc?export=view&id=1nw9uFwB4S0R7Ek4vaXD8ye2CYk3OMGSX'
+            'https://drive.google.com/uc?export=view&id=1Naedb1HmYnbDl9Hj6aYAyzdk8oXmK8t9'
           }
-          title="Corporate Events and Brands"
+          title="Corporate Events and Brand Activation"
         />
         <AlbumLinks
           link="/pre-wedding"
           src={
             'https://drive.google.com/uc?export=view&id=1b1CrCcrULMAkF2N9VW9_wCZWYDYC0oy1'
           }
-          title="Pre-wedding & Proposals"
+          title="Pre-wedding and Proposals"
         />
         <AlbumLinks
           link="/portraits"

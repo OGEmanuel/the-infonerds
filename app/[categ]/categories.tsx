@@ -1,10 +1,16 @@
 'use client';
 
 import Image from 'next/image';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import {
+  SyntheticEvent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { useInfiniteDriveImages } from '@/lib/hooks';
 import { ArrowUpIcon, Loader2 } from 'lucide-react';
-import ImgFallback from '@/components/img-fallback';
+import ImgFallback, { ErrorMessage } from '@/components/img-fallback';
 interface DriveImage {
   id: string;
   name: string;
@@ -162,19 +168,30 @@ export default Categories;
 
 const ImageCard = ({ image }: { image: DriveImage }) => {
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   return (
     <div className="group relative aspect-square overflow-hidden rounded-lg bg-gray-100 shadow-lg">
       {loading && <ImgFallback />}
       <Image
         src={image.viewLink}
         alt={image.name}
-        fill
         className="object-cover transition-transform duration-300 group-hover:scale-110"
         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
         priority={false}
         quality={75}
-        onLoadingComplete={() => setLoading(false)}
+        fill
+        onLoad={(event: SyntheticEvent<HTMLImageElement>) => {
+          const img = event.target as HTMLImageElement;
+          if (img.naturalWidth > 0) {
+            setLoading(false);
+          }
+        }}
+        onError={() => {
+          setError(true);
+          setLoading(false);
+        }}
       />
+      {error && <ErrorMessage />}
       <div className="absolute inset-0 bg-black bg-opacity-0 transition-opacity duration-300 group-hover:bg-opacity-40">
         <div className="absolute bottom-0 left-0 right-0 translate-y-full transform p-4 text-white transition-transform duration-300 group-hover:translate-y-0">
           <h3 className="truncate text-lg font-semibold">{image.name}</h3>
