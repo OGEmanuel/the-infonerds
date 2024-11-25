@@ -13,7 +13,10 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'utfs.io',
-        // pathname: "/a/<APP_ID>/*",
+      },
+      {
+        protocol: 'https',
+        hostname: 'img.youtube.com',
       },
     ],
   },

@@ -1,5 +1,5 @@
 import Categories from './categories';
-import CategoryBreadcumb from './breadcrumb';
+import CategoryBreadcumb from '../../../components/breadcrumb';
 
 const Category = ({ params }: { params: { categ: string } }) => {
   return (

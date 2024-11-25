@@ -1,8 +1,9 @@
 import Gallery from './gallery';
 import Clientelle from './clientelle';
 import Testimonial from './testimonial';
-import FrozenMoments from './fozen-moments';
+import FrozenMoments from './frozen-moments';
 import { Metadata } from 'next';
+import MovingFrames from './moving-frames';
 
 export const metadata: Metadata = {
   title: 'TheInfoNerds | Gallery',
@@ -18,6 +19,7 @@ const Work = async () => {
         id="categories"
       >
         <h2 className="text-3xl font-medium text-white">Categories</h2>
+        <MovingFrames />
         <FrozenMoments />
       </div>
       <div className="flex flex-col gap-8 px-4 sm:px-8 lg:px-16">
