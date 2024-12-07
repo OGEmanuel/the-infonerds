@@ -18,7 +18,6 @@ const Work = async () => {
         className="flex flex-col gap-8 px-4 sm:px-8 lg:px-16"
         id="categories"
       >
-        <h2 className="text-3xl font-medium text-white">Categories</h2>
         <MovingFrames />
         <FrozenMoments />
       </div>
