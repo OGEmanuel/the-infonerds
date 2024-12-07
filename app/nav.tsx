@@ -14,7 +14,7 @@ const Nav = () => {
     >
       <div className="flex max-w-[1440px] basis-full flex-col gap-10 py-5 sm:py-10 lg:basis-auto lg:py-20">
         <h1 className="text-center text-2xl font-semibold uppercase text-white">
-          NerdNotNoob
+          Nerd Not Noob
         </h1>
         <ul className={`hidden items-center justify-between gap-20 lg:flex`}>
           <li>

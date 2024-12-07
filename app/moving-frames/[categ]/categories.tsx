@@ -89,41 +89,11 @@ const Categories = ({ page }: { page: string }) => {
   return (
     <div>
       {/* Shorts Section */}
-      {Category.shorts.length > 0 && (
-        <div className="mb-8">
-          <h2 className="mb-4 text-2xl font-bold">Shorts</h2>
-          <div className="flex gap-4 overflow-x-auto pb-4">
-            {Category.shorts.map(short => (
-              <div
-                key={short.id}
-                className="relative w-[180px] flex-none cursor-pointer"
-                onClick={() => setSelectedVideo(short)}
-              >
-                <div className="relative h-[320px] w-[180px]">
-                  <Image
-                    src={getYouTubeThumbnail(short.id)}
-                    alt={short.title}
-                    fill
-                    className="rounded-xl object-cover"
-                    sizes="180px"
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center rounded-xl bg-black/30 opacity-0 transition-opacity hover:opacity-100">
-                    <Play className="h-12 w-12 text-white" />
-                  </div>
-                </div>
-                <h3 className="mt-2 line-clamp-2 text-sm font-medium">
-                  {short.title}
-                </h3>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
 
       {/* Regular Videos Grid */}
       {Category.videos.length > 0 && (
-        <div>
-          <h2 className="mb-4 text-2xl font-bold">Videos</h2>
+        <div className="mt-3">
+          <h2 className="mb-4 text-2xl font-bold text-white">Videos</h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {Category.videos.map(video => (
               <div
@@ -150,6 +120,37 @@ const Categories = ({ page }: { page: string }) => {
                   {video.title}
                 </h3>
                 {/* <p className="text-sm text-gray-500">{video.views} views</p> */}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {Category.shorts.length > 0 && (
+        <div className="mt-8">
+          <h2 className="mb-4 text-2xl font-bold text-white">Shorts</h2>
+          <div className="flex gap-4 overflow-x-auto pb-4">
+            {Category.shorts.map(short => (
+              <div
+                key={short.id}
+                className="relative w-[180px] flex-none cursor-pointer"
+                onClick={() => setSelectedVideo(short)}
+              >
+                <div className="relative h-[320px] w-[180px]">
+                  <Image
+                    src={getYouTubeThumbnail(short.id)}
+                    alt={short.title}
+                    fill
+                    className="rounded-xl object-cover"
+                    sizes="180px"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center rounded-xl bg-black/30 opacity-0 transition-opacity hover:opacity-100">
+                    <Play className="h-12 w-12 text-white" />
+                  </div>
+                </div>
+                <h3 className="mt-2 line-clamp-2 text-sm font-medium text-white">
+                  {short.title}
+                </h3>
               </div>
             ))}
           </div>

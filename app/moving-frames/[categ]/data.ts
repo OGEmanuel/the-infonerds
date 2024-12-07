@@ -513,6 +513,13 @@ export const Weddings: FullData = {
   ],
   videos: [
     {
+      id: 'gx7cvvldJFg',
+      type: 'regular',
+      title:
+        'Fatiha & Sulaiman’s Wedding Highlight | Wedding Ceremony in Ile-Ife',
+      duration: '2:28',
+    },
+    {
       id: 'PRspBOnZ3jk',
       type: 'regular',
       title:
@@ -525,13 +532,6 @@ export const Weddings: FullData = {
       title:
         'Toluwani & Jibola’s Traditional Wedding in Ibadan | A Cultural Celebration of Love',
       duration: '1:50',
-    },
-    {
-      id: 'gx7cvvldJFg',
-      type: 'regular',
-      title:
-        'Fatiha & Sulaiman’s Wedding Highlight | Wedding Ceremony in Ile-Ife',
-      duration: '2:28',
     },
   ],
 };

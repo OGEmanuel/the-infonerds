@@ -9,8 +9,8 @@ const Footer = () => {
 
   return (
     <footer>
-      <div className="h-80"></div>
-      <div className="fixed bottom-0 left-0 right-0 flex h-80 w-full items-center justify-center gap-6 bg-[#1e1e1e]">
+      <div className="h-[30rem] sm:h-80"></div>
+      <div className="fixed bottom-0 left-0 right-0 flex h-[30rem] w-full flex-col items-center justify-center gap-3 bg-[#1e1e1e] sm:h-80 sm:flex-row sm:gap-6">
         <div className="relative h-auto w-auto">
           <Image src="/images/logo.png" alt="logo" width={180} height={180} />
         </div>
@@ -22,7 +22,7 @@ const Footer = () => {
           </div>
           <div className="flex items-center gap-1">
             <p className="flex gap-2 text-center text-sm font-medium text-white">
-              <span>NerdNotNoob</span> <span>&#169; {year}</span>
+              <span>Nerd Not Noob</span> <span>&#169; {year}</span>
             </p>
           </div>
           <SocialMedia />

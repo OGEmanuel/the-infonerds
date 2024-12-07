@@ -5,7 +5,7 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 
 export const metadata: Metadata = {
-  title: 'NerdNotNoob | Home',
+  title: 'Nerd Not Noob | Home',
   description: 'Information and Entertainment Personified.',
 };
 
@@ -18,7 +18,7 @@ export default function Home() {
         </div>
         <div className="flex flex-col gap-3 text-center">
           <h1 className="text-3xl font-semibold text-white sm:text-6xl">
-            NerdNotNoob
+            Nerd Not Noob
           </h1>
           <p className="font-medium text-white">
             Information and Entertainment Personified.

@@ -36,11 +36,7 @@ const CATEGORIES = [
 
 const FrozenMoments = () => {
   return (
-    <CategoryWrapper
-      title="Frozen Moments"
-      description="(Photo Gallery)"
-      id="frozen-moments"
-    >
+    <CategoryWrapper title="Photo Gallery" id="frozen-moments">
       {CATEGORIES.map(category => (
         <AlbumLinks
           key={category.id}
