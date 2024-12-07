@@ -1,7 +1,7 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
+import { useForm, useFormContext } from 'react-hook-form';
 import { z } from 'zod';
 
 import { Button } from '@/components/ui/button';
@@ -29,6 +29,13 @@ import { format } from 'date-fns';
 import { Textarea } from '@/components/ui/textarea';
 import { ToastProvider } from '@/components/ui/toast';
 import { Toaster } from '@/components/ui/toaster';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 
 const items = [
   {
@@ -69,6 +76,9 @@ const FormSchema = z.object({
     message: 'Handle must be at least 2 characters.',
   }),
   date: z.date({
+    required_error: 'A date is required.',
+  }),
+  dob: z.date({
     required_error: 'A date is required.',
   }),
   location: z.string().min(2, {
@@ -256,9 +266,7 @@ export function ContactForm() {
                             mode="single"
                             selected={field.value}
                             onSelect={field.onChange}
-                            disabled={date =>
-                              date > new Date() || date < new Date('1900-01-01')
-                            }
+                            disabled={date => date < new Date()}
                             initialFocus
                           />
                         </PopoverContent>
@@ -267,6 +275,7 @@ export function ContactForm() {
                     </FormItem>
                   )}
                 />
+
                 <FormField
                   control={form.control}
                   name="location"
@@ -280,7 +289,7 @@ export function ContactForm() {
                   )}
                 />
               </div>
-
+              <MonthDayPicker name="dob" label="Date of birth" />
               <FormField
                 control={form.control}
                 name="message"
@@ -292,7 +301,7 @@ export function ContactForm() {
                     <FormControl>
                       <Textarea
                         placeholder="Tell us more about what you want.."
-                        className="resize-none rounded-2xl border-none bg-[#1e1e1e] p-4 placeholder:text-[#9CA3AF]"
+                        className="resize-none rounded-2xl border-none bg-[#1e1e1e] p-4 text-white placeholder:text-[#9CA3AF]"
                         rows={10}
                         {...field}
                       />
@@ -313,5 +322,80 @@ export function ContactForm() {
         </Form>
       </section>
     </ToastProvider>
+  );
+}
+
+interface MonthDayPickerProps {
+  name: string;
+  label: string;
+}
+
+export function MonthDayPicker({ name, label }: MonthDayPickerProps) {
+  const form = useFormContext();
+
+  const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+
+  const days = Array.from({ length: 31 }, (_, i) => i + 1);
+
+  return (
+    <FormItem>
+      <FormLabel className="font-medium text-white">{label}</FormLabel>
+      <div className="flex space-x-2">
+        <FormField
+          control={form.control}
+          name={`${name}.month`}
+          render={({ field }) => (
+            <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <FormControl>
+                <SelectTrigger className="rounded-2xl border-none bg-[#1e1e1e] px-4 py-6 text-white placeholder:text-[#9CA3AF]">
+                  <SelectValue placeholder="Month" />
+                </SelectTrigger>
+              </FormControl>
+              <SelectContent>
+                {months.map((month, index) => (
+                  <SelectItem key={month} value={(index + 1).toString()}>
+                    {month}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name={`${name}.day`}
+          render={({ field }) => (
+            <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <FormControl>
+                <SelectTrigger className="rounded-2xl border-none bg-[#1e1e1e] px-4 py-6 text-white placeholder:text-[#9CA3AF]">
+                  <SelectValue placeholder="Day" />
+                </SelectTrigger>
+              </FormControl>
+              <SelectContent>
+                {days.map(day => (
+                  <SelectItem key={day} value={day.toString()}>
+                    {day}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          )}
+        />
+      </div>
+      <FormMessage />
+    </FormItem>
   );
 }

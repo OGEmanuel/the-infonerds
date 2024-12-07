@@ -1,3 +1,4 @@
+import { shuffleArray } from '@/lib/utils';
 import { NextResponse } from 'next/server';
 
 interface DriveFile {
@@ -96,7 +97,7 @@ export async function GET(request: Request) {
     );
 
     return NextResponse.json({
-      images: result.images,
+      images: shuffleArray(result.images),
       nextPageToken: result.nextPageToken,
       totalItems: result.totalItems,
       pageSize,

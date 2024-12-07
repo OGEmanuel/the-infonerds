@@ -6,16 +6,18 @@ const CategoryWrapper = ({
   children,
   title,
   description,
+  id,
 }: {
   children: ReactNode;
   title: string;
-  description: string;
+  description?: string;
+  id: string;
 }) => {
   return (
-    <section className="flex flex-col gap-6">
+    <section className="flex flex-col gap-6" id={id}>
       <div className="text-white">
         <div className="flex items-center gap-2">
-          {description.toLowerCase().includes('video') ? (
+          {title.toLowerCase().includes('video') ? (
             <VideoIcon className="h-10 w-10" />
           ) : (
             <CameraIcon className="h-10 w-10" />

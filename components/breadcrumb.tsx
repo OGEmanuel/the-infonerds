@@ -8,10 +8,11 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 const CategoryBreadcumb = ({ params }: { params: { categ: string } }) => {
   const router = useRouter();
+  const pathname = usePathname();
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -32,7 +33,7 @@ const CategoryBreadcumb = ({ params }: { params: { categ: string } }) => {
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink
-            href="/#categories"
+            href={`${pathname.includes('frozen-moments') ? '/#frozen-moments' : '/#moving-frames'}`}
             className="text-white/40 hover:text-white/80"
             onClick={handleClick}
           >

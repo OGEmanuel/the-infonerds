@@ -6,7 +6,7 @@ import { Metadata } from 'next';
 import MovingFrames from './moving-frames';
 
 export const metadata: Metadata = {
-  title: 'TheInfoNerds | Gallery',
+  title: 'NerdNotNoob | Gallery',
   description: 'Information and Entertainment Personified.',
 };
 

@@ -2,6 +2,7 @@ import FBIcon from '@/public/icons/FBIcon';
 import IGIcon from '@/public/icons/IGIcon';
 import XIcon from '@/public/icons/XIcon';
 import ThreadIcon from '@/public/icons/thread-icon';
+import YTLogo from '@/public/icons/yt-logo';
 import Link from 'next/link';
 
 const SocialMedia = () => {
@@ -14,11 +15,17 @@ const SocialMedia = () => {
         >
           <IGIcon />
         </Link>
-        <Link href={'/'} target="_blank">
+        <Link
+          href={'https://x.com/nerdnotnoob?t=vU6ei79mnIUsP8fvZJI9Cg&s=09'}
+          target="_blank"
+        >
           <XIcon />
         </Link>
-        <Link href={'/'} target="_blank">
+        <Link href={'https://www.facebook.com/nerdnotnoob'} target="_blank">
           <FBIcon />
+        </Link>
+        <Link href={'https://www.youtube.com/@nerdnotnoob'} target="_blank">
+          <YTLogo />
         </Link>
       </div>
     </div>

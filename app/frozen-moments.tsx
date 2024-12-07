@@ -36,13 +36,18 @@ const CATEGORIES = [
 
 const FrozenMoments = () => {
   return (
-    <CategoryWrapper title="Frozen Moments" description="(Photo Gallery)">
+    <CategoryWrapper
+      title="Frozen Moments"
+      description="(Photo Gallery)"
+      id="frozen-moments"
+    >
       {CATEGORIES.map(category => (
         <AlbumLinks
           key={category.id}
           link={`frozen-moments/${category.page}`}
           src={`https://drive.google.com/uc?export=view&id=${category.id}`}
           title={category.title}
+          gallery={'photos'}
         />
       ))}
     </CategoryWrapper>

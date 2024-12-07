@@ -146,7 +146,7 @@ const Categories = ({ page }: { page: string }) => {
                     <Play className="h-12 w-12 text-white" />
                   </div>
                 </div>
-                <h3 className="mt-2 line-clamp-2 text-sm font-medium">
+                <h3 className="mt-2 line-clamp-2 text-sm font-medium text-white">
                   {video.title}
                 </h3>
                 {/* <p className="text-sm text-gray-500">{video.views} views</p> */}

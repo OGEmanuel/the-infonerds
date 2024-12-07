@@ -11,6 +11,7 @@ import {
 import { useInfiniteDriveImages } from '@/lib/hooks';
 import { ArrowUpIcon, Loader2 } from 'lucide-react';
 import ImgFallback, { ErrorMessage } from '@/components/img-fallback';
+import { shuffleArray } from '@/lib/utils';
 interface DriveImage {
   id: string;
   name: string;

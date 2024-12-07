@@ -1,6 +1,7 @@
 'use client';
 
 import ImgFallback, { ErrorMessage } from '@/components/img-fallback';
+import { CameraIcon, VideoIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { SyntheticEvent, useState } from 'react';
@@ -10,11 +11,13 @@ const AlbumLinks = ({
   title,
   desc,
   link,
+  gallery,
 }: {
   src: string;
   title: string;
   desc?: string;
   link: string;
+  gallery: 'photos' | 'video';
 }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -42,7 +45,13 @@ const AlbumLinks = ({
         {error && <ErrorMessage />}
       </div>
       <div>
-        <p className="text-white">{title}</p>
+        <div className="flex items-center gap-2">
+          {gallery === 'photos' && (
+            <CameraIcon className="h-5 w-5 text-white" />
+          )}
+          {gallery === 'video' && <VideoIcon className="h-5 w-5 text-white" />}
+          <p className="text-white">{title}</p>
+        </div>
         {desc && <p className="text-[#6B7280]">{desc}</p>}
       </div>
     </Link>

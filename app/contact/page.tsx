@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { ContactForm } from './form';
 
 export const metadata: Metadata = {
-  title: 'TheInfoNerds | Booking',
+  title: 'NerdNotNoob | Booking',
   description: 'Information and Entertainment Personified.',
 };
 
