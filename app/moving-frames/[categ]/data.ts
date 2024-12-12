@@ -420,6 +420,18 @@ export const Commercials: FullData = {
   shorts: [],
   videos: [
     {
+      id: 'xpSxEjhu5mM',
+      type: 'regular',
+      title: 'Dreams - Bamboo x Temi',
+      duration: '1:00',
+    },
+    {
+      id: '5K39trFYeNY',
+      type: 'regular',
+      title: 'How to win with Bamboo x Essenza ✨',
+      duration: '0:32',
+    },
+    {
       id: 'wyBX9X_jWJ0',
       type: 'regular',
       title:

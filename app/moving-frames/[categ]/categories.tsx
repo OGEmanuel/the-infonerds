@@ -88,8 +88,6 @@ const Categories = ({ page }: { page: string }) => {
 
   return (
     <div>
-      {/* Shorts Section */}
-
       {/* Regular Videos Grid */}
       {Category.videos.length > 0 && (
         <div className="mt-3">
@@ -126,6 +124,7 @@ const Categories = ({ page }: { page: string }) => {
         </div>
       )}
 
+      {/* Shorts Section */}
       {Category.shorts.length > 0 && (
         <div className="mt-8">
           <h2 className="mb-4 text-2xl font-bold text-white">Shorts</h2>
