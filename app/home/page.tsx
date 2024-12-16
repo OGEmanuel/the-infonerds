@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { ArrowRightFromLineIcon } from 'lucide-react';
 import SocialMedia from '../social-media';
 import { Metadata } from 'next';
-import Image from 'next/image';
 import Logo from '@/components/logo';
 import SectionWrapper from './section-wrapper';
 
