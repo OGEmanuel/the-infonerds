@@ -1,12 +1,25 @@
 'use client';
 
+import Logo from '@/components/logo';
+import useThemeStore from '@/store/theme-control';
 import { useEffect, useRef } from 'react';
+import cadburyBlack from '@/public/images/Cadbury Black.png';
+import cadburyWhite from '@/public/images/Cadbury White.png';
+import danoBlack from '@/public/images/Dano Black.png';
+import danoWhite from '@/public/images/Dano White.png';
+import infinixBlack from '@/public/images/Infinix Black.png';
+import infinixWhite from '@/public/images/Infinix White.png';
+import verveBlack from '@/public/images/Verve Black.png';
+import verveWhite from '@/public/images/Verve White.png';
+import whoBlack from '@/public/images/WHO Black.png';
+import whoWhite from '@/public/images/WHO White.png';
 
 const Marquee = () => {
   const scrollersRef = useRef<HTMLDivElement>(null);
   const scrollerInnerRef = useRef<HTMLDivElement>(null);
   const scrollersDarkRef = useRef<HTMLDivElement>(null);
   const scrollerDarkInnerRef = useRef<HTMLDivElement>(null);
+  const { theme } = useThemeStore();
 
   const addAnimation = () => {
     if (scrollersRef.current) {
@@ -66,11 +79,49 @@ const Marquee = () => {
         >
           <p className="text-2xl font-medium">Quora E.V.</p>
           <p className="text-2xl font-medium">TFAA</p>
-          <p className="text-2xl font-medium">WHO</p>
-          <p className="text-2xl font-medium">Cadbury</p>
-          <p className="text-2xl font-medium">Verve</p>
-          <p className="text-2xl font-medium">Infinix Nigeria</p>
-          <p className="text-2xl font-medium">Dano Milk</p>
+          {/* <p className="text-2xl font-medium">WHO</p> */}
+          <Logo
+            src={theme === 'light' ? whoBlack : whoWhite}
+            alt="WHO"
+            imageClassName="object-cover object-center"
+            className="h-32 w-60"
+          />
+          <Logo
+            src={theme === 'light' ? cadburyBlack : cadburyWhite}
+            alt="Cadbury"
+            imageClassName="object-cover object-center"
+            className="w-60"
+
+            // className="h-10 w-10"
+          />
+          {/* <p className="text-2xl font-medium">Cadbury</p> */}
+          <Logo
+            src={theme === 'light' ? verveBlack : verveWhite}
+            alt="Verve"
+            imageClassName="object-cover object-center"
+            className="w-60"
+
+            // className="h-10 w-10"
+          />
+          {/* <p className="text-2xl font-medium">Verve</p> */}
+          <Logo
+            src={theme === 'light' ? infinixBlack : infinixWhite}
+            alt="Infinix"
+            imageClassName="object-cover object-center"
+            className="w-60"
+
+            // className="h-10 w-10"
+          />
+          {/* <p className="text-2xl font-medium">Infinix Nigeria</p> */}
+          <Logo
+            src={theme === 'light' ? danoBlack : danoWhite}
+            alt="Dano Milk"
+            imageClassName="object-cover object-center"
+            className="w-60"
+
+            // className="h-10 w-10"
+          />
+          {/* <p className="text-2xl font-medium">Dano Milk</p> */}
         </div>
       </div>
     </div>

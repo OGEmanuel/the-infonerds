@@ -1,5 +1,6 @@
 'use client';
 
+import useThemeStore from '@/store/theme-control';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import NextTopLoader from 'nextjs-toploader';
@@ -19,10 +20,11 @@ const queryClient = new QueryClient({
 });
 
 const QueryProvider = ({ children }: QueryProviderProps) => {
+  const { theme } = useThemeStore();
   return (
     <QueryClientProvider client={queryClient}>
       <NextTopLoader
-        color="#ffffff"
+        color={`${theme === 'light' ? '#000' : '#fff'}`}
         initialPosition={0.08}
         crawlSpeed={200}
         height={5}

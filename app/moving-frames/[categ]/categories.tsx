@@ -22,6 +22,7 @@ import {
   Styles,
   Weddings,
 } from './data';
+import useThemeStore from '@/store/theme-control';
 
 // Type for our selected video state
 type SelectedVideo = Short | RegularVideo | null;
@@ -40,6 +41,7 @@ enum AlbumCategories {
 }
 
 const Categories = ({ page }: { page: string }) => {
+  const { theme } = useThemeStore();
   const [selectedVideo, setSelectedVideo] = useState<SelectedVideo>(null);
   const {
     WEDDINGS,
@@ -91,7 +93,11 @@ const Categories = ({ page }: { page: string }) => {
       {/* Regular Videos Grid */}
       {Category.videos.length > 0 && (
         <div className="mt-3">
-          <h2 className="mb-4 text-2xl font-bold text-white">Videos</h2>
+          <h2
+            className={`mb-4 text-2xl font-bold ${theme === 'light' ? 'text-black' : 'text-white'} `}
+          >
+            Videos
+          </h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {Category.videos.map(video => (
               <div
@@ -107,14 +113,22 @@ const Categories = ({ page }: { page: string }) => {
                     className="rounded-lg object-cover"
                     sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
                   />
-                  <div className="absolute bottom-2 right-2 rounded bg-black/80 px-2 py-1 text-sm text-white">
+                  <div
+                    className={`absolute bottom-2 right-2 rounded ${theme === 'light' ? 'bg-white/80 text-black' : 'bg-black/80 text-white'} px-2 py-1 text-sm`}
+                  >
                     {video.duration}
                   </div>
-                  <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-black/30 opacity-0 transition-opacity group-hover:opacity-100">
-                    <Play className="h-12 w-12 text-white" />
+                  <div
+                    className={`absolute inset-0 flex items-center justify-center rounded-lg ${theme === 'light' ? 'bg-white/30' : 'bg-black/30'} opacity-0 transition-opacity group-hover:opacity-100`}
+                  >
+                    <Play
+                      className={`h-12 w-12 ${theme === 'light' ? 'text-black' : 'text-white'}`}
+                    />
                   </div>
                 </div>
-                <h3 className="mt-2 line-clamp-2 text-sm font-medium text-white">
+                <h3
+                  className={`mt-2 line-clamp-2 text-sm font-medium ${theme === 'light' ? 'text-black' : 'text-white'}`}
+                >
                   {video.title}
                 </h3>
                 {/* <p className="text-sm text-gray-500">{video.views} views</p> */}
@@ -127,7 +141,11 @@ const Categories = ({ page }: { page: string }) => {
       {/* Shorts Section */}
       {Category.shorts.length > 0 && (
         <div className="mt-8">
-          <h2 className="mb-4 text-2xl font-bold text-white">Shorts</h2>
+          <h2
+            className={`mb-4 text-2xl font-bold ${theme === 'light' ? 'text-black' : 'text-white'}`}
+          >
+            Shorts
+          </h2>
           <div className="flex gap-4 overflow-x-auto pb-4">
             {Category.shorts.map(short => (
               <div
@@ -143,11 +161,17 @@ const Categories = ({ page }: { page: string }) => {
                     className="rounded-xl object-cover"
                     sizes="180px"
                   />
-                  <div className="absolute inset-0 flex items-center justify-center rounded-xl bg-black/30 opacity-0 transition-opacity hover:opacity-100">
-                    <Play className="h-12 w-12 text-white" />
+                  <div
+                    className={`absolute inset-0 flex items-center justify-center rounded-xl ${theme === 'light' ? 'bg-white/30' : 'bg-black/30'} opacity-0 transition-opacity hover:opacity-100`}
+                  >
+                    <Play
+                      className={`h-12 w-12 ${theme === 'light' ? 'text-black' : 'text-white'}`}
+                    />
                   </div>
                 </div>
-                <h3 className="mt-2 line-clamp-2 text-sm font-medium text-white">
+                <h3
+                  className={`mt-2 line-clamp-2 text-sm font-medium ${theme === 'light' ? 'text-black' : 'text-white'}`}
+                >
                   {short.title}
                 </h3>
               </div>
@@ -165,12 +189,14 @@ const Categories = ({ page }: { page: string }) => {
             selectedVideo?.type === 'short'
               ? 'h-[80vh] max-h-[900px] sm:max-w-[450px]'
               : 'sm:max-w-[80vw]'
-          } bg-[#1e1e1e] p-0`}
+          } ${theme === 'light' ? 'bg-[#f9f9f9]' : 'bg-[#1e1e1e]'} overflow-hidden p-0`}
         >
           {selectedVideo?.type === 'short' ? (
             // Shorts player
             <div className="flex h-full flex-col">
-              <div className="relative flex-1 bg-black">
+              <div
+                className={`relative flex-1 ${theme === 'light' ? 'bg-white' : 'bg-black'}`}
+              >
                 <iframe
                   className="absolute inset-0 h-full w-full"
                   src={`https://www.youtube.com/embed/${selectedVideo?.id}?autoplay=1&rel=0&modestbranding=1`}
@@ -178,7 +204,9 @@ const Categories = ({ page }: { page: string }) => {
                   allowFullScreen
                 />
               </div>
-              <div className="bg-[#1e1e1e] p-4 dark:bg-gray-900">
+              <div
+                className={`${theme === 'light' ? 'bg-[#f9f9f9]' : 'bg-[#1e1e1e]'} p-4 dark:bg-gray-900`}
+              >
                 <h3 className="font-semibold">{selectedVideo.title}</h3>
               </div>
             </div>
@@ -186,11 +214,15 @@ const Categories = ({ page }: { page: string }) => {
             // Regular video player
             <div className="flex flex-col">
               <DialogHeader className="p-4">
-                <DialogTitle className="text-white">
+                <DialogTitle
+                  className={`${theme === 'light' ? 'text-black' : 'text-white'}`}
+                >
                   {selectedVideo?.title}
                 </DialogTitle>
               </DialogHeader>
-              <div className="aspect-video w-full bg-black">
+              <div
+                className={`aspect-video w-full ${theme === 'light' ? 'bg-white' : 'bg-black'}`}
+              >
                 <iframe
                   className="h-full w-full"
                   src={`https://www.youtube.com/embed/${selectedVideo?.id}?autoplay=1&rel=0&modestbranding=1`}

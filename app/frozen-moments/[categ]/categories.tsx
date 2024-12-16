@@ -11,7 +11,7 @@ import {
 import { useInfiniteDriveImages } from '@/lib/hooks';
 import { ArrowUpIcon, Loader2 } from 'lucide-react';
 import ImgFallback, { ErrorMessage } from '@/components/img-fallback';
-import { shuffleArray } from '@/lib/utils';
+import useThemeStore from '@/store/theme-control';
 interface DriveImage {
   id: string;
   name: string;
@@ -38,6 +38,8 @@ const bts = '1ruAUBBbgwSABWAw9bG1xJo78jo3ivgzh';
 const Categories = ({ page }: { page: string }) => {
   const { WEDDINGS, CONCERTS, CORPORATE, PRE_WEDDING, PORTRAITS, BTS } =
     AlbumCategories;
+
+  const { theme } = useThemeStore();
 
   let folderId = weddings;
 
@@ -112,7 +114,11 @@ const Categories = ({ page }: { page: string }) => {
     return (
       <div className="flex items-center justify-center p-8">
         <Loader2 className="h-8 w-8 animate-spin text-gray-400" />
-        <span className="ml-2 text-white">Loading gallery...</span>
+        <span
+          className={`ml-2 ${theme === 'light' ? 'text-black' : 'text-white'}`}
+        >
+          Loading gallery...
+        </span>
       </div>
     );
   }
@@ -144,7 +150,11 @@ const Categories = ({ page }: { page: string }) => {
       {isFetchingNextPage && (
         <div className="flex items-center justify-center p-4">
           <Loader2 className="h-6 w-6 animate-spin text-gray-400" />
-          <span className="ml-2 text-white">Loading more...</span>
+          <span
+            className={`ml-2 ${theme === 'light' ? 'text-black' : 'text-white'}`}
+          >
+            Loading more...
+          </span>
         </div>
       )}
       <div className="flex flex-col items-center justify-center gap-5 text-gray-600">
@@ -154,7 +164,7 @@ const Categories = ({ page }: { page: string }) => {
         <button
           onClick={scrollToTop}
           role="button"
-          className="flex items-center gap-2.5 text-gray-300"
+          className={`flex items-center gap-2.5 ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}
         >
           <ArrowUpIcon />
           <p className="text-sm leading-[16.94px]">Back to Top</p>
@@ -170,6 +180,7 @@ export default Categories;
 const ImageCard = ({ image }: { image: DriveImage }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const { theme } = useThemeStore();
   return (
     <div className="group relative aspect-square overflow-hidden rounded-lg bg-gray-100 shadow-lg">
       {loading && <ImgFallback />}
@@ -193,8 +204,12 @@ const ImageCard = ({ image }: { image: DriveImage }) => {
         }}
       />
       {error && <ErrorMessage />}
-      <div className="absolute inset-0 bg-black bg-opacity-0 transition-opacity duration-300 group-hover:bg-opacity-40">
-        <div className="absolute bottom-0 left-0 right-0 translate-y-full transform p-4 text-white transition-transform duration-300 group-hover:translate-y-0">
+      <div
+        className={`absolute inset-0 ${theme === 'light' ? 'bg-white' : 'bg-black'} bg-opacity-0 transition-opacity duration-300 ${theme === 'light' ? 'group-hover:bg-opacity-20' : 'group-hover:bg-opacity-40'}`}
+      >
+        <div
+          className={`absolute bottom-0 left-0 right-0 translate-y-full transform p-4 ${theme === 'light' ? 'text-black' : 'text-white'} transition-transform duration-300 group-hover:translate-y-0`}
+        >
           <h3 className="truncate text-lg font-semibold">{image.name}</h3>
         </div>
       </div>

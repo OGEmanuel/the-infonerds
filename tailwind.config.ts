@@ -45,7 +45,11 @@ const config = {
       backgroundImage: {
         'sm-gradient':
           'linear-gradient(180deg, rgba(55, 65, 81, 0.2) 0%, rgba(12, 17, 28, 0.2) 100%)',
+        'sm-gradient-light':
+          'linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(240, 240, 240, 0.6) 100%)',
         'btn-gradient': 'linear-gradient(180deg, #374151 0%, #111827 100%)',
+        'btn-gradient-light':
+          'linear-gradient(180deg, #f3f4f6 0%, #e5e7eb 100%)',
         'red-gradient':
           'linear-gradient(91.47deg, #EF4444 34.77%, #EA580C 59.04%)',
       },

@@ -1,3 +1,5 @@
+'use client';
+
 import { ReactNode } from 'react';
 import AlbumLinksWrapper from './album-links-wrapper';
 import { CameraIcon, VideoIcon } from 'lucide-react';
@@ -15,7 +17,7 @@ const CategoryWrapper = ({
 }) => {
   return (
     <section className="flex flex-col gap-6" id={id}>
-      <div className="text-white">
+      <div className="">
         <div className="flex items-center gap-2">
           {title.toLowerCase().includes('video') ? (
             <VideoIcon className="h-10 w-10" />

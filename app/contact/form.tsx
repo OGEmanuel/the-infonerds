@@ -36,6 +36,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import useThemeStore from '@/store/theme-control';
 
 const items = [
   {
@@ -95,6 +96,7 @@ const FormSchema = z.object({
 });
 
 export function ContactForm() {
+  const { theme } = useThemeStore();
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -128,14 +130,22 @@ export function ContactForm() {
             onSubmit={form.handleSubmit(onSubmit)}
             className="space-y-[3.5rem]"
           >
-            <FormDescription className="text-4xl font-semibold text-white">
+            <FormDescription
+              className={`text-4xl font-semibold ${theme === 'light' ? 'text-black' : 'text-white'}`}
+            >
               Be one of our happy{' '}
-              <span className="bg-clip-text font-InriaFont font-bold italic text-[#e0f2fe]">
+              <span
+                className={`bg-clip-text font-InriaFont font-bold italic ${theme === 'light' ? 'text-[#0369a1]' : 'text-[#e0f2fe]'}`}
+              >
                 people
               </span>{' '}
-              <span className="mt-4 block text-base font-normal text-[#6B7280]">
+              <span
+                className={`mt-4 block text-base font-normal ${theme === 'light' ? 'text-[#374151]' : 'text-[#6B7280]'}`}
+              >
                 Don&apos;t want to fill the form? you can send us a message{' '}
-                <span className="font-medium text-[#2563EB]">
+                <span
+                  className={`font-medium ${theme === 'light' ? 'text-[#1D4ED8]' : 'text-[#2563EB]'}`}
+                >
                   info@infonerds.ng
                 </span>
               </span>
@@ -185,7 +195,9 @@ export function ContactForm() {
                 render={() => (
                   <FormItem>
                     <div className="mb-4">
-                      <FormLabel className="font-medium text-white">
+                      <FormLabel
+                        className={`font-medium ${theme === 'light' ? 'text-black' : 'text-white'}`}
+                      >
                         Event type
                       </FormLabel>
                     </div>
@@ -217,7 +229,7 @@ export function ContactForm() {
                                   />
                                 </FormControl>
                                 <FormLabel
-                                  className={`block cursor-pointer rounded-[2rem] border p-4 font-medium ${field.value.includes(item.id) ? 'border-transparent bg-[#2563EB] text-white' : ' border-[#E5E7EB] text-[#9CA3AF]'}`}
+                                  className={`block cursor-pointer rounded-[2rem] border p-4 font-medium ${field.value.includes(item.id) ? `border-transparent ${theme === 'light' ? 'bg-[#1D4ED8] text-black' : 'bg-[#2563EB] text-white'}` : `${theme === 'light' ? 'border-[#6B7280] text-[#6B7280]' : 'border-[#E5E7EB] text-[#9CA3AF]'}`}`}
                                 >
                                   {item.label}
                                 </FormLabel>
@@ -237,7 +249,9 @@ export function ContactForm() {
                   name="date"
                   render={({ field }) => (
                     <FormItem className="flex flex-col space-y-3">
-                      <FormLabel className="font-medium text-white">
+                      <FormLabel
+                        className={`font-medium ${theme === 'light' ? 'text-black' : 'text-white'}`}
+                      >
                         Event date
                       </FormLabel>
                       <Popover>
@@ -246,14 +260,16 @@ export function ContactForm() {
                             <Button
                               variant={'outline'}
                               className={cn(
-                                'w-full rounded-2xl border-none bg-[#1e1e1e] p-4 text-left font-medium text-[#f8f8f8] hover:bg-[#1e1e1e] hover:text-[#f8f8f8]',
+                                `w-full rounded-2xl border-none ${theme === 'light' ? 'bg-[#f9f9f9] text-[#e5e7eb]' : 'bg-[#1e1e1e] text-[#f8f8f8]'}  p-4 text-left font-medium`,
                                 !field.value && 'text-muted-foreground',
                               )}
                             >
                               {field.value ? (
                                 format(field.value, 'PPP')
                               ) : (
-                                <span className="font-medium text-[#9CA3AF]">
+                                <span
+                                  className={`font-medium ${theme === 'light' ? 'text-[#6B7280]' : 'text-[#9CA3AF]'}`}
+                                >
                                   Pick a date
                                 </span>
                               )}
@@ -295,13 +311,15 @@ export function ContactForm() {
                 name="message"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="font-medium text-white">
+                    <FormLabel
+                      className={`font-medium ${theme === 'light' ? 'text-black' : 'text-white'}`}
+                    >
                       Message
                     </FormLabel>
                     <FormControl>
                       <Textarea
                         placeholder="Tell us more about what you want.."
-                        className="resize-none rounded-2xl border-none bg-[#1e1e1e] p-4 text-white placeholder:text-[#9CA3AF]"
+                        className={`resize-none rounded-2xl border-none ${theme === 'light' ? 'bg-[#f9f9f9] text-black placeholder:text-[#6B7280]' : 'bg-[#1e1e1e] text-white placeholder:text-[#9CA3AF]'} p-4`}
                         rows={10}
                         {...field}
                       />
@@ -313,7 +331,7 @@ export function ContactForm() {
 
               <Button
                 type="submit"
-                className="rounded-xl bg-btn-gradient p-4 font-medium text-white"
+                className={`rounded-xl p-4 font-medium ${theme === 'light' ? 'bg-btn-gradient-light text-black' : 'bg-btn-gradient text-white'}`}
               >
                 Send message
               </Button>
@@ -332,6 +350,7 @@ interface MonthDayPickerProps {
 
 export function MonthDayPicker({ name, label }: MonthDayPickerProps) {
   const form = useFormContext();
+  const { theme } = useThemeStore();
 
   const months = [
     'January',
@@ -352,7 +371,11 @@ export function MonthDayPicker({ name, label }: MonthDayPickerProps) {
 
   return (
     <FormItem>
-      <FormLabel className="font-medium text-white">{label}</FormLabel>
+      <FormLabel
+        className={`font-medium ${theme === 'light' ? 'text-black' : 'text-white'}`}
+      >
+        {label}
+      </FormLabel>
       <div className="flex space-x-2">
         <FormField
           control={form.control}
@@ -360,7 +383,9 @@ export function MonthDayPicker({ name, label }: MonthDayPickerProps) {
           render={({ field }) => (
             <Select onValueChange={field.onChange} defaultValue={field.value}>
               <FormControl>
-                <SelectTrigger className="rounded-2xl border-none bg-[#1e1e1e] px-4 py-6 text-white placeholder:text-[#9CA3AF]">
+                <SelectTrigger
+                  className={`rounded-2xl border-none px-4 py-6 text-white ${theme === 'light' ? 'bg-[#f9f9f9] text-black placeholder:text-[#6B7280]' : 'bg-[#1e1e1e] text-white placeholder:text-[#9CA3AF]'}`}
+                >
                   <SelectValue placeholder="Month" />
                 </SelectTrigger>
               </FormControl>
@@ -380,7 +405,9 @@ export function MonthDayPicker({ name, label }: MonthDayPickerProps) {
           render={({ field }) => (
             <Select onValueChange={field.onChange} defaultValue={field.value}>
               <FormControl>
-                <SelectTrigger className="rounded-2xl border-none bg-[#1e1e1e] px-4 py-6 text-white placeholder:text-[#9CA3AF]">
+                <SelectTrigger
+                  className={`rounded-2xl border-none px-4 py-6 text-white ${theme === 'light' ? 'bg-[#f9f9f9] text-black placeholder:text-[#6B7280]' : 'bg-[#1e1e1e] text-white placeholder:text-[#9CA3AF]'}`}
+                >
                   <SelectValue placeholder="Day" />
                 </SelectTrigger>
               </FormControl>

@@ -3,6 +3,8 @@ import { ArrowRightFromLineIcon } from 'lucide-react';
 import SocialMedia from '../social-media';
 import { Metadata } from 'next';
 import Image from 'next/image';
+import Logo from '@/components/logo';
+import SectionWrapper from './section-wrapper';
 
 export const metadata: Metadata = {
   title: 'Nerd Not Noob | Home',
@@ -11,16 +13,17 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <section className="flex h-screen items-center justify-center">
+    <SectionWrapper>
       <div className="flex h-max flex-col items-center justify-center gap-5">
-        <div className="relative h-auto w-auto">
+        {/* <div className="relative h-auto w-auto">
           <Image src="/images/logo.png" alt="logo" width={180} height={180} />
-        </div>
+        </div> */}
+        <Logo />
         <div className="flex flex-col gap-3 text-center">
-          <h1 className="text-3xl font-semibold text-white sm:text-6xl">
+          <h1 className={`text-3xl font-semibold sm:text-6xl`}>
             Nerd Not Noob
           </h1>
-          <p className="font-medium text-white">
+          <p className="font-medium">
             Information and Entertainment Personified.
           </p>
         </div>
@@ -28,13 +31,13 @@ export default function Home() {
         <div>
           <Link
             href={'/'}
-            className="flex items-center gap-3 text-2xl text-white hover:underline"
+            className="flex items-center gap-3 text-2xl hover:underline"
           >
             Gallery
             <ArrowRightFromLineIcon />
           </Link>
         </div>
       </div>
-    </section>
+    </SectionWrapper>
   );
 }

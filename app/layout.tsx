@@ -1,26 +1,28 @@
-import type { Metadata } from 'next';
+'use client';
+
 import { GeistSans } from 'geist/font/sans';
 import './globals.css';
 import Footer from '@/components/footer';
 import Nav from './nav';
 import QueryProvider from './api/utils/query-provider';
-
-export const metadata: Metadata = {
-  title: 'TheInfoNerds',
-  description: 'Information and Entertainment Personified.',
-};
+import useThemeStore from '@/store/theme-control';
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { theme } = useThemeStore();
   return (
     <html lang="en">
-      <body className={`${GeistSans.className} bg-black`}>
+      <body
+        className={`${GeistSans.className} ${theme === 'light' ? 'bg-white' : 'bg-black'}`}
+      >
         <QueryProvider>
           <Nav />
-          <main className="relative z-10 flex min-h-screen flex-col items-center bg-black shadow-2xl">
+          <main
+            className={`relative z-10 flex min-h-screen flex-col items-center ${theme === 'light' ? 'bg-white' : 'bg-black'} shadow-2xl`}
+          >
             {children}
             <div className="darkGradient h-6"></div>
           </main>

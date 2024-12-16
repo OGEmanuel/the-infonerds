@@ -1,33 +1,42 @@
 import { NavLink } from '@/app/nav';
 import SocialMedia from '@/app/social-media';
 import LogoIcon from '@/public/icons/LogoIcon';
-import Image from 'next/image';
+import useThemeStore from '@/store/theme-control';
 import Link from 'next/link';
+import Logo from './logo';
+import blackLogo from '@/public/images/logo-black.png';
+import whiteLogo from '@/public/images/logo-white.png';
 
 const Footer = () => {
+  const { theme } = useThemeStore();
   const year = new Date().getFullYear();
 
   return (
     <footer>
       <div className="h-[30rem] sm:h-80"></div>
-      <div className="fixed bottom-0 left-0 right-0 flex h-[30rem] w-full flex-col items-center justify-center gap-3 bg-[#1e1e1e] sm:h-80 sm:flex-row sm:gap-6">
-        <div className="relative h-auto w-auto">
-          <Image src="/images/logo.png" alt="logo" width={180} height={180} />
-        </div>
-        <div className="flex flex-col items-center justify-center gap-6">
+      <div
+        className={`fixed bottom-0 left-0 right-0 flex h-[30rem] w-full flex-col items-center justify-center gap-3 ${theme === 'light' ? 'bg-[#f9f9f9]' : 'bg-[#1e1e1e]'} sm:h-80 sm:flex-row sm:gap-6`}
+      >
+        <Logo
+          src={theme === 'light' ? blackLogo : whiteLogo}
+          alt="Nerd Not Noob Logo"
+        />
+        <div
+          className={`flex flex-col items-center justify-center gap-6 ${theme === 'light' ? 'text-black' : 'text-white'}`}
+        >
           <div className="flex gap-6">
             <NavLink href={'/home'}>Home</NavLink>
             <NavLink href={'/'}>Gallery</NavLink>
             <NavLink href={'/contact'}>Bookings</NavLink>
           </div>
           <div className="flex items-center gap-1">
-            <p className="flex gap-2 text-center text-sm font-medium text-white">
+            <p className="flex gap-2 text-center text-sm font-medium ">
               <span>Nerd Not Noob</span> <span>&#169; {year}</span>
             </p>
           </div>
           <SocialMedia />
           <div className="flex items-center gap-2">
-            <p className="text-sm font-medium italic text-white">
+            <p className="text-sm font-medium italic">
               ...a subsidiary of{' '}
               <Link href="/" className="font-bold underline">
                 The INFO nerds

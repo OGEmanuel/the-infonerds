@@ -8,11 +8,13 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
+import useThemeStore from '@/store/theme-control';
 import { usePathname, useRouter } from 'next/navigation';
 
 const CategoryBreadcumb = ({ params }: { params: { categ: string } }) => {
   const router = useRouter();
   const pathname = usePathname();
+  const { theme } = useThemeStore();
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -34,7 +36,7 @@ const CategoryBreadcumb = ({ params }: { params: { categ: string } }) => {
         <BreadcrumbItem>
           <BreadcrumbLink
             href={`${pathname.includes('frozen-moments') ? '/#frozen-moments' : '/#moving-frames'}`}
-            className="text-white/40 hover:text-white/80"
+            className={`${theme === 'light' ? 'text-black/40 hover:text-black/80' : 'text-white/40 hover:text-white/80'}`}
             onClick={handleClick}
           >
             Gallery
@@ -42,7 +44,9 @@ const CategoryBreadcumb = ({ params }: { params: { categ: string } }) => {
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbPage className="text-2xl font-medium uppercase text-white">
+          <BreadcrumbPage
+            className={`text-2xl font-medium uppercase ${theme === 'light' ? 'text-black' : 'text-white'}`}
+          >
             {params.categ}
           </BreadcrumbPage>
         </BreadcrumbItem>
