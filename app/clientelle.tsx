@@ -79,7 +79,6 @@ const Marquee = () => {
         >
           <p className="text-2xl font-medium">Quora E.V.</p>
           <p className="text-2xl font-medium">TFAA</p>
-          {/* <p className="text-2xl font-medium">WHO</p> */}
           <Logo
             src={theme === 'light' ? whoBlack : whoWhite}
             alt="WHO"
@@ -91,37 +90,25 @@ const Marquee = () => {
             alt="Cadbury"
             imageClassName="object-cover object-center"
             className="w-60"
-
-            // className="h-10 w-10"
           />
-          {/* <p className="text-2xl font-medium">Cadbury</p> */}
           <Logo
             src={theme === 'light' ? verveBlack : verveWhite}
             alt="Verve"
             imageClassName="object-cover object-center"
             className="w-60"
-
-            // className="h-10 w-10"
           />
-          {/* <p className="text-2xl font-medium">Verve</p> */}
           <Logo
             src={theme === 'light' ? infinixBlack : infinixWhite}
             alt="Infinix"
             imageClassName="object-cover object-center"
             className="w-60"
-
-            // className="h-10 w-10"
           />
-          {/* <p className="text-2xl font-medium">Infinix Nigeria</p> */}
           <Logo
             src={theme === 'light' ? danoBlack : danoWhite}
             alt="Dano Milk"
             imageClassName="object-cover object-center"
             className="w-60"
-
-            // className="h-10 w-10"
           />
-          {/* <p className="text-2xl font-medium">Dano Milk</p> */}
         </div>
       </div>
     </div>

@@ -37,6 +37,18 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import useThemeStore from '@/store/theme-control';
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
+import { Label } from '@/components/ui/label';
+import Link from 'next/link';
 
 const items = [
   {
@@ -93,6 +105,9 @@ const FormSchema = z.object({
     .string()
     .min(25, { message: 'Message should be at least 25 characters long' })
     .trim(),
+  terms: z.boolean().refine(val => val === true, {
+    message: 'You must accept the terms and conditions.',
+  }),
 });
 
 export function ContactForm() {
@@ -107,6 +122,7 @@ export function ContactForm() {
       events: [],
       email: '',
       message: '',
+      terms: false,
     },
   });
 
@@ -260,7 +276,7 @@ export function ContactForm() {
                             <Button
                               variant={'outline'}
                               className={cn(
-                                `w-full rounded-2xl border-none ${theme === 'light' ? 'bg-[#f9f9f9] text-[#e5e7eb]' : 'bg-[#1e1e1e] text-[#f8f8f8]'}  p-4 text-left font-medium`,
+                                `w-full rounded-2xl border-none ${theme === 'light' ? 'bg-[#f9f9f9] text-black' : 'bg-[#1e1e1e] text-[#f8f8f8]'}  p-4 text-left font-medium`,
                                 !field.value && 'text-muted-foreground',
                               )}
                             >
@@ -268,7 +284,7 @@ export function ContactForm() {
                                 format(field.value, 'PPP')
                               ) : (
                                 <span
-                                  className={`font-medium ${theme === 'light' ? 'text-[#6B7280]' : 'text-[#9CA3AF]'}`}
+                                  className={`font-medium ${theme === 'light' ? 'text-black' : 'text-[#9CA3AF]'}`}
                                 >
                                   Pick a date
                                 </span>
@@ -325,6 +341,34 @@ export function ContactForm() {
                       />
                     </FormControl>
                     <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="terms"
+                render={({ field }) => (
+                  <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4 shadow">
+                    <FormControl>
+                      <Checkbox
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
+                        className={`${theme === 'dark' && 'bg-white'}`}
+                      />
+                    </FormControl>
+                    <div className="space-y-1 leading-none">
+                      <FormLabel
+                        className={`${theme === 'dark' && 'text-white'}`}
+                      >
+                        Accept terms and conditions
+                      </FormLabel>
+                      <FormDescription>
+                        You agree to our <TermsAndConditions /> and Privacy
+                        Policy.
+                      </FormDescription>
+                      <FormMessage />
+                    </div>
                   </FormItem>
                 )}
               />
@@ -426,3 +470,245 @@ export function MonthDayPicker({ name, label }: MonthDayPickerProps) {
     </FormItem>
   );
 }
+
+const TermsAndConditions = () => {
+  const { theme } = useThemeStore();
+
+  return (
+    <Dialog>
+      <DialogTrigger>
+        <span className="text-[#0369a1] hover:underline">Terms of Service</span>
+      </DialogTrigger>
+      <DialogContent
+        className={`max-h-[40rem] max-w-[85%] overflow-auto rounded-md sm:max-w-[750px] 2xl:max-h-[50rem] ${theme === 'dark' && 'bg-black text-white'}`}
+      >
+        <DialogHeader>
+          <DialogTitle>Terms of Service</DialogTitle>
+          <DialogDescription>
+            Please read these terms and conditions carefully before contacting
+            us.
+          </DialogDescription>
+        </DialogHeader>
+        <ol className="flex list-inside list-decimal flex-col gap-6">
+          <li className="border-b border-black pb-5 text-lg font-semibold">
+            Introduction
+            <p className="text-base font-normal">
+              These Terms of Service ("Terms") govern your use of our
+              videography and photography services, operated by 'Nerd Not Noob"
+              of "The Info Nerds" ("we," "our," or "us"). By hiring us or using
+              our website, you agree to these Terms.
+            </p>
+          </li>
+          <li className="border-b border-black pb-5 text-lg font-semibold">
+            Scope of Services
+            <div className="text-base font-normal">
+              <p>
+                We offer professional videography and photography services,
+                including but not limited to:
+              </p>
+              <ul className="list-inside list-disc pl-5 text-base font-normal">
+                <li>
+                  Event coverage (e.g., weddings, corporate events, concerts
+                  etc).
+                </li>
+                <li>TV commercials and brand advertisements.</li>
+                <li>Documentaries.</li>
+                <li>Music videos.</li>
+                <li>Other creative projects.</li>
+              </ul>
+            </div>
+          </li>
+          <li className="border-b border-black pb-5 text-lg font-semibold">
+            Bookings and Payments
+            <ol className="list-inside list-decimal pl-5 text-base font-normal">
+              <li>
+                <span className="font-semibold">Deposit:</span> A non-refundable
+                deposit, as agreed upon during the booking process, is required
+                to secure your booking.
+              </li>
+              <li>
+                <span className="font-semibold">Final Payment:</span> The
+                remaining balance must be paid before or on the agreed project
+                delivery date.
+              </li>
+              <li>
+                <span className="font-semibold">Late Payments:</span> A specific
+                fee or percentage may apply for late payments.
+              </li>
+              <li>
+                <span className="font-semibold">Cancellation:</span>{' '}
+                Cancellations must be made in writing. Refunds for cancellations
+                will be subject to the terms stated in our Cancellation Policy.
+              </li>
+            </ol>
+          </li>
+          <li className="border-b border-black pb-5 text-lg font-semibold">
+            Cancellation and Rescheduling Policy
+            <ol className="list-inside list-decimal pl-5 text-base font-normal">
+              <li className="font-semibold">
+                Cancellation:
+                <ul className="list-inside list-disc pl-5 font-normal">
+                  <li>
+                    Cancellations made less than two weeks before the shoot date
+                    may result in forfeiture of some percentage or all deposit.
+                  </li>
+                </ul>
+              </li>
+              <li className="font-semibold">
+                Rescheduling:
+                <ul className="list-inside list-disc pl-5 font-normal">
+                  <li>
+                    Rescheduling is subject to availability and must be
+                    requested at least three weeks in advance. A rescheduling
+                    fee may apply.
+                  </li>
+                </ul>
+              </li>
+            </ol>
+          </li>
+          <li className="border-b border-black pb-5 text-lg font-semibold">
+            Copyright and Usage Rights
+            <ol className="list-inside list-decimal pl-5 text-base font-normal">
+              <li>
+                <span className="font-semibold">Ownership:</span> We retain the
+                copyright to all images and videos created unless otherwise
+                agreed in writing.
+              </li>
+              <li>
+                <span className="font-semibold">Client Use:</span> You are
+                granted a limited, non-exclusive license to use the final
+                deliverables for personal or commercial purposes, as specified
+                in your project agreement.
+              </li>
+              <li>
+                <span className="font-semibold">Portfolio Use:</span> We reserve
+                the right to use any non-confidential content for promotional
+                purposes, including portfolio display, social media, and website
+                use, unless otherwise agreed upon in writing.
+              </li>
+            </ol>
+          </li>
+          <li className="border-b border-black pb-5 text-lg font-semibold">
+            Client Responsibilities
+            <ol className="list-inside list-decimal pl-5 text-base font-normal">
+              <li>Provide accurate details about the event or project.</li>
+              <li>
+                Ensure that we have access to the venue, equipment setup areas,
+                and relevant contacts.
+              </li>
+              <li>
+                Obtain necessary permissions for photography or videography at
+                specific venues or locations.
+              </li>
+            </ol>
+          </li>
+          <li className="border-b border-black pb-5 text-lg font-semibold">
+            Deliverables
+            <ol className="list-inside list-decimal pl-5 text-base font-normal">
+              <li>
+                <span className="font-semibold">Format:</span> Final products
+                will be delivered in agreed formats (e.g., USB, online link,
+                physical prints).
+              </li>
+              <li>
+                <span className="font-semibold">Timeline:</span> Delivery
+                timelines will be outlined in the project agreement. Delays
+                caused by unforeseen circumstances will be communicated
+                promptly.
+              </li>
+              <li>
+                <span className="font-semibold">Revisions:</span> Two revisions
+                is included in your package. Additional revisions may incur
+                extra fees.
+              </li>
+            </ol>
+          </li>
+          <li className="border-b border-black pb-5 text-lg font-semibold">
+            Liability
+            <ol className="list-inside list-decimal pl-5 text-base font-normal">
+              <li>
+                We are not liable for issues beyond our control, including but
+                not limited to:
+                <ul className="list-inside list-disc pl-5">
+                  <li>Equipment failure.</li>
+                  <li>Venue restrictions.</li>
+                  <li>Acts of nature.</li>
+                </ul>
+              </li>
+              <li>
+                Our liability for any claims is limited to the amount paid for
+                the specific project.
+              </li>
+            </ol>
+          </li>
+          <li className="border-b border-black pb-5 text-lg font-semibold">
+            Confidentiality
+            <div className="text-base font-normal">
+              <span>
+                We respect your privacy and will not share confidential details
+                of your event or project without your consent, except as
+                required for portfolio purposes (see Section 5).
+              </span>
+            </div>
+          </li>
+          <li className="border-b border-black pb-5 text-lg font-semibold">
+            Force Majeure
+            <div className="text-base font-normal">
+              <span>
+                We are not responsible for delays or cancellations due to
+                unforeseen events, including natural disasters, illness, or
+                government restrictions
+              </span>
+            </div>
+          </li>
+          <li className="border-b border-black pb-5 text-lg font-semibold">
+            Dispute Resolution
+            <div className="text-base font-normal">
+              <span>
+                Any disputes will be resolved amicably. If unresolved, disputes
+                may be submitted to arbitration or court proceedings under the
+                jurisdiction of Nigeria.
+              </span>
+            </div>
+          </li>
+          <li className="border-b border-black pb-5 text-lg font-semibold">
+            Changes to Terms
+            <div className="text-base font-normal">
+              <span>
+                We reserve the right to update these Terms at any time. Changes
+                will be communicated on our website or via email.
+              </span>
+            </div>
+          </li>
+          <li className="border-b border-black pb-5 text-lg font-semibold">
+            Contact Information
+            <div className="text-base font-normal">
+              <span>
+                For questions or concerns about these Terms, contact us at:
+              </span>
+              <ul className="list-inside list-disc pl-5">
+                <li>
+                  Email:{' '}
+                  <Link
+                    href="mailto:contact@nerdnotnoob.com"
+                    className="text-[#0369a1] hover:underline"
+                  >
+                    contact@nerdnotnoob.com
+                  </Link>
+                </li>
+                <li>Phone: +2348067936240</li>
+              </ul>
+            </div>
+          </li>
+        </ol>
+        <DialogFooter>
+          <DialogClose asChild>
+            <Button type="button" className="px-8 py-4">
+              Close
+            </Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+};
