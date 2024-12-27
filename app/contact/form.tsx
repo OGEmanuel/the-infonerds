@@ -493,10 +493,11 @@ const TermsAndConditions = () => {
           <li className="border-b border-black pb-5 text-lg font-semibold">
             Introduction
             <p className="text-base font-normal">
-              These Terms of Service ("Terms") govern your use of our
-              videography and photography services, operated by 'Nerd Not Noob"
-              of "The Info Nerds" ("we," "our," or "us"). By hiring us or using
-              our website, you agree to these Terms.
+              These Terms of Service (&quot;Terms&quot;) govern your use of our
+              videography and photography services, operated by &quot;Nerd Not
+              Noob&quot; of &quot;The Info Nerds&quot; (&quot;we,&quot;
+              &quot;our,&quot; or &quot;us&quot;). By hiring us or using our
+              website, you agree to these Terms.
             </p>
           </li>
           <li className="border-b border-black pb-5 text-lg font-semibold">
