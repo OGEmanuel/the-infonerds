@@ -30,7 +30,7 @@ const Footer = () => {
             <NavLink href={'/contact'}>Bookings</NavLink>
           </div>
           <div className="flex items-center gap-1">
-            <p className="flex gap-2 text-center text-sm font-medium ">
+            <p className="flex gap-2 text-center text-sm font-medium lowercase">
               <span>Nerd Not Noob</span> <span>&#169; {year}</span>
             </p>
           </div>

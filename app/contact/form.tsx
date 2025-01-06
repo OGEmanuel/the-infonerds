@@ -375,6 +375,7 @@ export function ContactForm() {
 
               <Button
                 type="submit"
+                disabled={form.watch('terms') !== true}
                 className={`rounded-xl p-4 font-medium ${theme === 'light' ? 'bg-btn-gradient-light text-black' : 'bg-btn-gradient text-white'}`}
               >
                 Send message

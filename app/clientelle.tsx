@@ -13,6 +13,11 @@ import verveBlack from '@/public/images/Verve Black.png';
 import verveWhite from '@/public/images/Verve White.png';
 import whoBlack from '@/public/images/WHO Black.png';
 import whoWhite from '@/public/images/WHO White.png';
+import qoraWHite from '@/public/images/Qoray white.png';
+import qoraBlack from '@/public/images/Qoray black.png';
+import tffaBlack from '@/public/images/tffa black.png';
+import tffaWhite from '@/public/images/tffa white.png';
+import Image from 'next/image';
 
 const Marquee = () => {
   const scrollersRef = useRef<HTMLDivElement>(null);
@@ -77,38 +82,108 @@ const Marquee = () => {
           ref={scrollerDarkInnerRef}
           className={`scroller__inner mx-auto flex flex-wrap gap-[5rem] py-4`}
         >
-          <p className="text-2xl font-medium">Quora E.V.</p>
-          <p className="text-2xl font-medium">TFAA</p>
-          <Logo
+          <Image
+            src={
+              theme === 'light'
+                ? '/images/Qoray black.png'
+                : '/images/Qoray white.png'
+            }
+            alt="Qora"
+            width={200}
+            height={200}
+          />
+          <Image
+            src={
+              theme === 'light'
+                ? '/images/tffa black.png'
+                : '/images/tffa white.png'
+            }
+            alt="Qora"
+            width={200}
+            height={200}
+          />
+          {/* <p className="text-2xl font-medium">Quora E.V.</p> */}
+          {/* <p className="text-2xl font-medium">TFAA</p> */}
+          <Image
+            src={
+              theme === 'light'
+                ? '/images/WHO Black.png'
+                : '/images/WHO White.png'
+            }
+            alt="Qora"
+            width={200}
+            height={200}
+          />
+          <Image
+            src={
+              theme === 'light'
+                ? '/images/Cadbury Black.png'
+                : '/images/Cadbury White.png'
+            }
+            alt="Qora"
+            width={200}
+            height={200}
+          />
+          <Image
+            src={
+              theme === 'light'
+                ? '/images/Verve Black.png'
+                : '/images/Verve White.png'
+            }
+            alt="Qora"
+            width={200}
+            height={200}
+          />
+          <Image
+            src={
+              theme === 'light'
+                ? '/images/Infinix Black.png'
+                : '/images/Infinix White.png'
+            }
+            alt="Qora"
+            width={200}
+            height={200}
+          />
+          <Image
+            src={
+              theme === 'light'
+                ? '/images/Dano Black.png'
+                : '/images/Dano White.png'
+            }
+            alt="Qora"
+            width={200}
+            height={200}
+          />
+          {/* <Logo
             src={theme === 'light' ? whoBlack : whoWhite}
             alt="WHO"
             imageClassName="object-cover object-center"
-            className="h-32 w-60"
-          />
-          <Logo
+            className="h-5 w-5"
+          /> */}
+          {/* <Logo
             src={theme === 'light' ? cadburyBlack : cadburyWhite}
             alt="Cadbury"
             imageClassName="object-cover object-center"
-            className="w-60"
-          />
-          <Logo
+            className="h-5 w-5"
+          /> */}
+          {/* <Logo
             src={theme === 'light' ? verveBlack : verveWhite}
             alt="Verve"
             imageClassName="object-cover object-center"
-            className="w-60"
-          />
-          <Logo
+            className="h-5 w-5"
+          /> */}
+          {/* <Logo
             src={theme === 'light' ? infinixBlack : infinixWhite}
             alt="Infinix"
             imageClassName="object-cover object-center"
-            className="w-60"
-          />
-          <Logo
+            className="h-5 w-5"
+          /> */}
+          {/* <Logo
             src={theme === 'light' ? danoBlack : danoWhite}
             alt="Dano Milk"
             imageClassName="object-cover object-center"
-            className="w-60"
-          />
+            className="h-5 w-5"
+          /> */}
         </div>
       </div>
     </div>

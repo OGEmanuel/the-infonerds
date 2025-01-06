@@ -19,12 +19,12 @@ export default function Home() {
         </div> */}
         <Logo />
         <div className="flex flex-col gap-3 text-center">
-          <h1 className={`text-3xl font-semibold sm:text-6xl`}>
+          <h1 className={`text-3xl font-semibold lowercase sm:text-6xl`}>
             Nerd Not Noob
           </h1>
-          <p className="font-medium">
+          {/* <p className="font-medium">
             Information and Entertainment Personified.
-          </p>
+          </p> */}
         </div>
         <SocialMedia />
         <div>
