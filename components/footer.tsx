@@ -24,11 +24,17 @@ const Footer = () => {
         <div
           className={`flex flex-col items-center justify-center gap-6 ${theme === 'light' ? 'text-black' : 'text-white'}`}
         >
-          <div className="flex gap-6">
-            <NavLink href={'/home'}>Home</NavLink>
-            <NavLink href={'/'}>Gallery</NavLink>
-            <NavLink href={'/contact'}>Bookings</NavLink>
-          </div>
+          <ul className="flex gap-6">
+            <li className="w-20 text-center sm:w-40">
+              <NavLink href={'/home'}>Home</NavLink>
+            </li>
+            <li className="w-20 text-center sm:w-40">
+              <NavLink href={'/'}>Gallery</NavLink>
+            </li>
+            <li className="w-20 text-center sm:w-40">
+              <NavLink href={'/contact'}>Bookings</NavLink>
+            </li>
+          </ul>
           <div className="flex items-center gap-1">
             <p className="flex gap-2 text-center text-sm font-medium lowercase">
               <span>Nerd Not Noob</span> <span>&#169; {year}</span>
@@ -39,7 +45,7 @@ const Footer = () => {
             <p className="text-sm font-medium italic">
               ...a subsidiary of{' '}
               <Link href="/" className="font-bold underline">
-                The INFO nerds
+                the INFO nerds
               </Link>
             </p>
             <LogoIcon />

@@ -1,137 +1,95 @@
 'use client';
 
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 import { cn } from '@/lib/utils';
 import useThemeStore from '@/store/theme-control';
-import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 
 const Testimonial = () => {
   const { theme } = useThemeStore();
+  const [tab, setTab] = useState(0);
 
   return (
-    // <div className="flex grid-cols-3 flex-col px-4 sm:px-8 md:grid lg:px-16">
-    //   <TestimonialCard
-    //     client="Layi Wasabi"
-    //     job="Content Creator"
-    //     className="rotate-[10deg] hover:z-10 md:translate-x-[40%] md:translate-y-[25%]"
-    //   >
-    //     The Infonerds exceeded my expectations with their professionalism and
-    //     creativity. They captured every moment beautifully, delivering
-    //     high-quality photos and videos that we&apos;ll treasure forever. I
-    //     highly recommend them for anyone seeking exceptional photography and
-    //     videography services!
-    //   </TestimonialCard>
-    //   <TestimonialCard
-    //     client="Peller"
-    //     job="Content Creator"
-    //     className="z-10 col-[3_/_span_1] row-[3_/_span_1] -rotate-6 bg-[#18181b] hover:z-20 md:-translate-x-[15%] md:-translate-y-[25%] md:hover:z-10"
-    //   >
-    //     Working with The Infonerds was an absolute delight. Their attention to
-    //     detail and innovative approach to capturing our corporate event set them
-    //     apart. The team&apos;s ability to blend candid moments with professional
-    //     shots gave us exactly what we needed for our marketing materials. Simply
-    //     outstanding!
-    //   </TestimonialCard>
-    //   <TestimonialCard
-    //     client="Layi Wasabi"
-    //     job="Content Creator"
-    //     className="z-10 col-[1_/_span_1] row-[3_/_span_1] rotate-6 bg-[#171717] sm:rotate-[10deg] md:-translate-y-[25%] md:translate-x-[40%]"
-    //   >
-    //     From the initial consultation to the final delivery, The Infonerds
-    //     showed why they&apos;re leaders in their field. They weren&apos;t just
-    //     photographers and videographers &ndash; they were storytellers who
-    //     understood our vision perfectly. The way they documented our product
-    //     launch was beyond impressive!
-    //   </TestimonialCard>
-    //   <TestimonialCard
-    //     client="Layi Wasabi"
-    //     job="Content Creator"
-    //     className="col-[3_/_span_1] -rotate-6 bg-[#1c1917] hover:z-10 md:-translate-x-[6%] md:translate-y-[25%]"
-    //   >
-    //     As someone who&apos;s usually camera-shy, I was amazed at how
-    //     comfortable The Infonerds made me feel during our branding photoshoot.
-    //     Their friendly approach and clear direction resulted in authentic,
-    //     professional content that perfectly represents our brand. They&apos;re
-    //     truly masters of their craft!
-    //   </TestimonialCard>
-    //   <TestimonialCard
-    //     client="Layi Wasabi"
-    //     job="Content Creator"
-    //     className="col-[2_/_span_1] rotate-[10deg] bg-[#111827] hover:z-20"
-    //   >
-    //     The Infonerds brought energy and expertise to our conference coverage.
-    //     Their quick turnaround time and ability to capture both the big moments
-    //     and small details was remarkable. The final media package exceeded our
-    //     expectations &ndash; they delivered content that we&apos;ll be proud to
-    //     use across all our platforms
-    //   </TestimonialCard>
-    // </div>
-    // <div className="flex w-full overflow-auto">
-    <ScrollArea className="w-full rounded-md border">
-      <div className="flex w-max gap-4 p-4">
+    <section className="flex flex-col gap-6">
+      <div className="relative flex h-96 items-center justify-center">
         <TestimonialCard
           client="Layi Wasabi"
-          job="Content Creator"
-          // className="rotate-[10deg] hover:z-10 md:translate-x-[40%] md:translate-y-[25%]"
+          job="Actor/Comedian"
+          className={`transition-all ${tab === 0 ? 'translate-x-0' : 'rotate-y-180 absolute -translate-x-[100%] opacity-0'}`}
         >
-          The Infonerds exceeded my expectations with their professionalism and
-          creativity. They captured every moment beautifully, delivering
-          high-quality photos and videos that we&apos;ll treasure forever. I
-          highly recommend them for anyone seeking exceptional photography and
-          videography services!
+          Working with Nerd Not Noob always feels effortless. They just get my
+          vision every time and know how to bring it to life in a way
+          that&apos;s even better than I imagined. It&apos;s always a joy to
+          have them on my projects—professional, creative, super reliable and
+          punctual!
         </TestimonialCard>
         <TestimonialCard
-          client="Peller"
-          job="Content Creator"
-          className={theme === 'light' ? 'bg-[#f9fafb]' : 'bg-[#18181b]'}
-          // className="z-10 col-[3_/_span_1] row-[3_/_span_1] -rotate-6 bg-[#18181b] hover:z-20 md:-translate-x-[15%] md:-translate-y-[25%] md:hover:z-10"
+          client="Damola Salam"
+          job="Music Executive"
+          className={`transition-all ${theme === 'light' ? 'bg-[#f9fafb]' : 'bg-[#18181b]'} ${tab === 1 && 'translate-x-0'} ${tab > 1 && '-translate-x-[100%]'} ${tab < 1 && 'translate-x-[100%]'} ${tab !== 1 && 'absolute opacity-0'}`}
         >
-          Working with The Infonerds was an absolute delight. Their attention to
-          detail and innovative approach to capturing our corporate event set
-          them apart. The team&apos;s ability to blend candid moments with
-          professional shots gave us exactly what we needed for our marketing
-          materials. Simply outstanding!
+          Nerd Not Noob understand the industry&apos;s needs and consistently
+          deliver visuals that perfectly complement the project. Their
+          creativity and professionalism make them my go-to team every time!
         </TestimonialCard>
         <TestimonialCard
-          client="Layi Wasabi"
-          job="Content Creator"
-          className={`${theme === 'light' ? 'bg-[#f3f4f6]' : 'bg-[#171717]'}`}
-          // className="z-10 col-[1_/_span_1] row-[3_/_span_1] rotate-6 bg-[#171717] sm:rotate-[10deg] md:-translate-y-[25%] md:translate-x-[40%]"
+          client="Osagie Omon"
+          job="Founder, Forkeeps"
+          className={`${theme === 'light' ? 'bg-[#f3f4f6]' : 'bg-[#171717]'} ${tab === 2 && 'translate-x-0'} ${tab > 2 && '-translate-x-[100%]'} ${tab < 2 && 'translate-x-[100%]'} ${tab !== 2 && '-rotate-y-180 absolute opacity-0'}`}
         >
-          From the initial consultation to the final delivery, The Infonerds
-          showed why they&apos;re leaders in their field. They weren&apos;t just
-          photographers and videographers &ndash; they were storytellers who
-          understood our vision perfectly. The way they documented our product
-          launch was beyond impressive!
+          Nerd Not Noob brings a unique blend of professionalism and creativity
+          to every project. Their ability to tell compelling stories through
+          visuals is remarkable, and their work consistently exceeds
+          expectations. Truly a pleasure to work with!
         </TestimonialCard>
         <TestimonialCard
-          client="Layi Wasabi"
-          job="Content Creator"
-          className={`${theme === 'light' ? 'bg-[#f4f4f5]' : 'bg-[#1c1917]'}`}
-          // className="col-[3_/_span_1] -rotate-6 bg-[#1c1917] hover:z-10 md:-translate-x-[6%] md:translate-y-[25%]"
+          client="Haniyah Bakare"
+          job="UGC Creator"
+          className={`${theme === 'light' ? 'bg-[#f4f4f5]' : 'bg-[#1c1917]'} ${tab === 3 && 'translate-x-0'} ${tab > 3 && '-translate-x-[100%]'} ${tab < 3 && 'translate-x-[100%]'} ${tab !== 3 && 'absolute opacity-0'}`}
         >
-          As someone who&apos;s usually camera-shy, I was amazed at how
-          comfortable The Infonerds made me feel during our branding photoshoot.
-          Their friendly approach and clear direction resulted in authentic,
-          professional content that perfectly represents our brand. They&apos;re
-          truly masters of their craft!
+          Every time I work with Nerd Not Noob, I feel like my ideas are truly
+          understood and brought to life in the most creative way. They&apos;re
+          not just professionals—they&apos;re collaborators who make the process
+          fun and seamless. The quality they deliver always blows me away!
         </TestimonialCard>
         <TestimonialCard
-          client="Layi Wasabi"
-          job="Content Creator"
-          className={`${theme === 'light' ? 'bg-[#f9fafb]' : 'bg-[#111827]'}`}
-          // className="col-[2_/_span_1] rotate-[10deg] bg-[#111827] hover:z-20"
+          client="DJ Kaywise"
+          job="DJ/Record Producer"
+          className={`${theme === 'light' ? 'bg-[#f9fafb]' : 'bg-[#111827]'} ${tab === 4 && 'translate-x-0'} ${tab > 4 && '-translate-x-[100%]'} ${tab < 4 && 'translate-x-[100%]'} ${tab !== 4 && 'absolute opacity-0'}`}
         >
-          The Infonerds brought energy and expertise to our conference coverage.
-          Their quick turnaround time and ability to capture both the big
-          moments and small details was remarkable. The final media package
-          exceeded our expectations &ndash; they delivered content that
-          we&apos;ll be proud to use across all our platforms
+          Nerd Not Noob is simply the best! Their ability to create visuals that
+          match the energy and vibe of my music is unmatched. Every project
+          we&apos;ve worked on together has been a hit, and I can always count
+          on them to deliver excellence.
         </TestimonialCard>
       </div>
-      <ScrollBar orientation="horizontal" />
-    </ScrollArea>
-    // </div>
+      <div className="flex w-full justify-center gap-6">
+        <button
+          onClick={() => setTab(0)}
+          className={`w-10 rounded p-1 ${tab === 0 ? `${theme === 'light' ? 'bg-black' : 'bg-white'}` : 'bg-gray-400'}`}
+          role="tab"
+        ></button>
+        <button
+          onClick={() => setTab(1)}
+          className={`w-10 rounded p-1 ${tab === 1 ? `${theme === 'light' ? 'bg-black' : 'bg-white'}` : 'bg-gray-400'}`}
+          role="tab"
+        ></button>
+        <button
+          onClick={() => setTab(2)}
+          className={`w-10 rounded p-1 ${tab === 2 ? `${theme === 'light' ? 'bg-black' : 'bg-white'}` : 'bg-gray-400'}`}
+          role="tab"
+        ></button>
+        <button
+          onClick={() => setTab(3)}
+          className={`w-10 rounded p-1 ${tab === 3 ? `${theme === 'light' ? 'bg-black' : 'bg-white'}` : 'bg-gray-400'}`}
+          role="tab"
+        ></button>
+        <button
+          onClick={() => setTab(4)}
+          className={`w-10 rounded p-1 ${tab === 4 ? `${theme === 'light' ? 'bg-black' : 'bg-white'}` : 'bg-gray-400'}`}
+          role="tab"
+        ></button>
+      </div>
+    </section>
   );
 };
 

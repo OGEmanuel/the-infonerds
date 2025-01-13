@@ -8,6 +8,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
+import { replaceHyphens } from '@/lib/utils';
 import useThemeStore from '@/store/theme-control';
 import { usePathname, useRouter } from 'next/navigation';
 
@@ -35,7 +36,7 @@ const CategoryBreadcumb = ({ params }: { params: { categ: string } }) => {
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink
-            href={`${pathname.includes('frozen-moments') ? '/#frozen-moments' : '/#moving-frames'}`}
+            href={`${pathname.includes('pictures') ? '/#pictures' : '/#videos'}`}
             className={`${theme === 'light' ? 'text-black/40 hover:text-black/80' : 'text-white/40 hover:text-white/80'}`}
             onClick={handleClick}
           >
@@ -47,7 +48,7 @@ const CategoryBreadcumb = ({ params }: { params: { categ: string } }) => {
           <BreadcrumbPage
             className={`text-2xl font-medium uppercase ${theme === 'light' ? 'text-black' : 'text-white'}`}
           >
-            {params.categ}
+            {replaceHyphens(params.categ)}
           </BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>

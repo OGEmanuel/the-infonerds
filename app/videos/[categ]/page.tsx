@@ -1,6 +1,11 @@
 import CategoryBreadcumb from '@/components/breadcrumb';
 import Categories from './categories';
 
+export const metadata = {
+  title: 'Nerd Not Noob | Videos',
+  description: 'Information and Entertainment Personified.',
+};
+
 const Category = ({ params }: { params: { categ: string } }) => {
   return (
     <section className="flex w-full flex-col gap-6">

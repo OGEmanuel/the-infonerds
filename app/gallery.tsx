@@ -20,8 +20,8 @@ const Gallery = () => {
           </GridCol>
           <GridCol>
             <ImageFallback
-              className="h-[240.36px]"
-              src="https://drive.google.com/uc?export=view&id=1IMdy-9FCVizdCr6qMIfet-fuOw7fQwoK"
+              className="h-[240.36px] object-top"
+              src="https://drive.google.com/uc?export=view&id=1dIHXjduc8v0qpVUHgHPql8IhNHzzInIf"
             />
           </GridCol>
           <GridCol>
@@ -35,19 +35,19 @@ const Gallery = () => {
           <GridCol>
             <ImageFallback
               className="h-[287.47px]"
-              src="https://drive.google.com/uc?export=view&id=1b6AfjE7bxskAZIUho8uxnRVLch-cMGIg"
+              src="https://drive.google.com/uc?export=view&id=1se9UWq9IPYyKXn77CBg1JgXWeeFGBMFR"
             />
           </GridCol>
           <GridCol>
             <ImageFallback
               className="h-[410.55px]"
-              src="https://drive.google.com/uc?export=view&id=151Cg5RyEUQg1_3dyx3RlKkY5zc_I1j_k"
+              src="https://drive.google.com/uc?export=view&id=1cir6ihuZ0l1q0uuO4ZUD6BqXcCgSmMsr"
             />
           </GridCol>
           <GridCol>
             <ImageFallback
-              className="h-[183.64px]"
-              src="https://drive.google.com/uc?export=view&id=1_vGMARp5x6KJbJQEa2OS-LHmVDJHsIyT"
+              className="h-[183.64px] object-center"
+              src="https://drive.google.com/uc?export=view&id=11gxRIS7f-mj7ZBvQgAszKMNmxJuL80n2"
             />
           </GridCol>
         </div>
@@ -67,7 +67,7 @@ const Gallery = () => {
           <GridCol>
             <ImageFallback
               className="h-[249.98px]"
-              src="https://drive.google.com/uc?export=view&id=1FWV4-WmMLaC8Y8GXZOGhWm3u0DogYug7"
+              src="https://drive.google.com/uc?export=view&id=1qM-v_15Ok3Dmn4T5Q2O3mwRFQeSQJDeA"
             />
           </GridCol>
         </div>
@@ -75,19 +75,19 @@ const Gallery = () => {
           <GridCol>
             <ImageFallback
               className="h-[202.86px]"
-              src="https://drive.google.com/uc?export=view&id=1hGUS_Bauy9D3R8GoO6TBGOYo-yVs11h6"
+              src="https://drive.google.com/uc?export=view&id=1JIdR96n14NVprktcGpEtWUhXXuEro-Dd"
             />
           </GridCol>
           <GridCol>
             <ImageFallback
               className="h-[492.27px]"
-              src="https://drive.google.com/uc?export=view&id=1sFLZpf3pqpw39oV5urzIRsfENhJvstFJ"
+              src="https://drive.google.com/uc?export=view&id=1OWqPo6agwz9cn-_zsSgoQcCDlrvMk3mc"
             />
           </GridCol>
           <GridCol>
             <ImageFallback
-              className="h-[186.53px]"
-              src="https://drive.google.com/uc?export=view&id=1-iwn4h_yPFgVTrTbJdQ9XQ35vOEPdUG8"
+              className="h-[186.53px] object-top"
+              src="https://drive.google.com/uc?export=view&id=1G5rtwo9VjKNTb_iyqkdmSYpLEc7Nr-5h"
             />
           </GridCol>
         </div>

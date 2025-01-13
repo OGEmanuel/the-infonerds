@@ -3,49 +3,49 @@ import CategoryWrapper from '@/components/category-wrapper';
 
 const CATEGORIES = [
   {
-    id: '1hzJ6C60e-F9ei5uiXYSP84NubdeIgzF4',
+    id: '1n2S-nXlExPaYIeP3KM425s6xSFpzymvP',
     title: 'Wedding Videos',
     page: 'weddings',
   },
   {
-    id: '1g5XM2nFsRjjQKlYvgekYG451AOUVDb_C',
+    id: '18JYjH9ZG4RJ9T0snKWNwYirb6Ei_PrAV',
     title: 'Concerts and Events',
-    page: 'concerts',
+    page: 'concerts-and-events',
   },
   {
-    id: '1wV9SyWmZUiZof5Q-IHnWDJeX7UblwUxi',
+    id: '1Z2padRmzgfnh_H7J75qPoQqC5YS8KGGa',
     title: 'TV Commercials and Brand Ads',
-    page: 'commercials',
+    page: 'tv-commercials-and-brand-ads',
   },
   {
-    id: '11qmpNsNTph8T3SJNeWj17Q6_4-zAmgqt',
+    id: '1XoEjxWSckwqeaPNzhrbMhCHERm_mXeIA',
     title: 'Proposals and Pre-weddings',
-    page: 'proposals',
+    page: 'proposals-and-pre-weddings',
   },
   {
-    id: '1WLzxx0lAg5glsy4fEBKF2KG4QfX652Qi',
+    id: '12HDV_ScHoPFc7appxj8XWmtRh4k-k0To',
     title: 'Corporate Events and Brand Activations',
-    page: 'corporate',
+    page: 'corporate-events-and-brand-activations',
   },
   {
-    id: '1zpSZN-tD-iNJyaxff0YljdsArchgJNfm',
+    id: '1F_B3Y5EOZfMEpc9MENXdGL5kXko1eTg6',
     title: 'Documentaries',
     page: 'documentaries',
   },
   {
-    id: '1mPjshDVK4NERmPcqXSORPrdjGHIew--A',
+    id: '1xSovhr3nKMa8i5GDnfsKlQR8SVsR-4Dw',
     title: 'Real Estate',
     page: 'real-estate',
   },
   {
-    id: '1Naedb1HmYnbDl9Hj6aYAyzdk8oXmK8t9',
+    id: '1Ive89IJBqXcYMWzdQXpwBE8NuR73kwfu',
     title: 'Styles and Lifestyle',
-    page: 'styles',
+    page: 'styles-and-lifestyle',
   },
   {
-    id: '1yHhFk_IgmlndDjGXOcanBxdtf_5jMSN9',
-    title: 'BTS',
-    page: 'bts',
+    id: '1xymedb4FB_1VmiZcL6As_A5olaJKFFFK',
+    title: 'Behind the Scenes',
+    page: 'behind-the-scenes',
   },
 
   // {
@@ -57,11 +57,11 @@ const CATEGORIES = [
 
 const MovingFrames = () => {
   return (
-    <CategoryWrapper title="Video Gallery" id="moving-frames">
+    <CategoryWrapper title="Video Gallery" id="videos">
       {CATEGORIES.map(category => (
         <AlbumLinks
           key={category.id}
-          link={`moving-frames/${category.page}`}
+          link={`videos/${category.page}`}
           src={`https://drive.google.com/uc?export=view&id=${category.id}`}
           title={category.title}
           gallery={'video'}

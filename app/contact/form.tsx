@@ -69,7 +69,7 @@ const items = [
   },
   {
     id: 'co-operate',
-    label: 'Co-operate',
+    label: 'Corporate',
   },
   {
     id: 'commercial',
@@ -85,22 +85,18 @@ const FormSchema = z.object({
   name: z.string().min(2, {
     message: 'Name must be at least 2 characters.',
   }),
-  smHandle: z.string().min(2, {
-    message: 'Handle must be at least 2 characters.',
-  }),
+  smHandle: z.string().optional(),
   date: z.date({
     required_error: 'A date is required.',
   }),
-  dob: z.date({
-    required_error: 'A date is required.',
-  }),
+  dob: z.date().optional(),
   location: z.string().min(2, {
-    message: 'Location must be at least 2 characters.',
+    message: 'Enter a valid location.',
   }),
   events: z.array(z.string()).refine(value => value.some(item => item), {
     message: 'You have to select at least one item.',
   }),
-  email: z.string().min(2, { message: 'Invalid value in field' }).trim(),
+  email: z.string().min(2, { message: 'Enter a valid email address.' }).trim(),
   message: z
     .string()
     .min(25, { message: 'Message should be at least 25 characters long' })
@@ -151,7 +147,7 @@ export function ContactForm() {
             >
               Be one of our happy{' '}
               <span
-                className={`bg-clip-text font-InriaFont font-bold italic ${theme === 'light' ? 'text-[#0369a1]' : 'text-[#e0f2fe]'}`}
+                className={`bg-clip-text font-InriaFont font-bold italic ${theme === 'light' ? 'text-black' : 'text-[#e0f2fe]'}`}
               >
                 people
               </span>{' '}
@@ -159,11 +155,12 @@ export function ContactForm() {
                 className={`mt-4 block text-base font-normal ${theme === 'light' ? 'text-[#374151]' : 'text-[#6B7280]'}`}
               >
                 Don&apos;t want to fill the form? you can send us a message{' '}
-                <span
-                  className={`font-medium ${theme === 'light' ? 'text-[#1D4ED8]' : 'text-[#2563EB]'}`}
+                <Link
+                  href="mailto:contact@nerdnotnoob.com"
+                  className={`font-medium hover:underline ${theme === 'light' ? 'text-[#0369a1]' : 'text-[#2563EB]'}`}
                 >
-                  info@infonerds.ng
-                </span>
+                  contact@nerdnotnoob.com
+                </Link>
               </span>
             </FormDescription>
             <div className="space-y-12">
@@ -321,7 +318,7 @@ export function ContactForm() {
                   )}
                 />
               </div>
-              <MonthDayPicker name="dob" label="Date of birth" />
+              <MonthDayPicker name="dob" label="Birthday" />
               <FormField
                 control={form.control}
                 name="message"

@@ -29,15 +29,15 @@ type SelectedVideo = Short | RegularVideo | null;
 
 enum AlbumCategories {
   WEDDINGS = 'weddings',
-  CONCERTS = 'concerts',
-  CORPORATE = 'corporate',
-  BTS = 'bts',
+  CONCERTS = 'concerts-and-events',
+  CORPORATE = 'corporate-events-and-brand-activations',
+  BTS = 'behind-the-scenes',
   DOCUMENTARIES = 'documentaries',
-  STYLES = 'styles',
+  STYLES = 'styles-and-lifestyle',
   MOTION_GRAPHICS = 'motion-graphics',
   REAL_ESTATE = 'real-estate',
-  PROPOSALS = 'proposals',
-  COMMERCIALS = 'commercials',
+  PROPOSALS = 'proposals-and-pre-weddings',
+  COMMERCIALS = 'tv-commercials-and-brand-ads',
 }
 
 const Categories = ({ page }: { page: string }) => {

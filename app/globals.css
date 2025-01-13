@@ -21,3 +21,11 @@
   flex-wrap: nowrap !important;
   width: max-content;
 }
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.-rotate-y-180 {
+  transform: rotateY(-180deg);
+}

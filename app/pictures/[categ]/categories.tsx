@@ -21,11 +21,11 @@ interface DriveImage {
 
 enum AlbumCategories {
   WEDDINGS = 'weddings',
-  CONCERTS = 'concerts',
-  CORPORATE = 'corporate',
-  PRE_WEDDING = 'pre-wedding',
+  CONCERTS = 'concerts-and-events',
+  CORPORATE = 'corporate-events-and-brand-activations',
+  PRE_WEDDING = 'pre-wedding-and-proposals',
   PORTRAITS = 'portraits',
-  BTS = 'bts',
+  BTS = 'behind-the-scenes',
 }
 
 const weddings = '167RTvpUdedkMArlV1d4jLXuIXVC9PDti';
@@ -204,7 +204,7 @@ const ImageCard = ({ image }: { image: DriveImage }) => {
         }}
       />
       {error && <ErrorMessage />}
-      <div
+      {/* <div
         className={`absolute inset-0 ${theme === 'light' ? 'bg-white' : 'bg-black'} bg-opacity-0 transition-opacity duration-300 ${theme === 'light' ? 'group-hover:bg-opacity-20' : 'group-hover:bg-opacity-40'}`}
       >
         <div
@@ -212,7 +212,7 @@ const ImageCard = ({ image }: { image: DriveImage }) => {
         >
           <h3 className="truncate text-lg font-semibold">{image.name}</h3>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

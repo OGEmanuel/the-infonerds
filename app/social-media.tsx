@@ -26,7 +26,7 @@ const SocialMedia = () => {
         >
           <XIcon fill={theme === 'light' ? 'black' : 'white'} />
         </Link>
-        <Link href={'https://www.facebook.com/nerdnotnoob'} target="_blank">
+        <Link href={'https://www.facebook.com/bookunmie'} target="_blank">
           <FBIcon fill={theme === 'light' ? 'black' : 'white'} />
         </Link>
         <Link href={'https://www.youtube.com/@nerdnotnoob'} target="_blank">

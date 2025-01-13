@@ -35,3 +35,7 @@ export function shuffleArray<T>(array: T[], seed?: string): T[] {
 
   return shuffledArray;
 }
+
+export function replaceHyphens(input: string): string {
+  return input.replace(/-/g, ' ');
+}
