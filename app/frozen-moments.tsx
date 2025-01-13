@@ -3,32 +3,32 @@ import CategoryWrapper from '@/components/category-wrapper';
 
 const CATEGORIES = [
   {
-    id: '1-07duMxFP_aIfiDoRRmmIfh5x23bRfFu',
+    id: '1msOr0Sj2oFSfWacm-ldpvKEdi8o3Spfg',
     title: 'Wedding Photos',
     page: 'weddings',
   },
   {
-    id: '1zpSZN-tD-iNJyaxff0YljdsArchgJNfm',
+    id: '1TQKUJTOZb_nGzDzwNppoTSN71xR8uFDw',
     title: 'Concerts and Events',
     page: 'concerts-and-events',
   },
   {
-    id: '1Naedb1HmYnbDl9Hj6aYAyzdk8oXmK8t9',
+    id: '1dHrNLrn-CNpBPVfkCYXGcSDiaBAL-6ti',
     title: 'Corporate Events and Brand Activation',
     page: 'corporate-events-and-brand-activations',
   },
   {
-    id: '1b1CrCcrULMAkF2N9VW9_wCZWYDYC0oy1',
+    id: '1Xvsv2cCPO_982qF_QTKrM9rqZgtOH1PF',
     title: 'Pre-wedding and Proposals',
     page: 'pre-wedding-and-proposals',
   },
   {
-    id: '1mPjshDVK4NERmPcqXSORPrdjGHIew--A',
+    id: '1fWX1XSw8hBFw3YOVPeYfmn8P82yU4qzz',
     title: 'Portraits',
     page: 'portraits',
   },
   {
-    id: '1wV9SyWmZUiZof5Q-IHnWDJeX7UblwUxi',
+    id: '1fbV0vSNR2RUiDKqNJBzfftwYsUkbYtlt',
     title: 'Behind the Scenes',
     page: 'behind-the-scenes',
   },

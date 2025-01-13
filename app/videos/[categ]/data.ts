@@ -190,7 +190,7 @@ export const Concerts: FullData = {
       id: 'PfF245w6I-g',
       type: 'regular',
       title: 'The Future Awards Africa 2023 | 1-Minute Highlights from TFAA 17',
-      duration: '1:04',
+      duration: '1:03',
     },
     {
       id: 'wxhcvVTLEcI',
@@ -203,8 +203,8 @@ export const Concerts: FullData = {
       id: 'Qa7gXFGv7Yw',
       type: 'regular',
       title:
-        'The Future Awards Africa 2023 | TFAA 17 Highlights in 1 Minute (Alternate Cut)',
-      duration: '1:02',
+        'Fanfaro Autofest 2022 in Ibadan | Car Festival & Star-Studded Performances',
+      duration: '0:32',
     },
     {
       id: '2pbxbhJjLiY',
@@ -452,18 +452,18 @@ export const Commercials: FullData = {
       duration: '1:16',
     },
     {
-      id: 'P1y0w_X2Eqo',
-      type: 'regular',
-      title:
-        'Zedapex Academy Ad Featuring BBNaija’s Unusual Phyna: Your Financial Freedom Starts Here',
-      duration: '1:18',
-    },
-    {
       id: 'wyBX9X_jWJ0',
       type: 'regular',
       title:
         'Zedapex Exchange TVC Featuring Influencer Aisha Olayinka | Seamless Transactions Made Simple',
       duration: '0:25',
+    },
+    {
+      id: 'P1y0w_X2Eqo',
+      type: 'regular',
+      title:
+        'Zedapex Academy Ad Featuring BBNaija’s Unusual Phyna: Your Financial Freedom Starts Here',
+      duration: '1:18',
     },
     {
       id: 'iazwgC2sGks',
