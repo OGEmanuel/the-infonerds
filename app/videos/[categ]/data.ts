@@ -504,6 +504,11 @@ export const Commercials: FullData = {
 export const Weddings: FullData = {
   shorts: [
     {
+      id: 'NTfSWieKCTk',
+      type: 'short',
+      title: "Olanike & Ayokunle's Wedding Reel",
+    },
+    {
       id: 'lxmdoIqlkgc',
       type: 'short',
       title:
