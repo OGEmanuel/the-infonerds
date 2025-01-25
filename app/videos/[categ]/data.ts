@@ -152,13 +152,6 @@ export const Concerts: FullData = {
       duration: '2:38',
     },
     {
-      id: 'fLMhq4AhSD4',
-      type: 'regular',
-      title:
-        'Infinix Hot 30 "Fast and Fun" Challenge | 30-Second Grocery Shopping Spree Highlights',
-      duration: '0:59',
-    },
-    {
       id: 'akvgD1PpHOw',
       type: 'regular',
       title:
@@ -212,6 +205,13 @@ export const Concerts: FullData = {
       title:
         'Heineken Stand at The Future Awards Africa 2023 | TFAA Sponsor Highlight Reel',
       duration: '0:16',
+    },
+    {
+      id: 'fLMhq4AhSD4',
+      type: 'regular',
+      title:
+        'Infinix Hot 30 "Fast and Fun" Challenge | 30-Second Grocery Shopping Spree Highlights',
+      duration: '0:59',
     },
     {
       id: '-EsYuwjENww',
