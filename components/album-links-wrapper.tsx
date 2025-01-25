@@ -12,7 +12,7 @@ const AlbumLinksWrapper = ({
     <div
       className={cn(
         'grid justify-center gap-4 sm:grid-cols-2 lg:grid-cols-3',
-        'grid-flow-row auto-rows-fr', // Key to maintaining equal heights
+        'grid-flow-row auto-rows-[300px]', // Fixed height of 300px
         className,
       )}
     >

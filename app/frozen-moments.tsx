@@ -18,7 +18,7 @@ const CATEGORIES = [
     page: 'corporate-events-and-brand-activations',
   },
   {
-    id: '1Xvsv2cCPO_982qF_QTKrM9rqZgtOH1PF',
+    id: '1nK1x4UajNHBnYIm8UGCwAU3my4AlzqbJ',
     title: 'Pre-wedding and Proposals',
     page: 'pre-wedding-and-proposals',
   },

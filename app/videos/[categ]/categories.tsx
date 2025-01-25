@@ -146,14 +146,14 @@ const Categories = ({ page }: { page: string }) => {
           >
             Shorts
           </h2>
-          <div className="flex gap-4 overflow-x-auto pb-4">
+          <div className="grid grid-cols-2 gap-4 overflow-x-auto pb-4 sm:flex">
             {Category.shorts.map(short => (
               <div
                 key={short.id}
-                className="relative w-[180px] flex-none cursor-pointer"
+                className="relative flex-none cursor-pointer sm:w-[180px]"
                 onClick={() => setSelectedVideo(short)}
               >
-                <div className="relative h-[320px] w-[180px]">
+                <div className="relative h-[320px] sm:w-[180px]">
                   <Image
                     src={getYouTubeThumbnail(short.id)}
                     alt={short.title}
