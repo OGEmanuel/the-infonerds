@@ -85,6 +85,56 @@ const Marquee = () => {
           <Image
             src={
               theme === 'light'
+                ? '/images/WHO Black.png'
+                : '/images/WHO White.png'
+            }
+            alt="WHO"
+            width={200}
+            height={200}
+          />
+          <Image
+            src={
+              theme === 'light'
+                ? '/images/Cadbury Black.png'
+                : '/images/Cadbury White.png'
+            }
+            alt="Cadbury"
+            width={200}
+            height={200}
+          />
+          <Image
+            src={
+              theme === 'light'
+                ? '/images/Infinix Black.png'
+                : '/images/Infinix White.png'
+            }
+            alt="Infinix"
+            width={200}
+            height={200}
+          />
+          <Image
+            src={
+              theme === 'light'
+                ? '/images/Verve Black.png'
+                : '/images/Verve White.png'
+            }
+            alt="Verve"
+            width={200}
+            height={200}
+          />
+          <Image
+            src={
+              theme === 'light'
+                ? '/images/Dano Black.png'
+                : '/images/Dano White.png'
+            }
+            alt="Dano"
+            width={200}
+            height={200}
+          />
+          <Image
+            src={
+              theme === 'light'
                 ? '/images/Qoray black.png'
                 : '/images/Qoray white.png'
             }
@@ -98,62 +148,20 @@ const Marquee = () => {
                 ? '/images/tffa black.png'
                 : '/images/tffa white.png'
             }
-            alt="Qora"
+            alt="tffa"
             width={200}
             height={200}
           />
-          {/* <p className="text-2xl font-medium">Quora E.V.</p> */}
-          {/* <p className="text-2xl font-medium">TFAA</p> */}
-          <Image
+          {/* <Image
             src={
               theme === 'light'
-                ? '/images/WHO Black.png'
-                : '/images/WHO White.png'
+                ? '/images/Forkeeps Black.png'
+                : '/images/Forkeeps White.png'
             }
-            alt="Qora"
+            alt="Forkeeps"
             width={200}
             height={200}
-          />
-          <Image
-            src={
-              theme === 'light'
-                ? '/images/Cadbury Black.png'
-                : '/images/Cadbury White.png'
-            }
-            alt="Qora"
-            width={200}
-            height={200}
-          />
-          <Image
-            src={
-              theme === 'light'
-                ? '/images/Verve Black.png'
-                : '/images/Verve White.png'
-            }
-            alt="Qora"
-            width={200}
-            height={200}
-          />
-          <Image
-            src={
-              theme === 'light'
-                ? '/images/Infinix Black.png'
-                : '/images/Infinix White.png'
-            }
-            alt="Qora"
-            width={200}
-            height={200}
-          />
-          <Image
-            src={
-              theme === 'light'
-                ? '/images/Dano Black.png'
-                : '/images/Dano White.png'
-            }
-            alt="Qora"
-            width={200}
-            height={200}
-          />
+          /> */}
           {/* <Logo
             src={theme === 'light' ? whoBlack : whoWhite}
             alt="WHO"

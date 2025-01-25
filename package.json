@@ -36,6 +36,7 @@
     "react-day-picker": "^8.10.1",
     "react-dom": "^18",
     "react-hook-form": "^7.51.5",
+    "react-swipeable": "^7.0.2",
     "seedrandom": "^3.0.5",
     "sharp": "^0.33.5",
     "tailwind-merge": "^2.3.0",

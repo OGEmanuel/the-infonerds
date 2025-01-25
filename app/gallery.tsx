@@ -47,7 +47,7 @@ const Gallery = () => {
           <GridCol>
             <ImageFallback
               className="h-[183.64px] object-center"
-              src="https://drive.google.com/uc?export=view&id=11gxRIS7f-mj7ZBvQgAszKMNmxJuL80n2"
+              src="https://drive.google.com/uc?export=view&id=1zpSZN-tD-iNJyaxff0YljdsArchgJNfm"
             />
           </GridCol>
         </div>

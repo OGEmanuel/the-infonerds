@@ -5,6 +5,7 @@ import FrozenMoments from './frozen-moments';
 import { Metadata } from 'next';
 import MovingFrames from './moving-frames';
 import MainSectionWrapper from '@/components/main-section-wrapper';
+import MailingListForm from './mailing-list-form';
 
 export const metadata: Metadata = {
   title: 'Nerd Not Noob | Gallery',
@@ -25,6 +26,9 @@ const Work = () => {
       <div className="flex flex-col gap-8 px-4 sm:px-8 lg:px-16">
         <h2 className="text-3xl font-medium">Clientelle</h2>
         <Clientelle />
+      </div>
+      <div className="flex w-full items-center justify-center">
+        <MailingListForm />
       </div>
       <div className="flex flex-col gap-8 px-4 sm:px-8 lg:px-16">
         <h2 className="text-3xl font-medium">Testimonials</h2>

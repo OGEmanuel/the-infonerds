@@ -70,6 +70,8 @@ const Categories = ({ page }: { page: string }) => {
     error,
   } = useInfiniteDriveImages(folderId);
 
+  console.log(data);
+
   const handleObserver = useCallback(
     (entries: IntersectionObserverEntry[]) => {
       const [target] = entries;
@@ -204,15 +206,6 @@ const ImageCard = ({ image }: { image: DriveImage }) => {
         }}
       />
       {error && <ErrorMessage />}
-      {/* <div
-        className={`absolute inset-0 ${theme === 'light' ? 'bg-white' : 'bg-black'} bg-opacity-0 transition-opacity duration-300 ${theme === 'light' ? 'group-hover:bg-opacity-20' : 'group-hover:bg-opacity-40'}`}
-      >
-        <div
-          className={`absolute bottom-0 left-0 right-0 translate-y-full transform p-4 ${theme === 'light' ? 'text-black' : 'text-white'} transition-transform duration-300 group-hover:translate-y-0`}
-        >
-          <h3 className="truncate text-lg font-semibold">{image.name}</h3>
-        </div>
-      </div> */}
     </div>
   );
 };

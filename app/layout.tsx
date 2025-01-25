@@ -21,7 +21,7 @@ export default function RootLayout({
         <QueryProvider>
           <Nav />
           <main
-            className={`relative z-10 flex min-h-screen flex-col items-center ${theme === 'light' ? 'bg-white' : 'bg-black'} shadow-2xl`}
+            className={`relative z-10 flex min-h-screen flex-col items-center overflow-x-hidden ${theme === 'light' ? 'bg-white' : 'bg-black'} shadow-2xl`}
           >
             {children}
             <div className="darkGradient h-6"></div>
