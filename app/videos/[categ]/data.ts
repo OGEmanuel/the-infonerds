@@ -10,7 +10,7 @@ export interface RegularVideo extends BaseVideo {
   duration: string;
 }
 
-interface FullData {
+export interface FullData {
   shorts: Short[];
   videos: RegularVideo[];
 }

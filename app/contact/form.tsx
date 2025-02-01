@@ -1,7 +1,7 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm, useFormContext } from 'react-hook-form';
+import { useForm, type UseFormReturn } from 'react-hook-form';
 import { z } from 'zod';
 
 import { Button } from '@/components/ui/button';
@@ -47,8 +47,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import { Label } from '@/components/ui/label';
 import Link from 'next/link';
+import { Input } from '@/components/ui/input';
 
 const items = [
   {
@@ -85,21 +85,38 @@ const FormSchema = z.object({
   name: z.string().min(2, {
     message: 'Name must be at least 2 characters.',
   }),
+  email: z
+    .string({
+      required_error: 'Please provide a valid email',
+    })
+    .email(),
+
   smHandle: z.string().optional(),
-  date: z.date({
-    required_error: 'A date is required.',
-  }),
-  dob: z.date().optional(),
-  location: z.string().min(2, {
-    message: 'Enter a valid location.',
-  }),
   events: z.array(z.string()).refine(value => value.some(item => item), {
     message: 'You have to select at least one item.',
   }),
-  email: z.string().min(2, { message: 'Enter a valid email address.' }).trim(),
+  otherEvent: z.string().optional(),
+  date: z.date({
+    required_error: 'A date is required.',
+  }),
+  location: z.string().min(2, {
+    message: 'Enter a valid location.',
+  }),
+  month: z
+    .string()
+    .min(2, {
+      message: 'Enter a valid month.',
+    })
+    .optional(),
+  day: z
+    .string()
+    .min(1, {
+      message: 'Enter a day.',
+    })
+    .optional(),
   message: z
     .string()
-    .min(25, { message: 'Message should be at least 25 characters long' })
+    .min(10, { message: 'Message should be at least 10 characters long' })
     .trim(),
   terms: z.boolean().refine(val => val === true, {
     message: 'You must accept the terms and conditions.',
@@ -119,15 +136,25 @@ export function ContactForm() {
       email: '',
       message: '',
       terms: false,
+      otherEvent: '',
     },
   });
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
+    const formData = {
+      ...data,
+      events: data.events.includes('others')
+        ? [...data.events.filter(e => e !== 'others'), data.otherEvent]
+        : data.events,
+    };
+
     toast({
       title: 'You submitted the following values:',
       description: (
         <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
+          <code className="text-white">
+            {JSON.stringify(formData, null, 2)}
+          </code>
         </pre>
       ),
     });
@@ -194,7 +221,7 @@ export function ContactForm() {
                   name="smHandle"
                   render={({ field, fieldState }) => (
                     <TextInput
-                      placeholder="Enter your ig handle"
+                      placeholder="Enter your IG handle"
                       label={'Instagram handle'}
                       fieldState={fieldState}
                       field={field}
@@ -254,6 +281,19 @@ export function ContactForm() {
                     </div>
                     <FormMessage />
                   </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="otherEvent"
+                render={({ field, fieldState }) => (
+                  <TextInput
+                    placeholder="Specify other event type"
+                    label={'Other event type'}
+                    fieldState={fieldState}
+                    disabled={!form.watch('events').includes('others')}
+                    field={field}
+                  />
                 )}
               />
               <div className="grid-cols-2 items-end gap-x-4 gap-y-12 md:grid">
@@ -318,7 +358,7 @@ export function ContactForm() {
                   )}
                 />
               </div>
-              <MonthDayPicker name="dob" label="Birthday" />
+              <MonthDayPicker form={form} label="Birthday" />
               <FormField
                 control={form.control}
                 name="message"
@@ -385,13 +425,13 @@ export function ContactForm() {
   );
 }
 
-interface MonthDayPickerProps {
-  name: string;
+export function MonthDayPicker({
+  form,
+  label,
+}: {
+  form: UseFormReturn<z.infer<typeof FormSchema>>;
   label: string;
-}
-
-export function MonthDayPicker({ name, label }: MonthDayPickerProps) {
-  const form = useFormContext();
+}) {
   const { theme } = useThemeStore();
 
   const months = [
@@ -421,7 +461,7 @@ export function MonthDayPicker({ name, label }: MonthDayPickerProps) {
       <div className="flex space-x-2">
         <FormField
           control={form.control}
-          name={`${name}.month`}
+          name={`month`}
           render={({ field }) => (
             <Select onValueChange={field.onChange} defaultValue={field.value}>
               <FormControl>
@@ -433,7 +473,7 @@ export function MonthDayPicker({ name, label }: MonthDayPickerProps) {
               </FormControl>
               <SelectContent>
                 {months.map((month, index) => (
-                  <SelectItem key={month} value={(index + 1).toString()}>
+                  <SelectItem key={(index + 1).toString()} value={month}>
                     {month}
                   </SelectItem>
                 ))}
@@ -443,7 +483,7 @@ export function MonthDayPicker({ name, label }: MonthDayPickerProps) {
         />
         <FormField
           control={form.control}
-          name={`${name}.day`}
+          name={`day`}
           render={({ field }) => (
             <Select onValueChange={field.onChange} defaultValue={field.value}>
               <FormControl>

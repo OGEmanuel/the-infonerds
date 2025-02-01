@@ -19,6 +19,7 @@ interface Props {
   label: string;
   placeholder?: string;
   value?: string;
+  disabled?: boolean;
 }
 
 export default function TextInput({
@@ -28,6 +29,7 @@ export default function TextInput({
   field,
   fieldState,
   validated,
+  disabled,
 }: Props) {
   const { theme } = useThemeStore();
   useEffect(() => {
@@ -50,6 +52,7 @@ export default function TextInput({
           placeholder={placeholder}
           type={type}
           className={`rounded-2xl border-none p-4 font-medium ${theme === 'light' ? 'bg-[#f9f9f9] text-black placeholder:text-[#6B7280]' : 'bg-[#1e1e1e] text-[#f8f8f8] placeholder:text-[#9CA3AF]'}`}
+          disabled={disabled}
           {...field}
         />
       </FormControl>

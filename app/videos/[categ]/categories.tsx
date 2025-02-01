@@ -14,6 +14,7 @@ import {
   Concerts,
   Corporate,
   Documentaries,
+  FullData,
   Motion,
   Proposals,
   RealEstate,
@@ -88,14 +89,16 @@ const Categories = ({ page }: { page: string }) => {
     return `https://img.youtube.com/vi/${videoId}/${quality}default.jpg`;
   };
 
-  const randomizedMapping = Category.videos
-    .sort(() => Math.random() - 0.5) // Randomize the order
-    .map((item, i) => i * 2); // Apply your mapping logic
+  if (Category !== Weddings) {
+    const randomizedMapping = Category.videos
+      .sort(() => Math.random() - 0.5) // Randomize the order
+      .map((_, i) => i * 2); // Apply your mapping logic
+  }
 
   return (
     <div>
       {/* Regular Videos Grid */}
-      {randomizedMapping.length > 0 && (
+      {Category.videos.length > 0 && (
         <div className="mt-3">
           <h2
             className={`mb-4 text-2xl font-bold ${theme === 'light' ? 'text-black' : 'text-white'} `}

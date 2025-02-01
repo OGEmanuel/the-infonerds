@@ -15,14 +15,20 @@ import { useToast } from '@/components/ui/use-toast';
 import useThemeStore from '@/store/theme-control';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Mail } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 const FormSchema = z.object({
-  email: z.string().min(2, { message: 'Enter a valid email address.' }).trim(),
+  email: z
+    .string({
+      required_error: 'Please provide a valid email',
+    })
+    .email(),
 });
 
 export function MailingListForm() {
+  const [open, setOpen] = useState(false);
   const { theme } = useThemeStore();
   const { toast } = useToast();
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -31,6 +37,14 @@ export function MailingListForm() {
       email: '',
     },
   });
+
+  useEffect(() => {
+    const hasSeenModal = sessionStorage.getItem('hasSeenMailingListModal');
+    if (!hasSeenModal) {
+      setOpen(true);
+      sessionStorage.setItem('hasSeenMailingListModal', 'true');
+    }
+  }, []);
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
     toast({
@@ -43,7 +57,7 @@ export function MailingListForm() {
     });
   }
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button
           type="submit"
