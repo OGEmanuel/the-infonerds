@@ -17,10 +17,12 @@ const Footer = () => {
       <div
         className={`fixed bottom-0 left-0 right-0 flex h-[30rem] w-full flex-col items-center justify-center gap-3 ${theme === 'light' ? 'bg-[#f9f9f9]' : 'bg-[#1e1e1e]'} sm:h-80 sm:flex-row sm:gap-6`}
       >
-        <Logo
-          src={theme === 'light' ? blackLogo : whiteLogo}
-          alt="Nerd Not Noob Logo"
-        />
+        <Link href="/">
+          <Logo
+            src={theme === 'light' ? blackLogo : whiteLogo}
+            alt="Nerd Not Noob Logo"
+          />
+        </Link>
         <div
           className={`flex flex-col items-center justify-center gap-6 ${theme === 'light' ? 'text-black' : 'text-white'}`}
         >
