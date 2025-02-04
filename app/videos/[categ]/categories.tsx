@@ -89,7 +89,7 @@ const Categories = ({ page }: { page: string }) => {
     return `https://img.youtube.com/vi/${videoId}/${quality}default.jpg`;
   };
 
-  if (Category !== Weddings) {
+  if (Category !== Weddings || Category !== Commercials) {
     const randomizedMapping = Category.videos
       .sort(() => Math.random() - 0.5) // Randomize the order
       .map((_, i) => i * 2); // Apply your mapping logic

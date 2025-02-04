@@ -238,7 +238,7 @@ export function ContactForm() {
                       <FormLabel
                         className={`font-medium ${theme === 'light' ? 'text-black' : 'text-white'}`}
                       >
-                        Event type
+                        Category type
                       </FormLabel>
                     </div>
                     <div className="flex flex-wrap gap-2">
@@ -288,8 +288,8 @@ export function ContactForm() {
                 name="otherEvent"
                 render={({ field, fieldState }) => (
                   <TextInput
-                    placeholder="Specify other event type"
-                    label={'Other event type'}
+                    placeholder="Wedding, pre-wedding, portrait session, events, corporate etc."
+                    label={'Other category type'}
                     fieldState={fieldState}
                     disabled={!form.watch('events').includes('others')}
                     field={field}
@@ -401,8 +401,7 @@ export function ContactForm() {
                         Accept terms and conditions
                       </FormLabel>
                       <FormDescription>
-                        You agree to our <TermsAndConditions /> and Privacy
-                        Policy.
+                        You agree to our <TermsAndConditions />.
                       </FormDescription>
                       <FormMessage />
                     </div>
