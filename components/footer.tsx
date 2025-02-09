@@ -1,11 +1,13 @@
 import { NavLink } from '@/app/nav';
 import SocialMedia from '@/app/social-media';
-import LogoIcon from '@/public/icons/LogoIcon';
 import useThemeStore from '@/store/theme-control';
 import Link from 'next/link';
 import Logo from './logo';
 import blackLogo from '@/public/images/logo-black.png';
 import whiteLogo from '@/public/images/logo-white.png';
+import Image from 'next/image';
+import InfoWhite from '@/public/images/info_1.png';
+import InfoBlack from '@/public/images/info_2.png';
 
 const Footer = () => {
   const { theme } = useThemeStore();
@@ -50,7 +52,12 @@ const Footer = () => {
                 the INFO nerds
               </Link>
             </p>
-            <LogoIcon />
+            <Image
+              src={theme === 'light' ? InfoBlack : InfoWhite}
+              alt="the INFO nerds"
+              width={64}
+              height={64}
+            />
           </div>
         </div>
       </div>

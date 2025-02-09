@@ -3,20 +3,26 @@
 import Logo from '@/components/logo';
 import useThemeStore from '@/store/theme-control';
 import { useEffect, useRef } from 'react';
-import cadburyBlack from '@/public/images/Cadbury Black.png';
-import cadburyWhite from '@/public/images/Cadbury White.png';
-import danoBlack from '@/public/images/Dano Black.png';
-import danoWhite from '@/public/images/Dano White.png';
-import infinixBlack from '@/public/images/Infinix Black.png';
-import infinixWhite from '@/public/images/Infinix White.png';
-import verveBlack from '@/public/images/Verve Black.png';
-import verveWhite from '@/public/images/Verve White.png';
-import whoBlack from '@/public/images/WHO Black.png';
-import whoWhite from '@/public/images/WHO White.png';
-import qoraWHite from '@/public/images/Qoray white.png';
-import qoraBlack from '@/public/images/Qoray black.png';
-import tffaBlack from '@/public/images/tffa black.png';
-import tffaWhite from '@/public/images/tffa white.png';
+import cadburyBlack from '@/public/icons/cadbury-black.svg';
+import cadburyWhite from '@/public/icons/cadbury-white.svg';
+import danoBlack from '@/public/icons/dano-black.svg';
+import danoWhite from '@/public/icons/dano-white.svg';
+import infinixBlack from '@/public/icons/infinix-black.svg';
+import infinixWhite from '@/public/icons/infinix-white.svg';
+import verveBlack from '@/public/icons/verve-black.svg';
+import verveWhite from '@/public/icons/verve-white.svg';
+import whoBlack from '@/public/icons/who-black.svg';
+import whoWhite from '@/public/icons/who-white.svg';
+import qoraWHite from '@/public/icons/qoray-white.svg';
+import qoraBlack from '@/public/icons/qoray-black.svg';
+import tffaBlack from '@/public/icons/tfa-black.svg';
+import tffaWhite from '@/public/icons/tfa-white.svg';
+import cocacolaBlack from '@/public/icons/cocacola-black.svg';
+import cocacolaWhite from '@/public/icons/cocacola-white.svg';
+import forkeepsBlack from '@/public/icons/forkeeps-black.svg';
+import forkeepsWhite from '@/public/icons/forkeeps-white.svg';
+import gtcoBlack from '@/public/icons/gtco-black.svg';
+import gtcoWhite from '@/public/icons/gtco-white.svg';
 import Image from 'next/image';
 
 const Marquee = () => {
@@ -75,123 +81,73 @@ const Marquee = () => {
 
   return (
     <div
-      className={`flex flex-col gap-8 overflow-hidden px-4 text-center sm:px-8 lg:px-16`}
+      className={`mx-auto flex flex-col gap-8 px-4 text-center md:px-10 lg:px-20`}
     >
       <div ref={scrollersDarkRef} className={`scroller mx-auto max-w-[1144px]`}>
         <div
           ref={scrollerDarkInnerRef}
-          className={`scroller__inner mx-auto flex flex-wrap gap-[5rem] py-4`}
+          className={`scroller__inner mx-auto flex flex-wrap gap-[7.5rem] py-4`}
         >
           <Image
-            src={
-              theme === 'light'
-                ? '/images/WHO Black.png'
-                : '/images/WHO White.png'
-            }
+            src={theme === 'light' ? cocacolaBlack : cocacolaWhite}
+            alt="Cocacola"
+            width={200}
+            height={200}
+          />
+          <Image
+            src={theme === 'light' ? whoBlack : whoWhite}
             alt="WHO"
             width={200}
             height={200}
           />
           <Image
-            src={
-              theme === 'light'
-                ? '/images/Cadbury Black.png'
-                : '/images/Cadbury White.png'
-            }
-            alt="Cadbury"
+            src={theme === 'light' ? gtcoBlack : gtcoWhite}
+            alt="GTCO"
             width={200}
             height={200}
           />
           <Image
-            src={
-              theme === 'light'
-                ? '/images/Infinix Black.png'
-                : '/images/Infinix White.png'
-            }
-            alt="Infinix"
-            width={200}
-            height={200}
-          />
-          <Image
-            src={
-              theme === 'light'
-                ? '/images/Verve Black.png'
-                : '/images/Verve White.png'
-            }
+            src={theme === 'light' ? verveBlack : verveWhite}
             alt="Verve"
             width={200}
             height={200}
           />
           <Image
-            src={
-              theme === 'light'
-                ? '/images/Dano Black.png'
-                : '/images/Dano White.png'
-            }
+            src={theme === 'light' ? infinixBlack : infinixWhite}
+            alt="Infinix"
+            width={200}
+            height={200}
+          />
+          <Image
+            src={theme === 'light' ? cadburyBlack : cadburyWhite}
+            alt="Cadbury"
+            width={200}
+            height={200}
+          />
+          <Image
+            src={theme === 'light' ? danoBlack : danoWhite}
             alt="Dano"
             width={200}
             height={200}
           />
           <Image
-            src={
-              theme === 'light'
-                ? '/images/Qoray black.png'
-                : '/images/Qoray white.png'
-            }
+            src={theme === 'light' ? qoraBlack : qoraWHite}
             alt="Qora"
             width={200}
             height={200}
           />
           <Image
-            src={
-              theme === 'light'
-                ? '/images/tffa black.png'
-                : '/images/tffa white.png'
-            }
+            src={theme === 'light' ? tffaBlack : tffaWhite}
             alt="tffa"
             width={200}
             height={200}
           />
-          {/* <Image
-            src={
-              theme === 'light'
-                ? '/images/Forkeeps Black.png'
-                : '/images/Forkeeps White.png'
-            }
-            alt="Forkeeps"
+          <Image
+            src={theme === 'light' ? forkeepsBlack : forkeepsWhite}
+            alt="ForKeeps"
             width={200}
             height={200}
-          /> */}
-          {/* <Logo
-            src={theme === 'light' ? whoBlack : whoWhite}
-            alt="WHO"
-            imageClassName="object-cover object-center"
-            className="h-5 w-5"
-          /> */}
-          {/* <Logo
-            src={theme === 'light' ? cadburyBlack : cadburyWhite}
-            alt="Cadbury"
-            imageClassName="object-cover object-center"
-            className="h-5 w-5"
-          /> */}
-          {/* <Logo
-            src={theme === 'light' ? verveBlack : verveWhite}
-            alt="Verve"
-            imageClassName="object-cover object-center"
-            className="h-5 w-5"
-          /> */}
-          {/* <Logo
-            src={theme === 'light' ? infinixBlack : infinixWhite}
-            alt="Infinix"
-            imageClassName="object-cover object-center"
-            className="h-5 w-5"
-          /> */}
-          {/* <Logo
-            src={theme === 'light' ? danoBlack : danoWhite}
-            alt="Dano Milk"
-            imageClassName="object-cover object-center"
-            className="h-5 w-5"
-          /> */}
+          />
         </div>
       </div>
     </div>
