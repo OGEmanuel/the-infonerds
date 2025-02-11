@@ -1,6 +1,5 @@
 'use client';
 
-import Logo from '@/components/logo';
 import useThemeStore from '@/store/theme-control';
 import { useEffect, useRef } from 'react';
 import cadburyBlack from '@/public/icons/cadbury-black.svg';
@@ -11,8 +10,8 @@ import infinixBlack from '@/public/icons/infinix-black.svg';
 import infinixWhite from '@/public/icons/infinix-white.svg';
 import verveBlack from '@/public/icons/verve-black.svg';
 import verveWhite from '@/public/icons/verve-white.svg';
-import whoBlack from '@/public/icons/who-black.svg';
-import whoWhite from '@/public/icons/who-white.svg';
+import whoBlack from '@/public/icons/WHO-black.svg';
+import whoWhite from '@/public/icons/WHO-white.svg';
 import qoraWHite from '@/public/icons/qoray-white.svg';
 import qoraBlack from '@/public/icons/qoray-black.svg';
 import tffaBlack from '@/public/icons/tfa-black.svg';
@@ -21,8 +20,8 @@ import cocacolaBlack from '@/public/icons/cocacola-black.svg';
 import cocacolaWhite from '@/public/icons/cocacola-white.svg';
 import forkeepsBlack from '@/public/icons/forkeeps-black.svg';
 import forkeepsWhite from '@/public/icons/forkeeps-white.svg';
-import gtcoBlack from '@/public/icons/gtco-black.svg';
-import gtcoWhite from '@/public/icons/gtco-white.svg';
+import gtcoBlack from '@/public/icons/GTCO-black.svg';
+import gtcoWhite from '@/public/icons/GTCO-white.svg';
 import Image from 'next/image';
 
 const Marquee = () => {
