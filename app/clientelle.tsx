@@ -80,10 +80,8 @@ const Marquee = () => {
   }, []);
 
   return (
-    <div
-      className={`mx-auto flex flex-col gap-8 px-4 text-center md:px-10 lg:px-20`}
-    >
-      <div ref={scrollersDarkRef} className={`scroller mx-auto max-w-[1144px]`}>
+    <div className={`flex flex-col justify-center gap-8 text-center`}>
+      <div ref={scrollersDarkRef} className={`scroller w-full max-w-[1440px]`}>
         <div
           ref={scrollerDarkInnerRef}
           className={`scroller__inner mx-auto flex flex-wrap gap-[7.5rem] py-4`}

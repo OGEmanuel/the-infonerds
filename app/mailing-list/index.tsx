@@ -9,18 +9,31 @@ import MailingListForm from './mailing-list-form';
 const MailingList = () => {
   const { theme } = useThemeStore();
   const [open, setOpen] = useState(false);
+  const scrollThreshold = 1000; // Adjust this value as needed
 
   const openDialog = () => {
     setOpen(true);
+    sessionStorage.setItem('hasSeenMailingListModal', 'true'); // Mark as seen
+  };
+
+  const handleScroll = () => {
+    const hasSeenModal = sessionStorage.getItem('hasSeenMailingListModal');
+    if (window.scrollY > scrollThreshold && !hasSeenModal) {
+      openDialog();
+      window.removeEventListener('scroll', handleScroll); // Remove listener after opening
+    }
   };
 
   useEffect(() => {
     const hasSeenModal = sessionStorage.getItem('hasSeenMailingListModal');
     if (!hasSeenModal) {
-      openDialog();
-      sessionStorage.setItem('hasSeenMailingListModal', 'true');
+      window.addEventListener('scroll', handleScroll);
     }
-  }, [openDialog]);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll); // Clean up on unmount
+    };
+  }, []);
 
   return (
     <>

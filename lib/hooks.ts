@@ -7,6 +7,8 @@ interface DriveImage {
   name: string;
   viewLink: string;
   downloadLink: string;
+  width: number;
+  height: number;
 }
 
 interface PaginatedResponse {

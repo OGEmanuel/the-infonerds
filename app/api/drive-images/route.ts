@@ -104,6 +104,7 @@ export async function GET(request: Request) {
       currentPage: pageToken ? parseInt(pageToken) : 1,
     });
   } catch (error) {
+    console.log('Here is the error', error);
     return NextResponse.json(
       { error: 'Failed to fetch images' },
       { status: 500 },

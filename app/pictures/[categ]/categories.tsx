@@ -182,64 +182,24 @@ export default Categories;
 const ImageCard = ({ image }: { image: DriveImage }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [aspectRatio, setAspectRatio] = useState<number | null>(null);
-  const [rowSpan, setRowSpan] = useState<number>(1); // Default to 1 row
-
-  const handleLoad = (event: SyntheticEvent<HTMLImageElement>) => {
-    const img = event.target as HTMLImageElement;
-    if (img.naturalWidth > 0 && img.naturalHeight > 0) {
-      setLoading(false);
-      // Calculate the number of rows based on the height
-      const aspectRatio = img.naturalWidth / img.naturalHeight;
-      // Set row span based on height
-      if (aspectRatio < 1) {
-        setRowSpan(2); // Portrait images may take more rows
-      } else if (aspectRatio >= 2) {
-        setRowSpan(1); // Wide landscape images take 1 row
-      } else {
-        setRowSpan(1); // Standard landscape images take 1 row
-      }
-    }
-  };
-
-  // const handleLoad = (event: SyntheticEvent<HTMLImageElement>) => {
-  //   const img = event.target as HTMLImageElement;
-  //   if (img.naturalWidth > 0) {
-  //     setLoading(false);
-  //     setAspectRatio(img.naturalWidth / img.naturalHeight);
-  //   }
-  // };
-
-  // Determine the column span based on the aspect ratio
-  const getColumnSpan = () => {
-    if (aspectRatio === null) return 'col-span-1'; // Default span
-    if (aspectRatio >= 2) return 'col-span-2 row-span-2'; // Landscape wide
-    if (aspectRatio >= 1) return 'col-span-2'; // Landscape
-    return 'col-span-1'; // Portrait
-  };
-
-  // Set a minimum height based on aspect ratio
-  const getHeightClass = () => {
-    if (aspectRatio === null) return 'min-h-64'; // Default min height
-    if (aspectRatio >= 2) return 'min-h-48'; // Landscape wide
-    if (aspectRatio >= 1) return 'min-h-64'; // Landscape
-    return 'min-h-80'; // Portrait
-  };
-
+  const { theme } = useThemeStore();
   return (
-    <div
-      className={`group relative overflow-hidden rounded-lg bg-gray-100 shadow-lg ${getColumnSpan()} ${getHeightClass()} row-span-${rowSpan}`}
-    >
+    <div className="group relative aspect-square overflow-hidden rounded-lg bg-gray-100 shadow-lg">
       {loading && <ImgFallback />}
       <Image
         src={image.viewLink}
         alt={image.name}
-        className="object-cover object-center transition-transform duration-300 group-hover:scale-110"
+        className="object-cover object-top transition-transform duration-300 group-hover:scale-110"
         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
         priority={false}
         quality={75}
         fill
-        onLoad={handleLoad}
+        onLoad={(event: SyntheticEvent<HTMLImageElement>) => {
+          const img = event.target as HTMLImageElement;
+          if (img.naturalWidth > 0) {
+            setLoading(false);
+          }
+        }}
         onError={() => {
           setError(true);
           setLoading(false);
@@ -249,72 +209,3 @@ const ImageCard = ({ image }: { image: DriveImage }) => {
     </div>
   );
 };
-
-// const ImageCard = ({ image }: { image: DriveImage }) => {
-//   const [loading, setLoading] = useState(true);
-//   const [error, setError] = useState(false);
-//   const [aspectRatio, setAspectRatio] = useState<number | null>(null);
-
-//   const handleLoad = (event: SyntheticEvent<HTMLImageElement>) => {
-//     const img = event.target as HTMLImageElement;
-//     if (img.naturalWidth > 0) {
-//       setLoading(false);
-//       setAspectRatio(img.naturalWidth / img.naturalHeight);
-//     }
-//   };
-
-//   return (
-//     <div
-//       className={`group relative overflow-hidden rounded-lg bg-gray-100 shadow-lg ${
-//         aspectRatio ? (aspectRatio > 1 ? 'h-64' : 'h-80') : 'h-64'
-//       }`}
-//     >
-//       {loading && <ImgFallback />}
-//       <Image
-//         src={image.viewLink}
-//         alt={image.name}
-//         className="object-cover object-top transition-transform duration-300 group-hover:scale-110"
-//         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-//         priority={false}
-//         quality={75}
-//         fill
-//         onLoad={handleLoad}
-//         onError={() => {
-//           setError(true);
-//           setLoading(false);
-//         }}
-//       />
-//       {error && <ErrorMessage />}
-//     </div>
-//   );
-// };
-
-// const ImageCard = ({ image }: { image: DriveImage }) => {
-//   const [loading, setLoading] = useState(true);
-//   const [error, setError] = useState(false);
-//   return (
-//     <div className="group relative aspect-square overflow-hidden rounded-lg bg-gray-100 shadow-lg">
-//       {loading && <ImgFallback />}
-//       <Image
-//         src={image.viewLink}
-//         alt={image.name}
-//         className="object-cover object-top transition-transform duration-300 group-hover:scale-110"
-//         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-//         priority={false}
-//         quality={75}
-//         fill
-//         onLoad={(event: SyntheticEvent<HTMLImageElement>) => {
-//           const img = event.target as HTMLImageElement;
-//           if (img.naturalWidth > 0) {
-//             setLoading(false);
-//           }
-//         }}
-//         onError={() => {
-//           setError(true);
-//           setLoading(false);
-//         }}
-//       />
-//       {error && <ErrorMessage />}
-//     </div>
-//   );
-// };
