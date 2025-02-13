@@ -136,8 +136,10 @@ export const MobileMailingListForm = (props: {
   return (
     <Card
       className={cn(
-        `fixed bottom-0 z-[9999] w-full sm:hidden ${theme === 'dark' ? 'bg-[#1e1e1e]/50 backdrop-blur-xl' : 'bg-white'}`,
-        props.open ? 'block' : 'hidden',
+        `fixed bottom-0 w-full transition-all sm:hidden ${theme === 'dark' ? 'bg-[#1e1e1e]/50 backdrop-blur-xl' : 'bg-white'}`,
+        props.open
+          ? 'z-[9999] translate-y-0 opacity-100'
+          : '-z-[9999] translate-y-full opacity-0',
       )}
     >
       <CardHeader>

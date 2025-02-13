@@ -62,9 +62,7 @@ const MailingList = () => {
         Join Our Mailing List
         <Mail className="ml-2 h-5 w-5" />
       </Button>
-      <div className="">
-        <MailingListForm open={open} setOpen={setOpen} />
-      </div>
+      <MailingListForm open={open} setOpen={setOpen} />
       <MobileMailingListForm open={openSmall} setOpen={setOpenSmall} />
     </>
   );
