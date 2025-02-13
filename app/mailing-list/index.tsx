@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/button';
 import useThemeStore from '@/store/theme-control';
 import { Mail } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import MailingListForm, { MobileMailingListForm } from './mailing-list-form';
 import { set } from 'zod';
 
@@ -11,7 +11,7 @@ const MailingList = () => {
   const { theme } = useThemeStore();
   const [open, setOpen] = useState(false);
   const [openSmall, setOpenSmall] = useState(false);
-  const scrollThreshold = 1000; // Adjust this value as needed
+  const scrollThreshold = 1000;
 
   const openDialog = () => {
     const isMobile = window.innerWidth <= 639;
@@ -20,16 +20,16 @@ const MailingList = () => {
     } else {
       setOpen(true);
     }
-    sessionStorage.setItem('hasSeenMailingListModal', 'true'); // Mark as seen
+    sessionStorage.setItem('hasSeenMailingListModal', 'true');
   };
 
-  const handleScroll = () => {
+  const handleScroll = useCallback(() => {
     const hasSeenModal = sessionStorage.getItem('hasSeenMailingListModal');
     if (window.scrollY > scrollThreshold && !hasSeenModal) {
       openDialog();
-      window.removeEventListener('scroll', handleScroll); // Remove listener after opening
+      window.removeEventListener('scroll', handleScroll);
     }
-  };
+  }, [scrollThreshold]);
 
   useEffect(() => {
     const hasSeenModal = sessionStorage.getItem('hasSeenMailingListModal');
@@ -38,9 +38,9 @@ const MailingList = () => {
     }
 
     return () => {
-      window.removeEventListener('scroll', handleScroll); // Clean up on unmount
+      window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [handleScroll]);
 
   return (
     <>
