@@ -47,7 +47,7 @@ const MailingList = () => {
       <Button
         type="submit"
         onClick={() => setOpen(true)}
-        className={`hidden max-w-80 rounded-xl p-4 font-medium sm:block ${theme === 'light' ? 'bg-btn-gradient-light text-black' : 'bg-btn-gradient text-white'}`}
+        className={`hidden max-w-80 rounded-xl p-4 font-medium sm:flex ${theme === 'light' ? 'bg-btn-gradient-light text-black' : 'bg-btn-gradient text-white'}`}
       >
         Join Our Mailing List
         <Mail className="ml-2 h-5 w-5" />
