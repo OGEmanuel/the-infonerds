@@ -12,7 +12,7 @@ import verveBlack from '@/public/icons/verve-black.svg';
 import verveWhite from '@/public/icons/verve-white.svg';
 import whoBlack from '@/public/icons/WHO-Black.svg';
 import whoWhite from '@/public/icons/WHO-white.svg';
-import qoraWHite from '@/public/icons/qoray-white.svg';
+import qoraWhite from '@/public/icons/qoray-white.svg';
 import qoraBlack from '@/public/icons/qoray-black.svg';
 import tffaBlack from '@/public/icons/tfa-black.svg';
 import tffaWhite from '@/public/icons/tfa-white.svg';
@@ -22,7 +22,10 @@ import forkeepsBlack from '@/public/icons/forkeeps-black.svg';
 import forkeepsWhite from '@/public/icons/forkeeps-white.svg';
 import gtcoBlack from '@/public/icons/GTCO-black.svg';
 import gtcoWhite from '@/public/icons/GTCO-white.svg';
+import tecnoBlack from '@/public/icons/tecno-black.svg';
+import tecnoWhite from '@/public/icons/tecno-white.svg';
 import Image from 'next/image';
+import { cn } from '@/lib/utils';
 
 const Marquee = () => {
   const scrollersRef = useRef<HTMLDivElement>(null);
@@ -79,72 +82,53 @@ const Marquee = () => {
   }, []);
 
   return (
-    <div className={`flex flex-col justify-center gap-8 text-center`}>
-      <div ref={scrollersDarkRef} className={`scroller w-full max-w-[1440px]`}>
+    <div className={`grid-stack grid justify-center text-center`}>
+      <div
+        ref={scrollersRef}
+        className={cn(
+          `scroller grid-area-stack`,
+          theme === 'light' && 'invisible',
+        )}
+      >
+        <div
+          ref={scrollerInnerRef}
+          className={`scroller__inner flex flex-wrap gap-[5rem]`}
+        >
+          <Image src={tecnoWhite} alt="Tecno" width={100} height={100} />
+          <Image src={cocacolaWhite} alt="Cocacola" width={100} height={100} />
+          <Image src={whoWhite} alt="WHO" width={100} height={100} />
+          <Image src={gtcoWhite} alt="GTCO" width={100} height={100} />
+          <Image src={verveWhite} alt="Verve" width={100} height={100} />
+          <Image src={infinixWhite} alt="Infinix" width={100} height={100} />
+          <Image src={cadburyWhite} alt="Cadbury" width={100} height={100} />
+          <Image src={danoWhite} alt="Dano" width={100} height={100} />
+          <Image src={qoraWhite} alt="Qora" width={100} height={100} />
+          <Image src={tffaWhite} alt="tffa" width={100} height={100} />
+          <Image src={forkeepsWhite} alt="ForKeeps" width={100} height={100} />
+        </div>
+      </div>
+      <div
+        ref={scrollersDarkRef}
+        className={cn(
+          `scroller grid-area-stack`,
+          theme === 'dark' && 'invisible',
+        )}
+      >
         <div
           ref={scrollerDarkInnerRef}
-          className={`scroller__inner mx-auto flex flex-wrap gap-[7.5rem] py-4`}
+          className={`scroller__inner flex flex-wrap gap-[5rem]`}
         >
-          <Image
-            src={theme === 'light' ? cocacolaBlack : cocacolaWhite}
-            alt="Cocacola"
-            width={200}
-            height={200}
-          />
-          <Image
-            src={theme === 'light' ? whoBlack : whoWhite}
-            alt="WHO"
-            width={200}
-            height={200}
-          />
-          <Image
-            src={theme === 'light' ? gtcoBlack : gtcoWhite}
-            alt="GTCO"
-            width={200}
-            height={200}
-          />
-          <Image
-            src={theme === 'light' ? verveBlack : verveWhite}
-            alt="Verve"
-            width={200}
-            height={200}
-          />
-          <Image
-            src={theme === 'light' ? infinixBlack : infinixWhite}
-            alt="Infinix"
-            width={200}
-            height={200}
-          />
-          <Image
-            src={theme === 'light' ? cadburyBlack : cadburyWhite}
-            alt="Cadbury"
-            width={200}
-            height={200}
-          />
-          <Image
-            src={theme === 'light' ? danoBlack : danoWhite}
-            alt="Dano"
-            width={200}
-            height={200}
-          />
-          <Image
-            src={theme === 'light' ? qoraBlack : qoraWHite}
-            alt="Qora"
-            width={200}
-            height={200}
-          />
-          <Image
-            src={theme === 'light' ? tffaBlack : tffaWhite}
-            alt="tffa"
-            width={200}
-            height={200}
-          />
-          <Image
-            src={theme === 'light' ? forkeepsBlack : forkeepsWhite}
-            alt="ForKeeps"
-            width={200}
-            height={200}
-          />
+          <Image src={tecnoBlack} alt="Tecno" width={100} height={100} />
+          <Image src={cocacolaBlack} alt="Cocacola" width={100} height={100} />
+          <Image src={whoBlack} alt="WHO" width={100} height={100} />
+          <Image src={gtcoBlack} alt="GTCO" width={100} height={100} />
+          <Image src={verveBlack} alt="Verve" width={100} height={100} />
+          <Image src={infinixBlack} alt="Infinix" width={100} height={100} />
+          <Image src={cadburyBlack} alt="Cadbury" width={100} height={100} />
+          <Image src={danoBlack} alt="Dano" width={100} height={100} />
+          <Image src={qoraBlack} alt="Qora" width={100} height={100} />
+          <Image src={tffaBlack} alt="tffa" width={100} height={100} />
+          <Image src={forkeepsBlack} alt="ForKeeps" width={100} height={100} />
         </div>
       </div>
     </div>
