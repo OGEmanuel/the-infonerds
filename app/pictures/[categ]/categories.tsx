@@ -12,6 +12,7 @@ import { useInfiniteDriveImages } from '@/lib/hooks';
 import { ArrowUpIcon, Loader2 } from 'lucide-react';
 import ImgFallback, { ErrorMessage } from '@/components/img-fallback';
 import useThemeStore from '@/store/theme-control';
+import Masonry from 'react-masonry-css';
 interface DriveImage {
   id: string;
   name: string;
@@ -82,6 +83,18 @@ const Categories = ({ page }: { page: string }) => {
     [fetchNextPage, hasNextPage, isFetchingNextPage],
   );
 
+  const breakpointColumnsObj = {
+    default: 4,
+    1300: 3,
+    1200: 3,
+    1100: 3,
+    900: 2,
+    800: 2,
+    700: 2,
+    600: 1,
+    500: 1,
+  };
+
   useEffect(() => {
     const element = observerTarget.current;
 
@@ -143,11 +156,15 @@ const Categories = ({ page }: { page: string }) => {
 
   return (
     <div className="flex flex-col gap-10">
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <Masonry
+        breakpointCols={breakpointColumnsObj}
+        className="my-masonry-grid"
+        columnClassName="my-masonry-grid_column items-center flex-col flex"
+      >
         {data?.pages.map(page =>
           page.images.map(image => <ImageCard key={image.id} image={image} />),
         )}
-      </div>
+      </Masonry>
       <div ref={observerTarget} className="h-4 w-full" aria-hidden="true" />
       {isFetchingNextPage && (
         <div className="flex items-center justify-center p-4">
@@ -184,7 +201,7 @@ const ImageCard = ({ image }: { image: DriveImage }) => {
   const [error, setError] = useState(false);
   const { theme } = useThemeStore();
   return (
-    <div className="group relative aspect-square overflow-hidden rounded-lg bg-gray-100 shadow-lg">
+    <div className="group relative h-max w-max overflow-hidden rounded-lg bg-gray-100 shadow-lg">
       {loading && <ImgFallback />}
       <Image
         src={image.viewLink}
@@ -193,7 +210,9 @@ const ImageCard = ({ image }: { image: DriveImage }) => {
         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
         priority={false}
         quality={75}
-        fill
+        width={300}
+        height={0}
+        layout="intrinsic"
         onLoad={(event: SyntheticEvent<HTMLImageElement>) => {
           const img = event.target as HTMLImageElement;
           if (img.naturalWidth > 0) {
