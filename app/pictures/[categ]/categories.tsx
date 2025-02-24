@@ -1,18 +1,14 @@
 'use client';
 
 import Image from 'next/image';
-import {
-  SyntheticEvent,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
-import { useInfiniteDriveImages } from '@/lib/hooks';
+import { SyntheticEvent, useState } from 'react';
+import useTripleColumnInfiniteScroll, {
+  useInfiniteDriveImages,
+} from '@/lib/hooks';
 import { ArrowUpIcon, Loader2 } from 'lucide-react';
 import ImgFallback, { ErrorMessage } from '@/components/img-fallback';
 import useThemeStore from '@/store/theme-control';
-import Masonry from 'react-masonry-css';
+
 interface DriveImage {
   id: string;
   name: string;
@@ -58,9 +54,6 @@ const Categories = ({ page }: { page: string }) => {
     folderId = bts;
   }
 
-  const observerTarget = useRef<HTMLDivElement>(null);
-  const observer = useRef<IntersectionObserver | null>(null);
-
   const {
     data,
     fetchNextPage,
@@ -71,52 +64,22 @@ const Categories = ({ page }: { page: string }) => {
     error,
   } = useInfiniteDriveImages(folderId);
 
-  console.log(data);
-
-  const handleObserver = useCallback(
-    (entries: IntersectionObserverEntry[]) => {
-      const [target] = entries;
-      if (target.isIntersecting && hasNextPage && !isFetchingNextPage) {
-        fetchNextPage();
-      }
-    },
-    [fetchNextPage, hasNextPage, isFetchingNextPage],
-  );
-
-  const breakpointColumnsObj = {
-    default: 4,
-    1300: 3,
-    1200: 3,
-    1100: 3,
-    900: 2,
-    800: 2,
-    700: 2,
-    600: 1,
-    500: 1,
-  };
-
-  useEffect(() => {
-    const element = observerTarget.current;
-
-    if (!element) return;
-
-    if (observer.current) {
-      observer.current.disconnect();
-    }
-
-    observer.current = new IntersectionObserver(handleObserver, {
-      rootMargin: '100px',
-      threshold: 0.1,
-    });
-
-    observer.current.observe(element);
-
-    return () => {
-      if (observer.current) {
-        observer.current.disconnect();
-      }
-    };
-  }, [handleObserver]);
+  const {
+    columnData,
+    observerTarget,
+    isError: hookError,
+    error: hookErrorDetails,
+    isPending: hookPending,
+    isFetchingNextPage: hookFetching,
+  } = useTripleColumnInfiniteScroll({
+    data,
+    isError,
+    error,
+    hasNextPage,
+    isFetchingNextPage,
+    isPending,
+    fetchNextPage,
+  });
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -156,15 +119,23 @@ const Categories = ({ page }: { page: string }) => {
 
   return (
     <div className="flex flex-col gap-10">
-      <Masonry
-        breakpointCols={breakpointColumnsObj}
-        className="my-masonry-grid"
-        columnClassName="my-masonry-grid_column items-center flex-col flex"
-      >
-        {data?.pages.map(page =>
-          page.images.map(image => <ImageCard key={image.id} image={image} />),
-        )}
-      </Masonry>
+      <div className="flex w-full justify-center gap-5 max-xl:flex-wrap">
+        <div className="flex flex-col gap-5">
+          {columnData.column1.map(image => (
+            <ImageCard key={image.id} image={image} />
+          ))}
+        </div>
+        <div className="flex flex-col gap-5">
+          {columnData.column2.map(image => (
+            <ImageCard key={image.id} image={image} />
+          ))}
+        </div>
+        <div className="flex flex-col gap-5">
+          {columnData.column3.map(image => (
+            <ImageCard key={image.id} image={image} />
+          ))}
+        </div>
+      </div>
       <div ref={observerTarget} className="h-4 w-full" aria-hidden="true" />
       {isFetchingNextPage && (
         <div className="flex items-center justify-center p-4">
@@ -210,7 +181,7 @@ const ImageCard = ({ image }: { image: DriveImage }) => {
         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
         priority={false}
         quality={75}
-        width={300}
+        width={400}
         height={0}
         layout="intrinsic"
         onLoad={(event: SyntheticEvent<HTMLImageElement>) => {

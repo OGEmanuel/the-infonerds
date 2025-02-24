@@ -8,16 +8,7 @@ interface QueryProviderProps {
   children: React.ReactNode;
 }
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      refetchOnWindowFocus: false,
-      refetchOnMount: false,
-      retry: 3,
-      staleTime: 5 * (60 * 1000), // 5 minutes
-    },
-  },
-});
+const queryClient = new QueryClient();
 
 const QueryProvider = ({ children }: QueryProviderProps) => {
   const { theme } = useThemeStore();

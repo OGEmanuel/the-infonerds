@@ -1,9 +1,8 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm, type UseFormReturn } from 'react-hook-form';
+import { useFieldArray, useForm, type UseFormReturn } from 'react-hook-form';
 import { z } from 'zod';
-
 import { Button } from '@/components/ui/button';
 import {
   Form,
@@ -22,7 +21,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover';
-import { CalendarIcon } from 'lucide-react';
+import { CalendarIcon, Trash2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Calendar } from '@/components/ui/calendar';
 import { format } from 'date-fns';
@@ -48,7 +47,6 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import Link from 'next/link';
-import { Input } from '@/components/ui/input';
 
 const items = [
   {
@@ -96,12 +94,22 @@ const FormSchema = z.object({
     message: 'You have to select at least one item.',
   }),
   otherEvent: z.string().optional(),
-  date: z.date({
-    required_error: 'A date is required.',
-  }),
-  location: z.string().min(2, {
-    message: 'Enter a valid location.',
-  }),
+  production: z.array(
+    z.object({
+      date: z.string().min(2, {
+        message: 'Provide a valid date.',
+      }),
+      location: z.string().min(2, {
+        message: 'Enter a valid location.',
+      }),
+    }),
+  ),
+  // date: z.date({
+  //   required_error: 'A date is required.',
+  // }),
+  // location: z.string().min(2, {
+  //   message: 'Enter a valid location.',
+  // }),
   month: z
     .string()
     .min(2, {
@@ -130,14 +138,20 @@ export function ContactForm() {
     defaultValues: {
       name: '',
       smHandle: '',
-      date: new Date(),
-      location: '',
+      production: [{ location: '', date: '' }],
+      // date: new Date(),
+      // location: '',
       events: [],
       email: '',
       message: '',
       terms: false,
       otherEvent: '',
     },
+  });
+
+  const { fields, append, remove } = useFieldArray({
+    control: form.control,
+    name: 'production',
   });
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
@@ -238,7 +252,7 @@ export function ContactForm() {
                       <FormLabel
                         className={`font-medium ${theme === 'light' ? 'text-black' : 'text-white'}`}
                       >
-                        Category type
+                        Production type
                       </FormLabel>
                     </div>
                     <div className="flex flex-wrap gap-2">
@@ -289,74 +303,113 @@ export function ContactForm() {
                 render={({ field, fieldState }) => (
                   <TextInput
                     placeholder="Wedding, pre-wedding, portrait session, events, corporate etc."
-                    label={'Other category type'}
+                    label={'Other production type'}
                     fieldState={fieldState}
                     disabled={!form.watch('events').includes('others')}
                     field={field}
                   />
                 )}
               />
-              <div className="grid-cols-2 items-end gap-x-4 gap-y-12 md:grid">
-                <FormField
-                  control={form.control}
-                  name="date"
-                  render={({ field }) => (
-                    <FormItem className="flex flex-col space-y-3">
-                      <FormLabel
-                        className={`font-medium ${theme === 'light' ? 'text-black' : 'text-white'}`}
-                      >
-                        Event date
-                      </FormLabel>
-                      <Popover>
-                        <PopoverTrigger asChild>
-                          <FormControl>
-                            <Button
-                              variant={'outline'}
-                              className={cn(
-                                `w-full rounded-2xl border-none ${theme === 'light' ? 'bg-[#f9f9f9] text-black' : 'bg-[#1e1e1e] text-[#f8f8f8]'}  p-4 text-left font-medium`,
-                                !field.value && 'text-muted-foreground',
-                              )}
+              <div className="flex flex-col gap-4">
+                {fields.map((field, index) => (
+                  <div key={field.id} className="relative">
+                    <div className="grid-cols-2 items-end gap-x-4 gap-y-12 md:grid">
+                      <FormField
+                        control={form.control}
+                        name={`production.${index}.date`}
+                        render={({ field }) => (
+                          <FormItem className="flex flex-col space-y-3">
+                            <FormLabel
+                              className={`font-medium ${theme === 'light' ? 'text-black' : 'text-white'}`}
                             >
-                              {field.value ? (
-                                format(field.value, 'PPP')
-                              ) : (
-                                <span
-                                  className={`font-medium ${theme === 'light' ? 'text-black' : 'text-[#9CA3AF]'}`}
-                                >
-                                  Pick a date
-                                </span>
-                              )}
-                              <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                            </Button>
-                          </FormControl>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-auto p-0" align="start">
-                          <Calendar
-                            mode="single"
-                            selected={field.value}
-                            onSelect={field.onChange}
-                            disabled={date => date < new Date()}
-                            initialFocus
-                          />
-                        </PopoverContent>
-                      </Popover>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                              Production date
+                            </FormLabel>
+                            <Popover>
+                              <PopoverTrigger asChild>
+                                <FormControl>
+                                  <Button
+                                    variant={'outline'}
+                                    className={cn(
+                                      `w-full rounded-2xl border-none ${theme === 'light' ? 'bg-[#f9f9f9] text-black' : 'bg-[#1e1e1e] text-[#f8f8f8]'} p-4 text-left font-medium`,
+                                      !field.value && 'text-muted-foreground',
+                                    )}
+                                  >
+                                    {field.value ? (
+                                      format(field.value, 'PPP')
+                                    ) : (
+                                      <span
+                                        className={`font-medium ${theme === 'light' ? 'text-black' : 'text-[#9CA3AF]'}`}
+                                      >
+                                        Pick a date
+                                      </span>
+                                    )}
+                                    <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                                  </Button>
+                                </FormControl>
+                              </PopoverTrigger>
+                              <PopoverContent
+                                className="w-auto p-0"
+                                align="start"
+                              >
+                                <Calendar
+                                  mode="single"
+                                  selected={
+                                    field.value
+                                      ? new Date(field.value)
+                                      : undefined
+                                  }
+                                  onSelect={selectedDate =>
+                                    form.setValue(
+                                      `production.${index}.date`,
+                                      selectedDate
+                                        ? selectedDate.toISOString()
+                                        : '',
+                                    )
+                                  }
+                                  disabled={date => date < new Date()}
+                                  initialFocus
+                                />
+                              </PopoverContent>
+                            </Popover>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
 
-                <FormField
-                  control={form.control}
-                  name="location"
-                  render={({ field, fieldState }) => (
-                    <TextInput
-                      placeholder="Where's the place"
-                      label={'Shoot location'}
-                      fieldState={fieldState}
-                      field={field}
-                    />
-                  )}
-                />
+                      <FormField
+                        control={form.control}
+                        name={`production.${index}.location`}
+                        render={({ field, fieldState }) => (
+                          <div className="relative">
+                            <TextInput
+                              placeholder="Where's the place?"
+                              label={'Location'}
+                              fieldState={fieldState}
+                              field={field}
+                            />
+                            {index > 0 && (
+                              <Button
+                                type="button"
+                                size="icon"
+                                className="absolute -right-0 -top-1 bg-transparent text-destructive hover:bg-transparent"
+                                onClick={() => remove(index)}
+                              >
+                                <Trash2 className="h-4 w-4" />
+                              </Button>
+                            )}
+                          </div>
+                        )}
+                      />
+                    </div>
+                  </div>
+                ))}
+                <Button
+                  type="button"
+                  onClick={() => append({ location: '', date: '' })}
+                  className={`w-full rounded-xl p-4 font-medium ${theme === 'light' ? 'bg-btn-gradient-light text-black' : 'bg-btn-gradient text-white'}`}
+                >
+                  Add
+                </Button>
               </div>
               <MonthDayPicker form={form} label="Birthday" />
               <FormField
