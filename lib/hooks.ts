@@ -19,22 +19,49 @@ interface ColumnData {
   column3: DriveImage[];
 }
 
+interface DriveFile {
+  id: string;
+  name: string;
+  mimeType?: string;
+  size?: number;
+}
+
+// interface DriveResponse {
+//   files: DriveFile[];
+//   nextPageToken?: string;
+// }
+
+interface PaginatedResponse {
+  images: DriveImage[];
+  nextPageToken?: string;
+  totalItems?: number;
+}
+
+// interface DriveImage {
+//   id: string;
+//   name: string;
+//   viewLink: string;
+//   downloadLink: string;
+//   width: number;
+//   height: number;
+// }
+
 interface DriveImage {
   id: string;
   name: string;
   viewLink: string;
   downloadLink: string;
-  width: number;
-  height: number;
+  mimeType?: string;
+  size?: number;
 }
 
-interface PaginatedResponse {
-  images: DriveImage[];
-  nextPageToken?: string;
-  totalItems: number;
-  pageSize: number;
-  currentPage: number;
-}
+// interface PaginatedResponse {
+//   images: DriveImage[];
+//   nextPageToken?: string;
+//   totalItems: number;
+//   pageSize: number;
+//   currentPage: number;
+// }
 
 type InfiniteData = {
   pages: PaginatedResponse[];

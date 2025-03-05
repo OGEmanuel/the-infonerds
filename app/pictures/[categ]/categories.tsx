@@ -117,6 +117,8 @@ const Categories = ({ page }: { page: string }) => {
   // Make sure we don't show a number larger than the total available
   const displayedImages = Math.min(loadedImages, totalAvailableImages);
 
+  console.log(data);
+
   return (
     <div className="flex flex-col gap-10">
       <div className="flex w-full justify-center gap-5 max-xl:flex-wrap">
@@ -149,7 +151,8 @@ const Categories = ({ page }: { page: string }) => {
       )}
       <div className="flex flex-col items-center justify-center gap-5 text-gray-600">
         <div className="mt-4 text-center">
-          Showing {displayedImages} of {totalAvailableImages} images
+          Showing {displayedImages}{' '}
+          <span className="sr-only">of {totalAvailableImages}</span> images
         </div>
         <button
           onClick={scrollToTop}

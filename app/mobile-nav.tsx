@@ -34,7 +34,7 @@ export function MobileNav() {
             </li>
             <li>
               <button onClick={() => setOpen(!open)}>
-                <NavLink href={'/contact'}>Bookings</NavLink>
+                <NavLink href={'/bookings'}>Bookings</NavLink>
               </button>
             </li>
           </ul>
