@@ -175,30 +175,32 @@ const ImageCard = ({ image }: { image: DriveImage }) => {
   const [error, setError] = useState(false);
   const { theme } = useThemeStore();
   return (
-    <div className="group relative h-max w-max overflow-hidden rounded-lg bg-gray-100 shadow-lg">
-      {loading && <ImgFallback />}
-      <Image
-        src={image.viewLink}
-        alt={image.name}
-        className="object-cover object-top transition-transform duration-300 group-hover:scale-110"
-        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-        priority={false}
-        quality={75}
-        width={400}
-        height={0}
-        layout="intrinsic"
-        onLoad={(event: SyntheticEvent<HTMLImageElement>) => {
-          const img = event.target as HTMLImageElement;
-          if (img.naturalWidth > 0) {
+    !error && (
+      <div className="group relative h-max w-max overflow-hidden rounded-lg bg-gray-100 shadow-lg">
+        {loading && <ImgFallback />}
+        <Image
+          src={image.viewLink}
+          alt={image.name}
+          className="object-cover object-top transition-transform duration-300 group-hover:scale-110"
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          priority={false}
+          quality={75}
+          width={400}
+          height={0}
+          layout="intrinsic"
+          onLoad={(event: SyntheticEvent<HTMLImageElement>) => {
+            const img = event.target as HTMLImageElement;
+            if (img.naturalWidth > 0) {
+              setLoading(false);
+            }
+          }}
+          onError={() => {
+            setError(true);
             setLoading(false);
-          }
-        }}
-        onError={() => {
-          setError(true);
-          setLoading(false);
-        }}
-      />
-      {error && <ErrorMessage />}
-    </div>
+          }}
+        />
+        {error && <ErrorMessage />}
+      </div>
+    )
   );
 };
