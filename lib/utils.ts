@@ -92,3 +92,13 @@ export function advancedShuffleArray<T>(
 export function replaceHyphens(input: string): string {
   return input.replace(/-/g, ' ');
 }
+
+export function formatDate(isoString: string): string {
+  const date = new Date(isoString);
+  return date.toLocaleDateString('en-US', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+}

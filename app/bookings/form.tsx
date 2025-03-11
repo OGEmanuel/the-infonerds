@@ -21,7 +21,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover';
-import { CalendarIcon, Trash2 } from 'lucide-react';
+import { CalendarIcon, Loader2, Trash2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Calendar } from '@/components/ui/calendar';
 import { format } from 'date-fns';
@@ -47,6 +47,8 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import Link from 'next/link';
+import { useMutation } from '@tanstack/react-query';
+import axios from 'axios';
 
 const items = [
   {
@@ -88,7 +90,6 @@ const FormSchema = z.object({
       required_error: 'Please provide a valid email',
     })
     .email(),
-
   smHandle: z.string().optional(),
   events: z.array(z.string()).refine(value => value.some(item => item), {
     message: 'You have to select at least one item.',
@@ -104,12 +105,6 @@ const FormSchema = z.object({
       }),
     }),
   ),
-  // date: z.date({
-  //   required_error: 'A date is required.',
-  // }),
-  // location: z.string().min(2, {
-  //   message: 'Enter a valid location.',
-  // }),
   month: z
     .string()
     .min(2, {
@@ -139,8 +134,6 @@ export function ContactForm() {
       name: '',
       smHandle: '',
       production: [{ location: '', date: '' }],
-      // date: new Date(),
-      // location: '',
       events: [],
       email: '',
       message: '',
@@ -154,6 +147,30 @@ export function ContactForm() {
     name: 'production',
   });
 
+  const { mutate, isPending } = useMutation({
+    mutationFn: async (data: any) => {
+      return await axios.post('/api/email', data, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+    },
+    onSuccess: () => {
+      form.reset();
+      toast({
+        title: 'Success!',
+        description: 'Thank you for your submission!',
+      });
+    },
+    onError: error => {
+      toast({
+        title: 'Error!',
+        description: error.message,
+        variant: 'destructive',
+      });
+    },
+  });
+
   function onSubmit(data: z.infer<typeof FormSchema>) {
     const formData = {
       ...data,
@@ -162,16 +179,7 @@ export function ContactForm() {
         : data.events,
     };
 
-    toast({
-      title: 'You submitted the following values:',
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">
-            {JSON.stringify(formData, null, 2)}
-          </code>
-        </pre>
-      ),
-    });
+    mutate({ ...formData, timestamp: new Date().toISOString() });
   }
 
   return (
@@ -463,12 +471,35 @@ export function ContactForm() {
               />
 
               <Button
+                type={'submit'}
+                disabled={form.watch('terms') !== true || isPending}
+                className={`grid-stack grid w-max gap-0 overflow-hidden rounded-xl p-4 font-medium max-sm:w-full ${theme === 'light' ? 'bg-btn-gradient-light text-black' : 'bg-btn-gradient text-white'}`}
+              >
+                <span
+                  className={cn(
+                    'grid-area-stack visible translate-y-0 transition-all',
+                    isPending && 'invisible -translate-y-[200px]',
+                  )}
+                >
+                  Send message
+                </span>
+                <span
+                  className={cn(
+                    `grid-area-stack invisible flex w-full translate-y-[200px] justify-center transition-all`,
+                    isPending && 'visible translate-y-0',
+                  )}
+                >
+                  <Loader2 aria-label="Loading" className="animate-spin" />
+                </span>
+              </Button>
+
+              {/* <Button
                 type="submit"
                 disabled={form.watch('terms') !== true}
                 className={`rounded-xl p-4 font-medium ${theme === 'light' ? 'bg-btn-gradient-light text-black' : 'bg-btn-gradient text-white'}`}
               >
                 Send message
-              </Button>
+              </Button> */}
             </div>
           </form>
         </Form>
