@@ -30,7 +30,7 @@ interface FetchPhotosParams {
   folder: string;
 }
 
-export async function getPhotos({
+async function getPhotos({
   pageSize = 20,
   nextCursor,
   folder,
