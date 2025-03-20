@@ -172,7 +172,7 @@ const ImageCard = ({ image }: { image: Photo }) => {
   return (
     !error && (
       <div className="group relative h-max w-max overflow-hidden rounded-lg bg-gray-100 shadow-lg">
-        {loading && <ImgFallback />}
+        {loading && <ImgFallback className="h-80" />}
         <Image
           src={image.url}
           alt={image.format}

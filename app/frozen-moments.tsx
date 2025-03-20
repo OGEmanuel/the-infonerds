@@ -3,32 +3,32 @@ import CategoryWrapper from '@/components/category-wrapper';
 
 const CATEGORIES = [
   {
-    id: '1msOr0Sj2oFSfWacm-ldpvKEdi8o3Spfg',
+    id: 'v1742161727/Wedding_Photos_je7iia.jpg',
     title: 'Wedding Photos',
     page: 'weddings',
   },
   {
-    id: '1TQKUJTOZb_nGzDzwNppoTSN71xR8uFDw',
+    id: 'v1742161723/Concerts_Events_u9u8pv.jpg',
     title: 'Concerts and Events',
     page: 'concerts-and-events',
   },
   {
-    id: '1dHrNLrn-CNpBPVfkCYXGcSDiaBAL-6ti',
+    id: 'v1742161723/Corperate_Events_and_Brand_Activations_photo_cover_pz8a0s.jpg',
     title: 'Corporate Events and Brand Activation',
     page: 'corporate-events-and-brand-activations',
   },
   {
-    id: '1nK1x4UajNHBnYIm8UGCwAU3my4AlzqbJ',
+    id: 'v1742161722/Pre-wedding_and_Proposals_zwaaar.jpg',
     title: 'Pre-wedding and Proposals',
     page: 'pre-wedding-and-proposals',
   },
   {
-    id: '1fWX1XSw8hBFw3YOVPeYfmn8P82yU4qzz',
+    id: 'v1742161723/PortraitsCover_wwjfni.jpg',
     title: 'Portraits',
     page: 'portraits',
   },
   {
-    id: '1fbV0vSNR2RUiDKqNJBzfftwYsUkbYtlt',
+    id: 'v1742161725/BTS_Photos_fkl20t.jpg',
     title: 'Behind the Scenes',
     page: 'behind-the-scenes',
   },
@@ -41,7 +41,7 @@ const FrozenMoments = () => {
         <AlbumLinks
           key={category.id}
           link={`pictures/${category.page}`}
-          src={`https://drive.google.com/uc?export=view&id=${category.id}`}
+          src={`https://res.cloudinary.com/dyx1sh27d/image/upload/q_auto,f_auto,c_limit/${category.id}`}
           title={category.title}
           gallery={'photos'}
         />

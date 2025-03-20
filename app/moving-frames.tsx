@@ -3,47 +3,47 @@ import CategoryWrapper from '@/components/category-wrapper';
 
 const CATEGORIES = [
   {
-    id: '1n2S-nXlExPaYIeP3KM425s6xSFpzymvP',
+    id: 'v1742161727/Wedding_Videos_metdbo.jpg',
     title: 'Wedding Videos',
     page: 'weddings',
   },
   {
-    id: '18JYjH9ZG4RJ9T0snKWNwYirb6Ei_PrAV',
+    id: 'v1742161727/Concerts_and_Events_Video_cover_mexu3b.jpg',
     title: 'Concerts and Events',
     page: 'concerts-and-events',
   },
   {
-    id: '1Z2padRmzgfnh_H7J75qPoQqC5YS8KGGa',
+    id: 'v1742161726/TV_Commercial_Brand_Ads_ssf8pj.jpg',
     title: 'TV Commercials and Brand Ads',
     page: 'tv-commercials-and-brand-ads',
   },
   {
-    id: '1XoEjxWSckwqeaPNzhrbMhCHERm_mXeIA',
+    id: 'v1742161726/Proposals_and_Pre-Wedding_Videos_u8lchy.jpg',
     title: 'Proposals and Pre-weddings',
     page: 'proposals-and-pre-weddings',
   },
   {
-    id: '12HDV_ScHoPFc7appxj8XWmtRh4k-k0To',
+    id: 'v1742161727/Corperate_Events_Brand_Activation_Video_kbedkh.jpg',
     title: 'Corporate Events and Brand Activations',
     page: 'corporate-events-and-brand-activations',
   },
   {
-    id: '1F_B3Y5EOZfMEpc9MENXdGL5kXko1eTg6',
+    id: 'v1742161724/Documentary_video_qs1usv.jpg',
     title: 'Documentaries',
     page: 'documentaries',
   },
   {
-    id: '1xSovhr3nKMa8i5GDnfsKlQR8SVsR-4Dw',
+    id: 'v1742161725/Real_Estate_Video_lwtcpv.jpg',
     title: 'Real Estate',
     page: 'real-estate',
   },
   {
-    id: '1Ive89IJBqXcYMWzdQXpwBE8NuR73kwfu',
+    id: 'v1742161725/Lifestlye_Video_luakmy.jpg',
     title: 'Styles and Lifestyle',
     page: 'styles-and-lifestyle',
   },
   {
-    id: '1xymedb4FB_1VmiZcL6As_A5olaJKFFFK',
+    id: 'v1742161725/Behind_the_Scenes_hq89au.jpg',
     title: 'Behind the Scenes',
     page: 'behind-the-scenes',
   },
@@ -62,7 +62,7 @@ const MovingFrames = () => {
         <AlbumLinks
           key={category.id}
           link={`videos/${category.page}`}
-          src={`https://drive.google.com/uc?export=view&id=${category.id}`}
+          src={`https://res.cloudinary.com/dyx1sh27d/image/upload/q_auto,f_auto,c_limit/${category.id}`}
           title={category.title}
           gallery={'video'}
         />

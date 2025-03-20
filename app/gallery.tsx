@@ -14,20 +14,20 @@ const Gallery = () => {
             <ImageFallback
               className="h-[369.2px]"
               src={
-                'https://drive.google.com/uc?export=view&id=112b3oP3RIw_EuQQPRIEUFkYO4cS8kMpy'
+                'https://res.cloudinary.com/dyx1sh27d/image/upload/q_auto,f_auto,c_limit/v1742161781/007_dr_veasut.jpg'
               }
             />
           </GridCol>
           <GridCol>
             <ImageFallback
               className="h-[240.36px] object-top"
-              src="https://drive.google.com/uc?export=view&id=1dIHXjduc8v0qpVUHgHPql8IhNHzzInIf"
+              src="https://res.cloudinary.com/dyx1sh27d/image/upload/q_auto,f_auto,c_limit/v1742161866/OBlovestory_5_rgmxf2.jpg"
             />
           </GridCol>
           <GridCol>
             <ImageFallback
               className="h-[272.11px]"
-              src="https://drive.google.com/uc?export=view&id=18FMnNXJ-57Lz1sLK5XAgiUJs1CBA-Um8"
+              src="https://res.cloudinary.com/dyx1sh27d/image/upload/q_auto,f_auto,c_limit/v1742161810/Pre-wedding_11_hemlwm.jpg"
             />
           </GridCol>
         </div>
@@ -35,19 +35,19 @@ const Gallery = () => {
           <GridCol>
             <ImageFallback
               className="h-[287.47px]"
-              src="https://drive.google.com/uc?export=view&id=1se9UWq9IPYyKXn77CBg1JgXWeeFGBMFR"
+              src="https://res.cloudinary.com/dyx1sh27d/image/upload/q_auto,f_auto,c_limit/v1742510181/POM_0760_bsld7e.jpg"
             />
           </GridCol>
           <GridCol>
             <ImageFallback
               className="h-[410.55px]"
-              src="https://drive.google.com/uc?export=view&id=1cir6ihuZ0l1q0uuO4ZUD6BqXcCgSmMsr"
+              src="https://res.cloudinary.com/dyx1sh27d/image/upload/q_auto,f_auto,c_limit/v1742161757/The_Future_Awards-1303_asi1xo.jpg"
             />
           </GridCol>
           <GridCol>
             <ImageFallback
               className="h-[183.64px] object-center"
-              src="https://drive.google.com/uc?export=view&id=1zpSZN-tD-iNJyaxff0YljdsArchgJNfm"
+              src="https://res.cloudinary.com/dyx1sh27d/image/upload/q_auto,f_auto,c_limit/v1742161766/IMG_0009_dmkdqd.jpg"
             />
           </GridCol>
         </div>
@@ -55,19 +55,19 @@ const Gallery = () => {
           <GridCol>
             <ImageFallback
               className="h-[408.63px]"
-              src="https://drive.google.com/uc?export=view&id=1OHIZxYa1khDtRWIbG83BixP9GoKCdx-x"
+              src="https://res.cloudinary.com/dyx1sh27d/image/upload/q_auto,f_auto,c_limit/v1742161889/001_biugab.jpg"
             />
           </GridCol>
           <GridCol>
             <ImageFallback
               className="h-[223.05px] object-right sm:object-top"
-              src="https://drive.google.com/uc?export=view&id=1Bpu3GDrhWeu6PLuKj8Mvtoy9dEGoRRNq"
+              src="https://res.cloudinary.com/dyx1sh27d/image/upload/q_auto,f_auto,c_limit/v1742161882/IMG_0742_absyeo.jpg"
             />
           </GridCol>
           <GridCol>
             <ImageFallback
               className="h-[249.98px]"
-              src="https://drive.google.com/uc?export=view&id=1qM-v_15Ok3Dmn4T5Q2O3mwRFQeSQJDeA"
+              src="https://res.cloudinary.com/dyx1sh27d/image/upload/q_auto,f_auto,c_limit/v1742510179/IMG_6823_yqmrx6.jpg"
             />
           </GridCol>
         </div>
@@ -75,19 +75,19 @@ const Gallery = () => {
           <GridCol>
             <ImageFallback
               className="h-[202.86px]"
-              src="https://drive.google.com/uc?export=view&id=1JIdR96n14NVprktcGpEtWUhXXuEro-Dd"
+              src="https://res.cloudinary.com/dyx1sh27d/image/upload/q_auto,f_auto,c_limit/v1742161865/IMG_2816_dysxop.jpg"
             />
           </GridCol>
           <GridCol>
             <ImageFallback
               className="h-[492.27px]"
-              src="https://drive.google.com/uc?export=view&id=1OWqPo6agwz9cn-_zsSgoQcCDlrvMk3mc"
+              src="https://res.cloudinary.com/dyx1sh27d/image/upload/q_auto,f_auto,c_limit/v1742509599/Tiwa_02-2_pgez5p.jpg"
             />
           </GridCol>
           <GridCol>
             <ImageFallback
               className="h-[186.53px] object-top"
-              src="https://drive.google.com/uc?export=view&id=1G5rtwo9VjKNTb_iyqkdmSYpLEc7Nr-5h"
+              src="https://res.cloudinary.com/dyx1sh27d/image/upload/q_auto,f_auto,c_limit/v1742161753/The_Future_Awards-1828_twfrri.jpg"
             />
           </GridCol>
         </div>

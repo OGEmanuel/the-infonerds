@@ -109,7 +109,7 @@ const Categories = ({ page }: { page: string }) => {
             {Category.videos.map(video => (
               <div
                 key={video.id}
-                className="group cursor-pointer"
+                className={`group cursor-pointer`}
                 onClick={() => setSelectedVideo(video)}
               >
                 <div className="relative w-full pt-[56.25%]">
@@ -126,7 +126,7 @@ const Categories = ({ page }: { page: string }) => {
                     {video.duration}
                   </div>
                   <div
-                    className={`absolute inset-0 flex items-center justify-center rounded-lg ${theme === 'light' ? 'bg-white/30' : 'bg-black/30'} opacity-0 transition-opacity group-hover:opacity-100`}
+                    className={`absolute inset-0 flex items-center justify-center rounded-lg ${theme === 'light' ? 'bg-white/30' : 'bg-black/30'} transition-opacity`}
                   >
                     <Play
                       className={`h-12 w-12 ${theme === 'light' ? 'text-black' : 'text-white'}`}
@@ -169,7 +169,7 @@ const Categories = ({ page }: { page: string }) => {
                     sizes="180px"
                   /> */}
                   <div
-                    className={`absolute inset-0 flex items-center justify-center rounded-xl ${theme === 'light' ? 'bg-white/30' : 'bg-black/30'} opacity-0 transition-opacity hover:opacity-100`}
+                    className={`absolute inset-0 flex items-center justify-center rounded-xl ${theme === 'light' ? 'bg-white/30' : 'bg-black/30'} transition-opacity`}
                   >
                     <Play
                       className={`h-12 w-12 ${theme === 'light' ? 'text-black' : 'text-white'}`}
