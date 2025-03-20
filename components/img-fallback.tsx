@@ -4,7 +4,7 @@ const ImgFallback = () => {
   const { theme } = useThemeStore();
   return (
     <div
-      className={`absolute inset-0 rounded-lg ${theme === 'light' ? 'bg-gray-200' : 'bg-gray-700'}`}
+      className={`absolute inset-0 h-80 rounded-lg ${theme === 'light' ? 'bg-gray-200' : 'bg-gray-700'}`}
     >
       <div
         className={`h-full w-full animate-pulse ${theme === 'light' ? 'bg-gray-100' : 'bg-gray-400'}`}

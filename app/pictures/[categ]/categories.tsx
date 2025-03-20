@@ -2,9 +2,7 @@
 
 import Image from 'next/image';
 import { SyntheticEvent, useState } from 'react';
-import useTripleColumnInfiniteScroll, {
-  useInfiniteDriveImages,
-} from '@/lib/hooks';
+import { Photo, useInfinitePhotos, useTripleColumnScroll } from '@/lib/hooks';
 import { ArrowUpIcon, Loader2 } from 'lucide-react';
 import ImgFallback, { ErrorMessage } from '@/components/img-fallback';
 import useThemeStore from '@/store/theme-control';
@@ -25,12 +23,12 @@ enum AlbumCategories {
   BTS = 'behind-the-scenes',
 }
 
-const weddings = '167RTvpUdedkMArlV1d4jLXuIXVC9PDti';
-const concerts = '1LicKXu80UvaP8yWNsYzFhKKjKafb8Xu-';
-const corporate = '1Q3s7DhrgyP5QqGnhrp0HoomaX-0tiiLu';
-const preWedding = '1dg0i94eAz_yzwGqExsUIm90q3vZHntSo';
-const portraits = '1WMxnvlAGRAO6M50ELu5-dfRCAuFIFL_X';
-const bts = '1ruAUBBbgwSABWAw9bG1xJo78jo3ivgzh';
+const weddings = '1. Wedding Photos';
+const concerts = '2. Concerts and Events';
+const corporate = '3. Corperate Events and Brand Activations';
+const preWedding = '4. Prewedding and proposals';
+const portraits = '5. Portraits';
+const bts = '6. BTS';
 
 const Categories = ({ page }: { page: string }) => {
   const { WEDDINGS, CONCERTS, CORPORATE, PRE_WEDDING, PORTRAITS, BTS } =
@@ -56,22 +54,19 @@ const Categories = ({ page }: { page: string }) => {
 
   const {
     data,
+    error,
+    isError,
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
     isPending,
-    isError,
-    error,
-  } = useInfiniteDriveImages(folderId);
+  } = useInfinitePhotos(20, folderId);
 
   const {
     columnData,
     observerTarget,
-    isError: hookError,
-    error: hookErrorDetails,
-    isPending: hookPending,
-    isFetchingNextPage: hookFetching,
-  } = useTripleColumnInfiniteScroll({
+    isFetchingNextPage: isFetching,
+  } = useTripleColumnScroll({
     data,
     isError,
     error,
@@ -108,14 +103,14 @@ const Categories = ({ page }: { page: string }) => {
   }
 
   // Get the total number of loaded images
-  const loadedImages =
-    data?.pages.reduce((total, page) => total + page.images.length, 0) ?? 0;
+  // const loadedImages =
+  // data?.pages.reduce((total, page) => total + page.images.length, 0) ?? 0;
 
   // Get the total number of available images from the first page response
-  const totalAvailableImages = data?.pages[0]?.totalItems ?? 0;
+  // const totalAvailableImages = data?.pages[0]?. ?? 0;
 
   // Make sure we don't show a number larger than the total available
-  const displayedImages = Math.min(loadedImages, totalAvailableImages);
+  // const displayedImages = Math.min(loadedImages, totalAvailableImages);
 
   console.log(data);
 
@@ -150,10 +145,10 @@ const Categories = ({ page }: { page: string }) => {
         </div>
       )}
       <div className="flex flex-col items-center justify-center gap-5 text-gray-600">
-        <div className="mt-4 text-center">
+        {/* <div className="mt-4 text-center">
           Showing {displayedImages}{' '}
           <span className="sr-only">of {totalAvailableImages}</span> images
-        </div>
+        </div> */}
         <button
           onClick={scrollToTop}
           role="button"
@@ -170,7 +165,7 @@ const Categories = ({ page }: { page: string }) => {
 
 export default Categories;
 
-const ImageCard = ({ image }: { image: DriveImage }) => {
+const ImageCard = ({ image }: { image: Photo }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const { theme } = useThemeStore();
@@ -179,8 +174,8 @@ const ImageCard = ({ image }: { image: DriveImage }) => {
       <div className="group relative h-max w-max overflow-hidden rounded-lg bg-gray-100 shadow-lg">
         {loading && <ImgFallback />}
         <Image
-          src={image.viewLink}
-          alt={image.name}
+          src={image.url}
+          alt={image.format}
           className="object-cover object-top transition-transform duration-300 group-hover:scale-110"
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           priority={false}

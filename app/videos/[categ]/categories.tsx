@@ -82,12 +82,12 @@ const Categories = ({ page }: { page: string }) => {
   }
 
   // Function to get YouTube thumbnail URL
-  const getYouTubeThumbnail = (
-    videoId: string,
-    quality: 'default' | 'hq' | 'mq' | 'sd' | 'maxres' = 'hq',
-  ) => {
-    return `https://img.youtube.com/vi/${videoId}/${quality}default.jpg`;
-  };
+  // const getYouTubeThumbnail = (
+  //   videoId: string,
+  //   quality: 'default' | 'hq' | 'mq' | 'sd' | 'maxres' = 'hq',
+  // ) => {
+  //   return `https://img.youtube.com/vi/${videoId}/${quality}default.jpg`;
+  // };
 
   if (Category !== Weddings && Category !== Commercials) {
     const randomizedMapping = Category.videos
@@ -113,13 +113,13 @@ const Categories = ({ page }: { page: string }) => {
                 onClick={() => setSelectedVideo(video)}
               >
                 <div className="relative w-full pt-[56.25%]">
-                  <Image
+                  {/* <Image
                     src={getYouTubeThumbnail(video.id, 'maxres')}
                     alt={video.title}
                     fill
                     className="rounded-lg object-cover"
                     sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-                  />
+                  /> */}
                   <div
                     className={`absolute bottom-2 right-2 rounded ${theme === 'light' ? 'bg-white/80 text-black' : 'bg-black/80 text-white'} px-2 py-1 text-sm`}
                   >
@@ -161,13 +161,13 @@ const Categories = ({ page }: { page: string }) => {
                 onClick={() => setSelectedVideo(short)}
               >
                 <div className="relative h-[320px] sm:w-[180px]">
-                  <Image
+                  {/* <Image
                     src={getYouTubeThumbnail(short.id)}
                     alt={short.title}
                     fill
                     className="rounded-xl object-cover"
                     sizes="180px"
-                  />
+                  /> */}
                   <div
                     className={`absolute inset-0 flex items-center justify-center rounded-xl ${theme === 'light' ? 'bg-white/30' : 'bg-black/30'} opacity-0 transition-opacity hover:opacity-100`}
                   >
