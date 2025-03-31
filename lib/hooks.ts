@@ -1,5 +1,6 @@
 'use client';
 
+import { photosData } from '@/app/pictures/[categ]/data';
 // import { getWeddingPhotos } from '@/app/api/cloudinary/cloudinary';
 import { useInfiniteQuery } from '@tanstack/react-query';
 // import { useRef, useCallback, useEffect, useState } from 'react';
@@ -231,18 +232,9 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 // export default useTripleColumnInfiniteScroll;
 
 // Types for wedding photos functionality
-export interface Photo {
-  id: string;
-  public_id: string;
-  url: string;
-  format: string;
-  width: number;
-  height: number;
-  created_at: string;
-}
 
-interface PaginatedResponse {
-  images: Photo[];
+export interface PaginatedResponse {
+  images: photosData[];
   nextCursor?: string;
   hasMore: boolean;
 }
@@ -250,9 +242,9 @@ interface PaginatedResponse {
 type CategoryQueryKey = [string, number];
 
 type ColumnData = {
-  column1: Photo[];
-  column2: Photo[];
-  column3: Photo[];
+  column1: photosData[];
+  column2: photosData[];
+  column3: photosData[];
 };
 
 interface InfiniteData<TData> {
@@ -298,7 +290,7 @@ export const useInfinitePhotos = (pageSize = 20, queryKey: string) => {
       const response = await fetch(url.toString());
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.error || 'Failed to fetch wedding photos');
+        throw new Error(errorData.error || 'Failed to fetch photos');
       }
 
       return response.json();
@@ -330,7 +322,7 @@ export function useTripleColumnScroll({
   const observer = useRef<IntersectionObserver | null>(null);
   const processedItems = useRef<Set<string>>(new Set());
 
-  const distributeItemsEvenly = useCallback((items: Photo[]) => {
+  const distributeItemsEvenly = useCallback((items: photosData[]) => {
     const newItems = items.filter(item => !processedItems.current.has(item.id));
 
     if (newItems.length === 0) return;

@@ -2,17 +2,11 @@
 
 import Image from 'next/image';
 import { SyntheticEvent, useState } from 'react';
-import { Photo, useInfinitePhotos, useTripleColumnScroll } from '@/lib/hooks';
+import { useInfinitePhotos, useTripleColumnScroll } from '@/lib/hooks';
 import { ArrowUpIcon, Loader2 } from 'lucide-react';
 import ImgFallback, { ErrorMessage } from '@/components/img-fallback';
 import useThemeStore from '@/store/theme-control';
-
-interface DriveImage {
-  id: string;
-  name: string;
-  viewLink: string;
-  downloadLink: string;
-}
+import { photosData, PhotosData } from './data';
 
 enum AlbumCategories {
   WEDDINGS = 'weddings',
@@ -23,12 +17,12 @@ enum AlbumCategories {
   BTS = 'behind-the-scenes',
 }
 
-const weddings = '1. Wedding Photos';
-const concerts = '2. Concerts and Events';
-const corporate = '3. Corperate Events and Brand Activations';
-const preWedding = '4. Prewedding and proposals';
-const portraits = '5. Portraits';
-const bts = '6. BTS';
+const weddings = 'weddings';
+const concerts = 'concerts';
+const corporate = 'coperates';
+const preWedding = 'proposals';
+const portraits = 'portraits';
+const bts = 'bts';
 
 const Categories = ({ page }: { page: string }) => {
   const { WEDDINGS, CONCERTS, CORPORATE, PRE_WEDDING, PORTRAITS, BTS } =
@@ -165,7 +159,7 @@ const Categories = ({ page }: { page: string }) => {
 
 export default Categories;
 
-const ImageCard = ({ image }: { image: Photo }) => {
+const ImageCard = ({ image }: { image: photosData }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const { theme } = useThemeStore();
@@ -174,8 +168,8 @@ const ImageCard = ({ image }: { image: Photo }) => {
       <div className="group relative h-max w-max overflow-hidden rounded-lg bg-gray-100 shadow-lg">
         {loading && <ImgFallback className="h-80" />}
         <Image
-          src={image.url}
-          alt={image.format}
+          src={image.url.replace('/upload/', '/upload/q_auto,f_auto,c_limit/')}
+          alt={image.format || 'folder'}
           className="object-cover object-top transition-transform duration-300 group-hover:scale-110"
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           priority={false}

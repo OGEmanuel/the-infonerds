@@ -1,139 +1,62 @@
-import { NextResponse } from 'next/server';
-import { Photo } from '@/lib/hooks';
-import { v2 as cloudinary } from 'cloudinary';
+import { PhotosData } from '@/app/pictures/[categ]/data';
+import { PaginatedResponse } from '@/lib/hooks';
+import { shuffleArray } from '@/lib/utils';
+import { NextRequest, NextResponse } from 'next/server';
 
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-});
-
-interface CloudinaryResource {
-  asset_id: string;
-  public_id: string;
-  secure_url?: string;
-  format: string;
-  width: number;
-  height: number;
-  created_at: string;
-}
-
-interface PaginatedResponse {
-  images: Photo[];
-  nextCursor?: string;
-  hasMore: boolean;
-}
-
-interface FetchPhotosParams {
-  pageSize?: number;
-  nextCursor?: string;
-  folder: string;
-}
-
-async function getPhotos({
-  pageSize = 20,
-  nextCursor,
-  folder,
-}: FetchPhotosParams): Promise<PaginatedResponse> {
+export async function GET(request: NextRequest): Promise<NextResponse> {
   try {
-    const exactFolderPath = `Website Contents/Photo Gallery/${folder}`;
+    // Get query parameters
+    const searchParams = request.nextUrl.searchParams;
+    const folder = searchParams.get('folder');
+    const pageSize = parseInt(searchParams.get('pageSize') || '20', 10);
+    const nextCursor = searchParams.get('nextCursor') || undefined;
 
-    // Configure the search with properly handling Cloudinary's cursor-based pagination
-    let searchQuery = cloudinary.search
-      .expression(`folder="${exactFolderPath}"`)
-      .sort_by('created_at', 'desc')
-      .max_results(pageSize);
+    // Handle missing folder parameter
+    if (!folder) {
+      return NextResponse.json(
+        { error: 'Missing folder parameter' },
+        { status: 400 },
+      );
+    }
 
-    // Add next_cursor if it exists
+    // Check if the folder exists in our data
+    if (!PhotosData[folder]) {
+      return NextResponse.json({ error: 'Folder not found' }, { status: 404 });
+    }
+
+    const allImages = PhotosData[folder];
+
+    // Implement pagination logic
+    let startIndex = 0;
     if (nextCursor) {
-      searchQuery = searchQuery.next_cursor(nextCursor);
+      // Find the index of the item after the cursor
+      const cursorIndex = allImages.findIndex(img => img.id === nextCursor);
+      startIndex = cursorIndex !== -1 ? cursorIndex + 1 : 0;
     }
 
-    const result = await searchQuery.execute();
+    // Get the items for this page
+    const endIndex = Math.min(startIndex + pageSize, allImages.length);
+    const images = allImages.slice(startIndex, endIndex);
 
-    console.log(`Found ${result.resources.length} photos for this page`);
+    // Determine if there are more items
+    const hasMore = endIndex < allImages.length;
 
-    // If that returns empty, try without quotes
-    if (result.resources.length === 0) {
-      let alternativeQuery = cloudinary.search
-        .expression(`folder:${exactFolderPath}`)
-        .sort_by('created_at', 'desc')
-        .max_results(pageSize);
+    // Create the next cursor (last image id in the current set)
+    const nextPageCursor =
+      hasMore && images.length > 0 ? images[images.length - 1].id : undefined;
 
-      if (nextCursor) {
-        alternativeQuery = alternativeQuery.next_cursor(nextCursor);
-      }
-
-      const resultAlt = await alternativeQuery.execute();
-
-      console.log(
-        `Alternative search found ${resultAlt.resources.length} wedding photos`,
-      );
-
-      // Map Cloudinary resources to our Photo interface
-      const images = resultAlt.resources.map(
-        (resource: CloudinaryResource) => ({
-          id: resource.asset_id,
-          public_id: resource.public_id,
-          url:
-            resource.secure_url ||
-            `https://res.cloudinary.com/your-cloud-name/image/upload/q_auto,f_auto,c_limit/${resource.public_id}`,
-          format: resource.format,
-          width: resource.width,
-          height: resource.height,
-          created_at: resource.created_at,
-        }),
-      );
-
-      return {
-        images,
-        nextCursor: resultAlt.next_cursor,
-        hasMore: !!resultAlt.next_cursor,
-      };
-    }
-
-    // Map Cloudinary resources to our WeddingPhoto interface
-    const images = result.resources.map((resource: CloudinaryResource) => ({
-      id: resource.asset_id,
-      public_id: resource.public_id,
-      url:
-        resource.secure_url ||
-        `https://res.cloudinary.com/your-cloud-name/image/upload/q_auto,f_auto,c_limit/${resource.public_id}`,
-      format: resource.format,
-      width: resource.width,
-      height: resource.height,
-      created_at: resource.created_at,
-    }));
-
-    return {
-      images,
-      nextCursor: result.next_cursor,
-      hasMore: !!result.next_cursor,
+    // Create and return the paginated response with your exact interface
+    const response: PaginatedResponse = {
+      images: shuffleArray(images),
+      nextCursor: nextPageCursor,
+      hasMore,
     };
-  } catch (error) {
-    console.error('Error fetching photos:', error);
-    throw new Error(
-      `Failed to fetch photos: ${error instanceof Error ? error.message : 'Unknown error'}`,
-    );
-  }
-}
 
-// app/api/wedding-photos/route.ts
-export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url);
-  const pageSize = parseInt(searchParams.get('pageSize') || '20', 10);
-  const nextCursor = searchParams.get('nextCursor') || undefined;
-  const folder = searchParams.get('folder') || '1. Wedding Photos';
-
-  try {
-    const images = await getPhotos({ pageSize, nextCursor, folder });
-    return NextResponse.json(images);
+    return NextResponse.json(response);
   } catch (error) {
-    if (error instanceof Error) {
-      return NextResponse.json({ error: error.message }, { status: 500 });
-    }
+    console.error('Error in photos API route:', error);
     return NextResponse.json(
-      { error: 'Unknown error occurred' },
+      { error: 'Internal server error' },
       { status: 500 },
     );
   }

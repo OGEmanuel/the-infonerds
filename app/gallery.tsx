@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode, SyntheticEvent, useState } from 'react';
+import { ReactNode, SyntheticEvent, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import ImgFallback, { ErrorMessage } from '@/components/img-fallback';

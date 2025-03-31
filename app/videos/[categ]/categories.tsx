@@ -82,12 +82,17 @@ const Categories = ({ page }: { page: string }) => {
   }
 
   // Function to get YouTube thumbnail URL
-  // const getYouTubeThumbnail = (
-  //   videoId: string,
-  //   quality: 'default' | 'hq' | 'mq' | 'sd' | 'maxres' = 'hq',
-  // ) => {
-  //   return `https://img.youtube.com/vi/${videoId}/${quality}default.jpg`;
-  // };
+  const getYouTubeThumbnail = (videoId: string) => {
+    const base = `https://img.youtube.com/vi/${videoId}`;
+
+    return [
+      `${base}/maxresdefault.jpg`, // Highest quality (may not exist)
+      `${base}/sddefault.jpg`, // Standard quality (may not exist)
+      `${base}/hqdefault.jpg`, // High quality (usually exists)
+      `${base}/mqdefault.jpg`, // Medium quality (almost always exists)
+      `${base}/default.jpg`, // Lowest quality (always exists)
+    ];
+  };
 
   if (Category !== Weddings && Category !== Commercials) {
     const randomizedMapping = Category.videos
@@ -106,41 +111,52 @@ const Categories = ({ page }: { page: string }) => {
             Videos
           </h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {Category.videos.map(video => (
-              <div
-                key={video.id}
-                className={`group cursor-pointer`}
-                onClick={() => setSelectedVideo(video)}
-              >
-                <div className="relative w-full pt-[56.25%]">
-                  {/* <Image
-                    src={getYouTubeThumbnail(video.id, 'maxres')}
-                    alt={video.title}
-                    fill
-                    className="rounded-lg object-cover"
-                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-                  /> */}
-                  <div
-                    className={`absolute bottom-2 right-2 rounded ${theme === 'light' ? 'bg-white/80 text-black' : 'bg-black/80 text-white'} px-2 py-1 text-sm`}
-                  >
-                    {video.duration}
-                  </div>
-                  <div
-                    className={`absolute inset-0 flex items-center justify-center rounded-lg ${theme === 'light' ? 'bg-white/30' : 'bg-black/30'} transition-opacity`}
-                  >
-                    <Play
-                      className={`h-12 w-12 ${theme === 'light' ? 'text-black' : 'text-white'}`}
-                    />
-                  </div>
-                </div>
-                <h3
-                  className={`mt-2 line-clamp-2 text-sm font-medium ${theme === 'light' ? 'text-black' : 'text-white'}`}
+            {Category.videos.map(video => {
+              const thumbnails = getYouTubeThumbnail(video.id);
+              let fallbackIndex = 0;
+              return (
+                <div
+                  key={video.id}
+                  className={`group cursor-pointer`}
+                  onClick={() => setSelectedVideo(video)}
                 >
-                  {video.title}
-                </h3>
-                {/* <p className="text-sm text-gray-500">{video.views} views</p> */}
-              </div>
-            ))}
+                  <div className="relative w-full pt-[56.25%]">
+                    <Image
+                      src={thumbnails[0]}
+                      alt={video.title}
+                      onError={e => {
+                        fallbackIndex++;
+                        if (fallbackIndex < thumbnails.length) {
+                          (e.currentTarget as HTMLImageElement).src =
+                            thumbnails[fallbackIndex];
+                        }
+                      }}
+                      fill
+                      className="rounded-lg object-cover"
+                      sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                    />
+                    <div
+                      className={`absolute bottom-2 right-2 rounded ${theme === 'light' ? 'bg-white/80 text-black' : 'bg-black/80 text-white'} px-2 py-1 text-sm`}
+                    >
+                      {video.duration}
+                    </div>
+                    <div
+                      className={`absolute inset-0 flex items-center justify-center rounded-lg opacity-0 transition-opacity hover:opacity-100`}
+                    >
+                      <Play
+                        className={`h-12 w-12 ${theme === 'light' ? 'text-black' : 'text-white'}`}
+                      />
+                    </div>
+                  </div>
+                  <h3
+                    className={`mt-2 line-clamp-2 text-sm font-medium ${theme === 'light' ? 'text-black' : 'text-white'}`}
+                  >
+                    {video.title}
+                  </h3>
+                  {/* <p className="text-sm text-gray-500">{video.views} views</p> */}
+                </div>
+              );
+            })}
           </div>
         </div>
       )}
@@ -154,35 +170,47 @@ const Categories = ({ page }: { page: string }) => {
             Shorts
           </h2>
           <div className="grid grid-cols-2 gap-4 overflow-x-auto pb-4 sm:flex">
-            {Category.shorts.map(short => (
-              <div
-                key={short.id}
-                className="relative flex-none cursor-pointer sm:w-[180px]"
-                onClick={() => setSelectedVideo(short)}
-              >
-                <div className="relative h-[320px] sm:w-[180px]">
-                  {/* <Image
-                    src={getYouTubeThumbnail(short.id)}
-                    alt={short.title}
-                    fill
-                    className="rounded-xl object-cover"
-                    sizes="180px"
-                  /> */}
-                  <div
-                    className={`absolute inset-0 flex items-center justify-center rounded-xl ${theme === 'light' ? 'bg-white/30' : 'bg-black/30'} transition-opacity`}
-                  >
-                    <Play
-                      className={`h-12 w-12 ${theme === 'light' ? 'text-black' : 'text-white'}`}
-                    />
-                  </div>
-                </div>
-                <h3
-                  className={`mt-2 line-clamp-2 text-sm font-medium ${theme === 'light' ? 'text-black' : 'text-white'}`}
+            {Category.shorts.map(short => {
+              const thumbnails = getYouTubeThumbnail(short.id);
+              let fallbackIndex = 0;
+
+              return (
+                <div
+                  key={short.id}
+                  className="relative flex-none cursor-pointer sm:w-[180px]"
+                  onClick={() => setSelectedVideo(short)}
                 >
-                  {short.title}
-                </h3>
-              </div>
-            ))}
+                  <div className="relative h-[320px] sm:w-[180px]">
+                    <Image
+                      src={thumbnails[0]}
+                      alt={short.title}
+                      onError={e => {
+                        fallbackIndex++;
+                        if (fallbackIndex < thumbnails.length) {
+                          (e.currentTarget as HTMLImageElement).src =
+                            thumbnails[fallbackIndex];
+                        }
+                      }}
+                      fill
+                      className="rounded-xl object-cover"
+                      sizes="180px"
+                    />
+                    <div
+                      className={`absolute inset-0 flex items-center justify-center rounded-xl opacity-0 transition-opacity hover:opacity-100`}
+                    >
+                      <Play
+                        className={`h-12 w-12 ${theme === 'light' ? 'text-black' : 'text-white'}`}
+                      />
+                    </div>
+                  </div>
+                  <h3
+                    className={`mt-2 line-clamp-2 text-sm font-medium ${theme === 'light' ? 'text-black' : 'text-white'}`}
+                  >
+                    {short.title}
+                  </h3>
+                </div>
+              );
+            })}
           </div>
         </div>
       )}
