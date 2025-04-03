@@ -16,7 +16,13 @@ export interface FullData {
 }
 
 export const BTS: FullData = {
-  shorts: [],
+  shorts: [
+    {
+      id: 'bRzAqjPxjX0',
+      type: 'short',
+      title: 'Nerd Not Nood x QLuxury | Premium Collaboration Ad',
+    },
+  ],
   videos: [
     {
       id: 'sYw4UIvNVdE',
@@ -409,7 +415,13 @@ export const Proposals: FullData = {
 };
 
 export const Commercials: FullData = {
-  shorts: [],
+  shorts: [
+    {
+      id: 'bRzAqjPxjX0',
+      type: 'short',
+      title: 'Nerd Not Nood x QLuxury | Premium Collaboration Ad',
+    },
+  ],
   videos: [
     {
       id: 'xpSxEjhu5mM',

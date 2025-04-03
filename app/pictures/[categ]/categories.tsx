@@ -6,7 +6,7 @@ import { useInfinitePhotos, useTripleColumnScroll } from '@/lib/hooks';
 import { ArrowUpIcon, Loader2 } from 'lucide-react';
 import ImgFallback, { ErrorMessage } from '@/components/img-fallback';
 import useThemeStore from '@/store/theme-control';
-import { photosData, PhotosData } from './data';
+import { photosData } from './data';
 
 enum AlbumCategories {
   WEDDINGS = 'weddings',

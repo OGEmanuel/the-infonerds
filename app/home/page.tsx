@@ -7,7 +7,7 @@ import SectionWrapper from './section-wrapper';
 
 export const metadata: Metadata = {
   title: 'Nerd Not Noob | Home',
-  description: 'Information and Entertainment Personified.',
+  description: 'Welcome',
 };
 
 export default function Home() {

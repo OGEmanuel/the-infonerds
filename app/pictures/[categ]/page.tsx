@@ -3,7 +3,7 @@ import CategoryBreadcumb from '../../../components/breadcrumb';
 
 export const metadata = {
   title: 'Nerd Not Noob | Pictures',
-  description: 'Information and Entertainment Personified.',
+  description: 'Pictures',
 };
 
 const Category = async ({ params }: { params: { categ: string } }) => {

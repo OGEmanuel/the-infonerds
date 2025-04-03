@@ -3,7 +3,7 @@ import Categories from './categories';
 
 export const metadata = {
   title: 'Nerd Not Noob | Videos',
-  description: 'Information and Entertainment Personified.',
+  description: 'Videos',
 };
 
 const Category = ({ params }: { params: { categ: string } }) => {

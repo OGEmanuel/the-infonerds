@@ -3,7 +3,7 @@ import { ContactForm } from './form';
 
 export const metadata: Metadata = {
   title: 'Nerd Not Noob | Booking',
-  description: 'Information and Entertainment Personified.',
+  description: 'Booking',
 };
 
 const Contact = () => {

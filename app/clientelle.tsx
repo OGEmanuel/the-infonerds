@@ -24,6 +24,8 @@ import gtcoBlack from '@/public/icons/GTCO-black.svg';
 import gtcoWhite from '@/public/icons/GTCO-white.svg';
 import tecnoBlack from '@/public/icons/tecno-black.svg';
 import tecnoWhite from '@/public/icons/tecno-white.svg';
+import nhwBlack from '@/public/icons/nhw-black.svg';
+import nhwWhite from '@/public/icons/nhw-white.svg';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 
@@ -105,6 +107,7 @@ const Marquee = () => {
           <Image src={qoraWhite} alt="Qora" width={100} height={100} />
           <Image src={tffaWhite} alt="tffa" width={100} height={100} />
           <Image src={forkeepsWhite} alt="ForKeeps" width={100} height={100} />
+          <Image src={nhwWhite} alt="nhw" width={100} height={100} />
         </div>
       </div>
       <div
@@ -129,6 +132,7 @@ const Marquee = () => {
           <Image src={qoraBlack} alt="Qora" width={100} height={100} />
           <Image src={tffaBlack} alt="tffa" width={100} height={100} />
           <Image src={forkeepsBlack} alt="ForKeeps" width={100} height={100} />
+          <Image src={nhwBlack} alt="nhw" width={100} height={100} />
         </div>
       </div>
     </div>

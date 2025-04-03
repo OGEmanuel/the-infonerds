@@ -10,7 +10,7 @@ import MailingList from './mailing-list';
 
 export const metadata: Metadata = {
   title: 'Nerd Not Noob | Gallery',
-  description: 'Information and Entertainment Personified.',
+  description: 'Home',
 };
 
 const Work = () => {
