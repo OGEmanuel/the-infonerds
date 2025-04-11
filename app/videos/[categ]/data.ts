@@ -8,6 +8,7 @@ export interface Short extends BaseVideo {}
 
 export interface RegularVideo extends BaseVideo {
   duration: string;
+  thumbnail?: string;
 }
 
 export interface FullData {
@@ -253,6 +254,8 @@ export const Concerts: FullData = {
       title:
         'Mannywellz "Manny is Home" Concert | Alternate Cut Highlights in Lagos, Nigeria',
       duration: '1:25',
+      thumbnail:
+        'https://res.cloudinary.com/dyx1sh27d/image/upload/q_auto,f_auto,c_limit/v1744411355/Concert_Mannywellz_ei9ccm.jpg',
     },
     {
       id: 'XDj9KemOcb4',
@@ -397,6 +400,8 @@ export const Proposals: FullData = {
       type: 'regular',
       title: 'Ayo Proposes to Fiyin | A Beautiful Love Story Unfolds',
       duration: '1:06',
+      thumbnail:
+        'https://res.cloudinary.com/dyx1sh27d/image/upload/q_auto,f_auto,c_limit/v1744411354/Proposal_Ayo_Fiyin_fl1nvq.jpg',
     },
     {
       id: 'l5dreDc2nS8',
@@ -410,6 +415,8 @@ export const Proposals: FullData = {
       type: 'regular',
       title: 'Ibukun Proposes to Eniola | A Magical Proposal Highlight',
       duration: '1:12',
+      thumbnail:
+        'https://res.cloudinary.com/dyx1sh27d/image/upload/q_auto,f_auto,c_limit/v1744411355/Proposal_Ibukun_Enioluwa_ua9ws3.png',
     },
   ],
 };
@@ -489,6 +496,8 @@ export const Commercials: FullData = {
       title:
         'Unveiling Havma.ng: Revolutionizing Video Marketing Solutions | Yoruba Ad',
       duration: '1:24',
+      thumbnail:
+        'https://res.cloudinary.com/dyx1sh27d/image/upload/q_auto,f_auto,c_limit/v1744411354/Brand_Ad_Havma_Yoruba_Ad_gv57nc.jpg',
     },
     {
       id: 'PLzICoz_9vQ',
@@ -503,6 +512,8 @@ export const Commercials: FullData = {
       title:
         'Media Cartel: Boosting Your Social Media Engagement with Smart Solutions',
       duration: '1:18',
+      thumbnail:
+        'https://res.cloudinary.com/dyx1sh27d/image/upload/q_auto,f_auto,c_limit/v1744411354/Brand_Ad_Media_Cartel_tc68tu.jpg',
     },
     {
       id: 'wPjLeREre-Y',

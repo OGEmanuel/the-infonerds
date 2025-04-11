@@ -122,7 +122,7 @@ const Categories = ({ page }: { page: string }) => {
                 >
                   <div className="relative w-full pt-[56.25%]">
                     <Image
-                      src={thumbnails[0]}
+                      src={video.thumbnail ?? thumbnails[0]}
                       alt={video.title}
                       onError={e => {
                         fallbackIndex++;

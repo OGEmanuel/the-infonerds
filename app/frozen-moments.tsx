@@ -18,12 +18,12 @@ const CATEGORIES = [
     page: 'corporate-events-and-brand-activations',
   },
   {
-    id: 'v1742161722/Pre-wedding_and_Proposals_zwaaar.jpg',
+    id: 'v1744411353/Prewedding_and_Proposal_Category_Cover_tapbl8.jpg',
     title: 'Pre-wedding and Proposals',
     page: 'pre-wedding-and-proposals',
   },
   {
-    id: 'v1744389801/1_nerd_not_noob_wmb5ux.jpg',
+    id: 'v1744411355/Portrait_Category_Cover_cn8bml.jpg',
     title: 'Portraits',
     page: 'portraits',
   },
