@@ -14,7 +14,7 @@ const Gallery = () => {
             <ImageFallback
               className="h-[369.2px]"
               src={
-                'https://res.cloudinary.com/dyx1sh27d/image/upload/q_auto,f_auto,c_limit/v1742161781/007_dr_veasut.jpg'
+                'https://res.cloudinary.com/dyx1sh27d/image/upload/q_auto,f_auto,c_limit/v1744389800/nerd_not_noob_5_zaw19p.jpg'
               }
             />
           </GridCol>
