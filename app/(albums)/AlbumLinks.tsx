@@ -31,7 +31,7 @@ const AlbumLinks = ({
         <Image
           src={src}
           alt="Album Cover"
-          className="h-full w-full object-cover object-top transition-transform group-hover:scale-125"
+          className="h-full w-full object-cover object-center transition-transform group-hover:scale-125"
           width={500}
           height={500}
           onLoad={(event: SyntheticEvent<HTMLImageElement>) => {

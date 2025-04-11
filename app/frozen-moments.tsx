@@ -23,7 +23,7 @@ const CATEGORIES = [
     page: 'pre-wedding-and-proposals',
   },
   {
-    id: 'v1742161723/PortraitsCover_wwjfni.jpg',
+    id: 'v1744389801/1_nerd_not_noob_wmb5ux.jpg',
     title: 'Portraits',
     page: 'portraits',
   },
