@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     description:
       'Showcasing stunning photography and videography. Explore our portfolio of captivating images and videos.',
     images:
-      'https://res.cloudinary.com/dyx1sh27d/image/upload/v1745244963/logo_znitqm.png',
+      'https://res.cloudinary.com/dyx1sh27d/image/upload/v1745245687/logo-black_tlgcrd.png',
     url: 'https://www.nerdnotnoob.com/',
     siteName: 'Nerd Not Noob',
   },
