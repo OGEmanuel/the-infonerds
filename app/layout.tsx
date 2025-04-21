@@ -7,6 +7,7 @@ import Nav from './nav';
 import QueryProvider from './api/utils/query-provider';
 import useThemeStore from '@/store/theme-control';
 
+
 export default function RootLayout({
   children,
 }: Readonly<{

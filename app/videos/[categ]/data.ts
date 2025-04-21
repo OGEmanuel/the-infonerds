@@ -152,6 +152,13 @@ export const Concerts: FullData = {
 
   videos: [
     {
+      id: 'zaq98wW5DIA',
+      type: 'regular',
+      title:
+        'Funeral Service of Late Justice Emmanuel Olayinka Ayoola in Ibadan, Former ICPC Chairman',
+      duration: '1:16',
+    },
+    {
       id: '6ekoq2bEs0M',
       type: 'regular',
       title:
@@ -308,6 +315,13 @@ export const Corporate: FullData = {
     },
   ],
   videos: [
+    {
+      id: '8EmOO4QCFJw',
+      type: 'regular',
+      title:
+        'WeNaija 2.0 YouthFest | Empowering Nigerian Youths | NSSF 2024 Highlights',
+      duration: '2:26',
+    },
     // {
     //   id: '8ud9OZT6hE0',
     //   type: 'regular',
