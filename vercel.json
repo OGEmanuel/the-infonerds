@@ -1,8 +1,8 @@
 {
   "redirects": [
     {
-      "source": "/",
-      "destination": "https://www.nerdnotnoob.com",
+      "source": "https://nerdnotnoob.com/:path*",
+      "destination": "https://www.nerdnotnoob.com/:path*",
       "permanent": true
     }
   ]
