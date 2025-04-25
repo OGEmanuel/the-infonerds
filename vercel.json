@@ -1,9 +1,0 @@
-{
-  "redirects": [
-    {
-      "source": "/(.*)",
-      "destination": "https://www.nerdnotnoob.com/$1",
-      "permanent": true
-    }
-  ]
-}
