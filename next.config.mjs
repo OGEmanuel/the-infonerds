@@ -25,11 +25,6 @@ const nextConfig = {
       },
     ],
   },
-};
-
-export default nextConfig;
-
-module.exports = {
   async redirects() {
     return [
       {
@@ -46,3 +41,5 @@ module.exports = {
     ];
   },
 };
+
+export default nextConfig;
