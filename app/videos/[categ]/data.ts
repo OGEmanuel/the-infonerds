@@ -290,6 +290,13 @@ export const Concerts: FullData = {
       title: 'i-Fitness Prelaunch Workout Event | Ibadan 2022 Highlight',
       duration: '0:56',
     },
+    {
+      id: '8EmOO4QCFJw',
+      type: 'regular',
+      title:
+        'WeNaija 2.0 YouthFest | Empowering Nigerian Youths | NSSF 2024 Highlights',
+      duration: '2:26',
+    },
   ],
 };
 
@@ -322,12 +329,6 @@ export const Corporate: FullData = {
         'WeNaija 2.0 YouthFest | Empowering Nigerian Youths | NSSF 2024 Highlights',
       duration: '2:26',
     },
-    // {
-    //   id: '8ud9OZT6hE0',
-    //   type: 'regular',
-    //   title: 'SEEDS OF CHANGE | EMPOWERING IROKO COMMUNITY IBADAN, NIGERIA',
-    //   duration: '1:34',
-    // },
     {
       id: 'akvgD1PpHOw',
       type: 'regular',
@@ -400,7 +401,20 @@ export const Corporate: FullData = {
 };
 
 export const Proposals: FullData = {
-  shorts: [],
+  shorts: [
+    {
+      id: 'K9NS2W4WCu4',
+      type: 'short',
+      title:
+        'Boluwatife & Ihunanyachukwu | A Beautiful Journey to Forever – Pre-Wedding Reel #LoveLikeFineWine25',
+    },
+    {
+      id: 'tMJmjtQm3Ds',
+      type: 'short',
+      title:
+        'Boluwatife & Ihunanyachukwu Pre-Wedding Reel | Igbo Love Story Highlight #LoveLikeFineWine25',
+    },
+  ],
   videos: [
     {
       id: 'vZoyf5sqCgs',
@@ -560,6 +574,18 @@ export const Weddings: FullData = {
       id: '3O9Td2xLf5c',
       type: 'short',
       title: 'Toluwani & Jibola’s Elegant White Wedding Look',
+    },
+    {
+      id: 'hQnMrGiwsWU',
+      type: 'short',
+      title:
+        'Priscilla & Gabriel Wedding Portrait Reel | Timeless Moments from Ile-Ife Wedding',
+    },
+    {
+      id: 'IvH508GXmRw',
+      type: 'short',
+      title:
+        'Priscilla & Gabriel’s Second Look | Traditional Wedding Outfit Reel | Ile-Ife Highlights',
     },
   ],
   videos: [
