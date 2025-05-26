@@ -20,7 +20,9 @@ import { useToast } from '@/components/ui/use-toast';
 import { cn } from '@/lib/utils';
 import useThemeStore from '@/store/theme-control';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { X } from 'lucide-react';
+import { useMutation } from '@tanstack/react-query';
+import axios from 'axios';
+import { Loader2, X } from 'lucide-react';
 import { Dispatch, SetStateAction } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -49,15 +51,33 @@ export function MailingListForm({
     },
   });
 
+  const { mutate, isPending } = useMutation({
+    mutationFn: async (data: { email: string }) => {
+      return await axios.post('/api/subscribe', data, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+    },
+    onSuccess: () => {
+      form.reset();
+      setOpen(false);
+      toast({
+        title: 'Success!',
+        description: 'Thank you for your submission!',
+      });
+    },
+    onError: error => {
+      toast({
+        title: 'Error!',
+        description: error.message,
+        variant: 'destructive',
+      });
+    },
+  });
+
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast({
-      title: 'You submitted the following values:',
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
+    mutate(data);
   }
 
   return (
@@ -94,11 +114,33 @@ export function MailingListForm({
                 />
               )}
             />
-            <Button
+            {/* <Button
               type="submit"
               className={`rounded-xl p-4 font-medium ${theme === 'light' ? 'bg-btn-gradient-light text-black' : 'bg-btn-gradient text-white'}`}
             >
               Subscribe
+            </Button> */}
+            <Button
+              type={'submit'}
+              disabled={isPending}
+              className={`grid-stack grid w-max gap-0 overflow-hidden rounded-xl p-4 font-medium max-sm:w-full ${theme === 'light' ? 'bg-btn-gradient-light text-black' : 'bg-btn-gradient text-white'}`}
+            >
+              <span
+                className={cn(
+                  'grid-area-stack visible translate-y-0 transition-all',
+                  isPending && 'invisible -translate-y-[200px]',
+                )}
+              >
+                Subscribe
+              </span>
+              <span
+                className={cn(
+                  `grid-area-stack invisible flex w-full translate-y-[200px] justify-center transition-all`,
+                  isPending && 'visible translate-y-0',
+                )}
+              >
+                <Loader2 aria-label="Loading" className="animate-spin" />
+              </span>
             </Button>
           </form>
         </Form>
@@ -122,15 +164,33 @@ export const MobileMailingListForm = (props: {
     },
   });
 
+  const { mutate, isPending } = useMutation({
+    mutationFn: async (data: { email: string }) => {
+      return await axios.post('/api/subscribe', data, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+    },
+    onSuccess: () => {
+      form.reset();
+      props.setOpen(false);
+      toast({
+        title: 'Success!',
+        description: 'Thank you for your submission!',
+      });
+    },
+    onError: error => {
+      toast({
+        title: 'Error!',
+        description: error.message,
+        variant: 'destructive',
+      });
+    },
+  });
+
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast({
-      title: 'You submitted the following values:',
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
+    mutate(data);
   }
 
   return (
@@ -179,10 +239,26 @@ export const MobileMailingListForm = (props: {
             )}
           />
           <Button
-            type="submit"
-            className={`rounded-xl p-4 font-medium ${theme === 'light' ? 'bg-btn-gradient-light text-black' : 'bg-btn-gradient text-white'}`}
+            type={'submit'}
+            disabled={isPending}
+            className={`grid-stack grid w-max gap-0 overflow-hidden rounded-xl p-4 font-medium max-sm:w-full ${theme === 'light' ? 'bg-btn-gradient-light text-black' : 'bg-btn-gradient text-white'}`}
           >
-            Subscribe
+            <span
+              className={cn(
+                'grid-area-stack visible translate-y-0 transition-all',
+                isPending && 'invisible -translate-y-[200px]',
+              )}
+            >
+              Subscribe
+            </span>
+            <span
+              className={cn(
+                `grid-area-stack invisible flex w-full translate-y-[200px] justify-center transition-all`,
+                isPending && 'visible translate-y-0',
+              )}
+            >
+              <Loader2 aria-label="Loading" className="animate-spin" />
+            </span>
           </Button>
         </form>
       </Form>

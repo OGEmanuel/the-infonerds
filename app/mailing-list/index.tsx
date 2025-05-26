@@ -6,6 +6,8 @@ import { Mail } from 'lucide-react';
 import { useCallback, useEffect, useState } from 'react';
 import MailingListForm, { MobileMailingListForm } from './mailing-list-form';
 import { set } from 'zod';
+import { ToastProvider } from '@/components/ui/toast';
+import { Toaster } from '@/components/ui/toaster';
 
 const MailingList = () => {
   const { theme } = useThemeStore();
@@ -62,8 +64,11 @@ const MailingList = () => {
         Join Our Mailing List
         <Mail className="ml-2 h-5 w-5" />
       </Button>
-      <MailingListForm open={open} setOpen={setOpen} />
-      <MobileMailingListForm open={openSmall} setOpen={setOpenSmall} />
+      <ToastProvider>
+        <Toaster />
+        <MailingListForm open={open} setOpen={setOpen} />
+        <MobileMailingListForm open={openSmall} setOpen={setOpenSmall} />
+      </ToastProvider>
     </>
   );
 };
