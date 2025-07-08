@@ -8,24 +8,31 @@ import MainSectionWrapper from '@/components/main-section-wrapper';
 import MailingList from './mailing-list';
 
 export const metadata: Metadata = {
-  title: 'Photography & Videography Gallery | Nerd Not Noob',
+  title: 'Professional Photography & Videography in Nigeria | Nerd Not Noob',
   description:
-    'Showcasing stunning photography and videography.  Explore our portfolio of captivating images and videos.  Nerd Not Noob - capturing moments that last a lifetime.',
+    'Premium photography and videography services in Nigeria. From weddings to corporate events, we create timeless memories with exceptional artistry. Book your session today.',
   keywords: [
-    'photography gallery',
-    'videography gallery',
-    'professional photography',
-    'professional videography',
-    'Nigeria photography',
-    'Nigeria videography',
-    'portfolio',
-    'photographer',
-    'videographer',
+    'professional photographer Nigeria',
+    'wedding photography Nigeria',
+    'corporate videography Lagos',
+    'event photography Nigeria',
+    'portrait photographer Lagos',
+    'commercial photography Nigeria',
+    'videographer Nigeria',
+    'photography services Lagos',
+    'Nigerian photographer',
+    'video production Nigeria',
+    'pre-wedding photography',
+    'birthday photography Nigeria',
+    'business photography Lagos',
+    'photography portfolio Nigeria',
+    'creative videography',
   ],
+  category: 'Photography & Videography Services',
   openGraph: {
     title: 'Photography & Videography Gallery | Nerd Not Noob',
     description:
-      'Showcasing stunning photography and videography. Explore our portfolio of captivating images and videos.',
+      'Premium photography and videography services in Nigeria. From weddings to corporate events, we create timeless memories with exceptional artistry. Book your session today.',
     images:
       'https://res.cloudinary.com/dyx1sh27d/image/upload/v1745245687/logo-black_tlgcrd.png',
     url: 'https://www.nerdnotnoob.com/',
