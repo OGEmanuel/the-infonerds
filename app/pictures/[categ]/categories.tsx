@@ -2,8 +2,8 @@
 
 import Image from 'next/image';
 import { SyntheticEvent, useState } from 'react';
-import { useInfinitePhotos, useTripleColumnScroll } from '@/lib/hooks';
-import { ArrowUpIcon, Loader2 } from 'lucide-react';
+import { useTripleColumnScroll } from '@/lib/hooks';
+import { ArrowUpIcon } from 'lucide-react';
 import ImgFallback, { ErrorMessage } from '@/components/img-fallback';
 import useThemeStore from '@/store/theme-control';
 import { PhotosData, photosData } from './data';
@@ -32,69 +32,26 @@ const Categories = ({ page }: { page: string }) => {
   const { theme } = useThemeStore();
 
   let currentPhotosData: photosData[] = PhotosData.weddings;
-  // const [photosData, setPhotosData] = useState<photosData[]>([]);
-
-  let folderId = weddings;
 
   if (page === WEDDINGS) {
-    folderId = weddings;
-    // PhotosData[]
     currentPhotosData = PhotosData[weddings];
   } else if (page === CONCERTS) {
-    folderId = concerts;
     currentPhotosData = PhotosData[concerts];
   } else if (page === CORPORATE) {
-    folderId = corporate;
     currentPhotosData = PhotosData[corporate];
-    // console.log('corporate', PhotosData.corporate);
   } else if (page === PRE_WEDDING) {
-    folderId = preWedding;
     currentPhotosData = PhotosData[preWedding];
   } else if (page === PORTRAITS) {
-    folderId = portraits;
     currentPhotosData = PhotosData[portraits];
   } else if (page === BTS) {
-    folderId = bts;
     currentPhotosData = PhotosData[bts];
   }
 
   const shuffledPhotos = shuffleArray(currentPhotosData);
 
-  const {
-    columnData,
-    // observerTarget,
-    // scrollContainerRef,
-    totalDisplayed,
-    hasMore,
-    // loadNextPage,
-  } = useTripleColumnScroll({
+  const { columnData, totalDisplayed } = useTripleColumnScroll({
     allPhotos: shuffledPhotos,
-    // chunkSize: 20,
   });
-
-  // const {
-  //   data,
-  //   error,
-  //   isError,
-  //   fetchNextPage,
-  //   hasNextPage,
-  //   isFetchingNextPage,
-  //   isPending,
-  // } = useInfinitePhotos(20, folderId);
-
-  // const {
-  //   columnData,
-  //   observerTarget,
-  //   isFetchingNextPage: isFetching,
-  // } = useTripleColumnScroll({
-  //   data,
-  //   isError,
-  //   error,
-  //   hasNextPage,
-  //   isFetchingNextPage,
-  //   isPending,
-  //   fetchNextPage,
-  // });
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -102,38 +59,6 @@ const Categories = ({ page }: { page: string }) => {
       behavior: 'smooth',
     });
   };
-
-  // console.log('current Data:', columnData);
-  // console.log(PhotosData['corporate']);
-
-  // if (isPending) {
-  //   return (
-  //     <div className="flex items-center justify-center p-8">
-  //       <Loader2 className="h-8 w-8 animate-spin text-gray-400" />
-  //       <span
-  //         className={`ml-2 ${theme === 'light' ? 'text-black' : 'text-white'}`}
-  //       >
-  //         Loading gallery...
-  //       </span>
-  //     </div>
-  //   );
-  // }
-
-  // if (isError) {
-  //   return (
-  //     <div className="p-4 text-center text-red-500">Error: {error.message}</div>
-  //   );
-  // }
-
-  // Get the total number of loaded images
-  // const loadedImages =
-  // data?.pages.reduce((total, page) => total + page.images.length, 0) ?? 0;
-
-  // Get the total number of available images from the first page response
-  // const totalAvailableImages = data?.pages[0]?. ?? 0;
-
-  // Make sure we don't show a number larger than the total available
-  // const displayedImages = Math.min(loadedImages, totalAvailableImages);
 
   return (
     <div className="flex flex-col gap-10">
@@ -154,22 +79,6 @@ const Categories = ({ page }: { page: string }) => {
           ))}
         </div>
       </div>
-      {/* <div ref={observerTarget} className="h-4 w-full" aria-hidden="true" /> */}
-      {/* <div
-        ref={observerTarget}
-        style={{ minHeight: 1, marginTop: 100 }}
-        className="_min-h-1 border-t-2 border-red-500"
-      /> */}
-      {/* {isFetchingNextPage && (
-        <div className="flex items-center justify-center p-4">
-          <Loader2 className="h-6 w-6 animate-spin text-gray-400" />
-          <span
-            className={`ml-2 ${theme === 'light' ? 'text-black' : 'text-white'}`}
-          >
-            Loading more...
-          </span>
-        </div>
-      )} */}
       <div className="flex flex-col items-center justify-center gap-5 text-gray-600">
         <div className="flex flex-col items-center gap-1">
           <div className="mt-4 text-center">
@@ -177,15 +86,6 @@ const Categories = ({ page }: { page: string }) => {
             <span className="_sr-only">of {currentPhotosData.length}</span>{' '}
             images
           </div>
-          {/* {totalDisplayed < currentPhotosData.length && (
-            <button
-              onClick={loadNextPage}
-              role="button"
-              className={`flex items-center gap-2.5 hover:underline ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}
-            >
-              Load more...
-            </button>
-          )} */}
         </div>
         <button
           onClick={scrollToTop}
@@ -206,7 +106,6 @@ export default Categories;
 const ImageCard = ({ image }: { image: photosData }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const { theme } = useThemeStore();
   return (
     !error && (
       <div className="group relative h-max w-max overflow-hidden rounded-lg bg-gray-100 shadow-lg">
