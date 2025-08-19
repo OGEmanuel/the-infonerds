@@ -83,8 +83,7 @@ const Categories = ({ page }: { page: string }) => {
         <div className="flex flex-col items-center gap-1">
           <div className="mt-4 text-center">
             Showing {totalDisplayed}{' '}
-            <span className="_sr-only">of {currentPhotosData.length}</span>{' '}
-            images
+            <span className="">of {currentPhotosData.length}</span> images
           </div>
         </div>
         <button

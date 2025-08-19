@@ -6,7 +6,7 @@ const ImgFallback = (props: { className?: string }) => {
   return (
     <div
       className={cn(
-        `_absolute _inset-0 rounded-lg ${theme === 'light' ? 'bg-gray-200' : 'bg-gray-700'}`,
+        `rounded-lg ${theme === 'light' ? 'bg-gray-200' : 'bg-gray-700'}`,
         props.className,
       )}
     >
